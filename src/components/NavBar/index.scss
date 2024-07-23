@@ -1,0 +1,147 @@
+@use "../../assets/mixins.scss";
+
+.NavBar {
+  @include mixins.position(fixed, 0);
+  @include mixins.flex(row, space-between, center);
+  height: 70px;
+  width: 100%;
+  padding-inline: 10px;
+  background-color: var(--main-color);
+  z-index: 1;
+
+  @include mixins.breakpoint(laptop) {
+    padding-inline: 20px;
+  }
+
+  .search-container {
+    @include mixins.flex(row, space-between, center);
+    width: 250px;
+    height: 35px;
+
+    @include mixins.breakpoint(desktop) {
+      width: 350px;
+    }
+
+    .search-btn {
+      @include mixins.flex(row, center, center);
+      width: 15%;
+      height: 100%;
+      background-color: black;
+      border-radius: 10px 0 0 10px;
+      cursor: pointer;
+
+      .search-icon {
+        color: white;
+        font-size: 20px;
+      }
+    }
+
+    .search-input {
+      height: 100%;
+      width: 85%;
+      background-color: white;
+      border-radius: 0 10px 10px 0;
+      padding-left: 15px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .links {
+    display: none;
+
+    @include mixins.breakpoint(laptop) {
+      @include mixins.flex(row, flex-start, flex-start, 20px);
+    }
+
+    .categories-container {
+      position: relative;
+      cursor: pointer;
+
+      &__text {
+        @include mixins.flex(row, flex-start, center, 5px);
+        .arrow {
+          border-left: 4px solid transparent;
+          border-right: 4px solid transparent;
+          border-bottom: 8px solid black;
+          transition: transform 0.2s ease-out;
+        }
+      }
+
+      .categories-dropdown-laptop {
+        @include mixins.position(absolute);
+        z-index: 1;
+        display: none;
+        width: 100%;
+        background-color: var(--main-color);
+
+        .categories-link {
+          padding-block: 10px;
+          border-top: 1px solid var(--main-color-hover);
+          width: 100%;
+
+          &:hover {
+            background-color: var(--main-color-hover);
+          }
+        }
+      }
+      &:hover {
+        .categories-container__text {
+          .arrow {
+            transform: rotate(180deg);
+          }
+        }
+
+        .categories-dropdown-laptop {
+          @include mixins.flex(column);
+        }
+      }
+    }
+  }
+
+  .credential-container {
+    display: none;
+
+    @include mixins.breakpoint(laptop) {
+      @include mixins.flex(row, flex-start, center, 15px);
+    }
+
+    .register-btn {
+      color: white;
+      background-color: black;
+      border-radius: 80px;
+      padding: 10px 15px;
+    }
+  }
+
+  .burger-btn {
+    @include mixins.flex(column, center, center, 4px);
+
+    @include mixins.breakpoint(laptop) {
+      display: none;
+    }
+
+    .burger-line {
+      height: 2px;
+      width: 26px;
+      background-color: black;
+      transition: all 0.2s ease-out;
+      opacity: 1;
+
+      &.active:first-child {
+        transform: rotate(45deg) translateY(8px);
+      }
+
+      &.active:nth-child(2) {
+        opacity: 0;
+        width: 0;
+      }
+
+      &.active:last-child {
+        transform: rotate(-45deg) translateY(-8px);
+      }
+    }
+  }
+}
