@@ -1,16 +1,16 @@
 import LoginForm from "@/components/LoginForm";
-import { auth } from "@/app/auth";
-import { signOut } from "@/app/auth";
-import { redirect } from "next/navigation";
+// import { auth } from "@/app/auth";
+// import { signOut } from "@/app/auth";
+// import { redirect } from "next/navigation";
 
 export default async function loginPage() {
-  const session = await auth();
+  // const session = await auth();
   // if (!session) redirect("/");
 
   return (
     <div>
       <LoginForm />
-      {session?.user ? (
+      {/* {session?.user ? (
         <>
           <div>{session.user.email}</div>
           <form
@@ -24,7 +24,7 @@ export default async function loginPage() {
         </>
       ) : (
         <div>niente sessione</div>
-      )}
+      )} */}
     </div>
   );
 }
