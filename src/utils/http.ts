@@ -6,7 +6,7 @@ const httpGET = async (
   sortBy?: SortByType | "discountPercentage",
   page = "1"
 ): Promise<resProductType> => {
-  const url = new URL("http://localhost:3000/api/data");
+  const url = new URL(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/data`);
 
   if (page) {
     url.searchParams.append("page", page);
