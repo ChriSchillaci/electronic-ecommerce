@@ -22,14 +22,18 @@ export default async function Home() {
   return (
     <div className="Home">
       <section className="carousel-list--categories">
-        <CardsCarousel
-          title={"Featured Products"}
-          products={featuredProducts.products}
-        />
-        <CardsCarousel
-          title={"Popular Products"}
-          products={popularProducts.products}
-        />
+        {featuredProducts !== null && (
+          <CardsCarousel
+            title={"Featured Products"}
+            products={featuredProducts.products}
+          />
+        )}
+        {popularProducts !== null && (
+          <CardsCarousel
+            title={"Popular Products"}
+            products={popularProducts.products}
+          />
+        )}
         <div className="category-container">
           {categoryImages.map((item, idx) => (
             <div key={idx} className="category-box">
@@ -47,7 +51,9 @@ export default async function Home() {
             </div>
           ))}
         </div>
-        <CardsCarousel title={"On Sale"} products={saleProducts.products} />
+        {saleProducts !== null && (
+          <CardsCarousel title={"On Sale"} products={saleProducts.products} />
+        )}
       </section>
     </div>
   );

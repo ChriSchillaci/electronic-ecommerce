@@ -5,7 +5,7 @@ const httpGET = async (
   sort?: SortType,
   sortBy?: SortByType | "discountPercentage",
   page = "1"
-): Promise<resProductType> => {
+): Promise<resProductType | null> => {
   const url = new URL(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/data`);
 
   if (page) {
@@ -21,6 +21,7 @@ const httpGET = async (
 
   if (!res.ok) {
     console.log("fetch failed");
+    return null;
   }
 
   return res.json();
