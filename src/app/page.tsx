@@ -25,6 +25,7 @@ export default async function Home() {
   const [featuredProducts, popularProducts, saleProducts] = data;
 
   if (!featuredProducts || !popularProducts || !saleProducts) {
+    console.error(data);
     return <div>error loading</div>;
   }
 
