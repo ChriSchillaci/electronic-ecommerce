@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { sliderImages } from "@/mocks/sliderImages";
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import "./index.scss";
 
 const Slider = () => {
@@ -34,6 +35,16 @@ const Slider = () => {
           height={1000}
         />
       ))}
+      <div className="Slider__info">
+        <h1 className="slider-title">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam,
+          quia?
+        </h1>
+        <Link className="slider-btn" href={"/"}>
+          Shop Now
+        </Link>
+      </div>
+      <div className="Slider__gradient"></div>
     </section>
   );
 };

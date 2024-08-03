@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/utils/db";
 import Product from "@/models/product";
-import { SchemaProduct } from "@/types/schemaTypes";
+import type { SchemaProduct } from "@/types/schemaTypes";
+import type { SortByType, SortType } from "@/types/sortTypes";
 
 dbConnect();
-type SortType = "asc" | "desc" | null;
-type SortByType = "price" | "rating" | null;
 
 export async function GET(req: Request) {
   let statusNum = 500;

@@ -1,0 +1,16 @@
+@use "../../assets/mixins.scss";
+
+.main-layout {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-top: 70px;
+  padding-inline: 20px;
+
+  @include mixins.breakpoint(laptop) {
+    padding-inline: 40px;
+  }
+
+  &.home {
+    padding-top: 10vh;
+  }
+}

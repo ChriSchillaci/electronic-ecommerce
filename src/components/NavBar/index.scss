@@ -3,11 +3,11 @@
 .NavBar {
   @include mixins.position(fixed, 0);
   @include mixins.flex(row, space-between, center);
-  height: 70px;
+  height: 10vh;
   width: 100%;
   padding-inline: 10px;
   background-color: var(--main-color);
-  z-index: 1;
+  z-index: 4;
 
   @include mixins.breakpoint(laptop) {
     padding-inline: 20px;

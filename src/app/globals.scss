@@ -23,6 +23,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   font-family: sans-serif;
+  background-color: var(--main-color);
 }
 
 img,
@@ -60,17 +61,6 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
-}
-
-.main-layout {
-  max-width: 1440px;
-  margin-inline: auto;
-  padding-top: 70px;
-  padding-inline: 10px;
-
-  @include mixins.breakpoint(laptop) {
-    padding-inline: 20px;
-  }
 }
 
 /* @media (prefers-color-scheme: dark) {

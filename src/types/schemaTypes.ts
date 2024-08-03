@@ -1,4 +1,5 @@
-export interface SchemaProduct {
+interface SchemaProduct {
+  _id: string;
   title: string;
   description: string;
   category: "smartphones" | "mobile-accessories" | "tablets" | "laptops";
@@ -31,7 +32,9 @@ export interface SchemaProduct {
   thumbnail: string;
 }
 
-export interface SchemaUser {
+interface SchemaUser {
   email: string;
   password: string;
 }
+
+export type { SchemaProduct, SchemaUser };
