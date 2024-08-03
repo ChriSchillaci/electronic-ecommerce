@@ -20,8 +20,7 @@ const httpGET = async (
   const res = await fetch(url);
 
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
+    console.log("fetch failed");
   }
 
   return res.json();
