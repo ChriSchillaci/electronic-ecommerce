@@ -5,13 +5,18 @@ import Image from "next/image";
 import "../styles/page.scss";
 
 const getProducts = async () => {
-  const res = await Promise.all([
-    httpGET(),
-    httpGET("desc", "price"),
-    httpGET("desc", "discountPercentage"),
-  ]);
+  try {
+    const res = await Promise.all([
+      httpGET(),
+      httpGET("desc", "price"),
+      httpGET("desc", "discountPercentage"),
+    ]);
 
-  return res;
+    return res;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [null, null, null];
+  }
 };
 
 export default async function Home() {
@@ -19,21 +24,21 @@ export default async function Home() {
 
   const [featuredProducts, popularProducts, saleProducts] = data;
 
+  if (!featuredProducts || !popularProducts || !saleProducts) {
+    return <div>error loading</div>;
+  }
+
   return (
     <div className="Home">
       <section className="carousel-list--categories">
-        {featuredProducts !== null && (
-          <CardsCarousel
-            title={"Featured Products"}
-            products={featuredProducts.products}
-          />
-        )}
-        {popularProducts !== null && (
-          <CardsCarousel
-            title={"Popular Products"}
-            products={popularProducts.products}
-          />
-        )}
+        <CardsCarousel
+          title={"Featured Products"}
+          products={featuredProducts.products}
+        />
+        <CardsCarousel
+          title={"Popular Products"}
+          products={popularProducts.products}
+        />
         <div className="category-container">
           {categoryImages.map((item, idx) => (
             <div key={idx} className="category-box">
@@ -51,9 +56,7 @@ export default async function Home() {
             </div>
           ))}
         </div>
-        {saleProducts !== null && (
-          <CardsCarousel title={"On Sale"} products={saleProducts.products} />
-        )}
+        <CardsCarousel title={"On Sale"} products={saleProducts.products} />
       </section>
     </div>
   );
