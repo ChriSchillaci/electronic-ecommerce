@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Slider from "../Slider";
 import { usePathname } from "next/navigation";
 import "./index.scss";

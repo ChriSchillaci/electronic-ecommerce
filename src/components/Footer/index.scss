@@ -1,0 +1,75 @@
+@use "../../assets/mixins.scss";
+
+.Footer {
+  background-color: black;
+  color: white;
+
+  &__logo-socials {
+    @include mixins.flex(column, flex-start, center, 10px);
+    padding: 20px 10px;
+    border-bottom: 1px solid var(--main-color);
+
+    @include mixins.breakpoint(laptop) {
+      @include mixins.flex(row, space-between, center);
+      padding-inline: 20px;
+    }
+
+    &__logo {
+      filter: invert(100%);
+    }
+
+    &__socials {
+      @include mixins.flex(row, flex-start, flex-start, 10px);
+
+      &__social {
+        font-size: 26px;
+
+        @include mixins.breakpoint(laptop) {
+          font-size: 32px;
+        }
+      }
+    }
+  }
+
+  &__info {
+    @include mixins.flex(column, flex-start, flex-start, 20px);
+    padding: 20px 10px;
+
+    @include mixins.breakpoint(laptop) {
+      @include mixins.flex(row, space-between, flex-start);
+      padding-inline: 20px;
+    }
+
+    &__links {
+      @include mixins.flex(column, flex-start, flex-start, 20px);
+
+      &__title {
+        padding-bottom: 5px;
+        border-bottom: 2px solid var(--main-color);
+      }
+
+      &__link {
+        color: inherit;
+      }
+
+      &__input {
+        padding-block: 6px;
+        padding-left: 6px;
+        border: 2px solid var(--main-color);
+        border-radius: 5px;
+        color: white;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &__btn {
+        color: inherit;
+        border: 1px solid var(--main-color);
+        width: 100%;
+        padding-block: 5px;
+      }
+    }
+  }
+}

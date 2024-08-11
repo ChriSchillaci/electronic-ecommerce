@@ -4,4 +4,9 @@ interface resProductType {
   products: SchemaProduct[];
 }
 
-export type { resProductType };
+interface resErrorType {
+  message: string;
+  status: number;
+}
+
+export type { resProductType, resErrorType };

@@ -1,0 +1,74 @@
+@use "../../../assets/mixins.scss";
+
+.CarouselCards {
+  .CarouselCards__title.skeleton {
+    border-radius: 20px;
+    height: 29px;
+    width: 200px;
+    animation: skeleton-color 2s infinite;
+  }
+
+  .Card {
+    &.skeleton {
+      @include mixins.flex(column, space-between, flex-start);
+    }
+
+    &__img.skeleton {
+      margin-inline: auto;
+      object-fit: none;
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+      animation: skeleton-color 2s infinite;
+
+      &:hover {
+        transform: none;
+      }
+    }
+
+    &__container {
+      &.skeleton {
+        width: 100%;
+      }
+
+      &__title.skeleton {
+        width: 50%;
+        height: 15px;
+        border-radius: 10px;
+        animation: skeleton-color 2s infinite;
+      }
+
+      &__description.skeleton {
+        width: 100%;
+        height: 10px;
+        border-radius: 10px;
+        animation: skeleton-color 2s infinite;
+      }
+
+      .price-container {
+        &.skeleton {
+          width: 100%;
+        }
+
+        &__price.skeleton {
+          height: 10px;
+          width: 40%;
+          border-radius: 10px;
+          animation: skeleton-color 2s infinite;
+        }
+      }
+    }
+  }
+}
+
+@keyframes skeleton-color {
+  0% {
+    background-color: var(--primary-color-skeleton);
+  }
+  50% {
+    background-color: var(--secondary-color-skeleton);
+  }
+  100% {
+    background-color: var(--primary-color-skeleton);
+  }
+}

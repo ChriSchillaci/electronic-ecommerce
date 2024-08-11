@@ -1,11 +1,12 @@
 import type { SortType, SortByType } from "@/types/sortTypes";
-import type { resProductType } from "@/types/resTypes";
+import type { resProductType, resErrorType } from "@/types/resTypes";
 
 const httpGET = async (
   sort?: SortType,
   sortBy?: SortByType | "discountPercentage",
   page = "1"
-): Promise<resProductType | null> => {
+): Promise<resProductType | resErrorType> => {
+  let statusNum = 500;
   try {
     const url = new URL(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/data`);
 
@@ -21,15 +22,25 @@ const httpGET = async (
     const res = await fetch(url);
 
     if (!res.ok) {
-      console.log("fetch failed");
-      return null;
+      statusNum = res.status;
+      throw new Error(`Error status ${res.status}`);
     }
 
     const data: resProductType = await res.json();
 
     return data;
   } catch (error) {
-    return null;
+    if (error instanceof Error) {
+      return {
+        status: statusNum,
+        message: error.message,
+      };
+    }
+
+    return {
+      status: statusNum,
+      message: "An error occured",
+    };
   }
 };
 

@@ -1,16 +1,9 @@
-import { MutableRefObject } from "react";
 import Image from "next/image";
-import { SchemaProduct } from "@/types/schemaTypes";
+import type { CardProps } from "@/types/componentProps";
 import discountedPrice from "@/utils/discounted-price";
 import "./index.scss";
 
-const Card = ({
-  product,
-  cardRef,
-}: {
-  product: SchemaProduct;
-  cardRef: MutableRefObject<HTMLDivElement | null> | null;
-}) => {
+const Card = ({ product, cardRef }: CardProps) => {
   const { _id, images, title, description, price, discountPercentage } =
     product;
 
