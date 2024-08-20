@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
+import dbConnect from "../../../utils/db";
 import Product from "../../../models/product";
 import type { SchemaProduct } from "../../../types/schemaTypes";
 import type { SortByType, SortType, CategoryType } from "../../../types/queryTypes";
 
+await dbConnect();
+
 export async function GET(req: NextRequest) {
   let statusNum = 500;
 
+  console.log("ESEGUITO");
   try {
     const search = req.nextUrl.searchParams.get("search");
     const sort = req.nextUrl.searchParams.get("sort") as SortType;

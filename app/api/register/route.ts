@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import User from "../../../models/user";
+import dbConnect from "../../../utils/db";
+
+await dbConnect();
 
 export async function POST(req: NextRequest) {
   let statusNumber = 500;

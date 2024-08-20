@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import Product from "../../../../models/product";
 import mongoose from "mongoose";
+import dbConnect from "../../../../utils/db";
 
+await dbConnect();
 export async function GET(
   req: Request,
   { params }: { params: { id: string } }
