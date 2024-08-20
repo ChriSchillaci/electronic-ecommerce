@@ -3,10 +3,12 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { IoIosSearch } from "react-icons/io";
 import DropDown from "../DropDown";
+import handleCategoryBtn from "@/utils/handleCategoryBtn";
+import categoryMocks from "@/mocks/categoryMocks";
 import "./index.scss";
-import { useRouter } from "next/navigation";
 
 const NavBar = () => {
   const [isDropDown, setIsDropDown] = useState(false);
@@ -14,20 +16,16 @@ const NavBar = () => {
 
   const router = useRouter();
 
-  const handleDropDown = () => {
-    setIsDropDown((prev) => !prev);
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSearchForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push(`/products?name=${search}`);
+    router.push(`/store?search=${search}`);
   };
 
   return (
     <>
       <nav className="NavBar">
         <Image src="/images/logo.png" alt="logo" width={50} height={50} />
-        <form onSubmit={handleSubmit} className="search-container">
+        <form onSubmit={handleSearchForm} className="search-container">
           <button className="search-btn" type="submit">
             <IoIosSearch className="search-icon" />
           </button>
@@ -43,22 +41,23 @@ const NavBar = () => {
         </form>
         <div className="links">
           <Link href={"/"}>Home</Link>
-          <Link href={"/"}>Products</Link>
+          <Link href={"/store"}>Store</Link>
           <div className="categories-container">
             <div className="categories-container__text">
               <p>Categories</p>
               <span className="arrow"></span>
             </div>
             <div className="categories-dropdown-laptop">
-              <Link className="categories-link" href={"/"}>
-                Link 1
-              </Link>
-              <Link className="categories-link" href={"/"}>
-                Link 1
-              </Link>
-              <Link className="categories-link" href={"/"}>
-                Link 1
-              </Link>
+              {categoryMocks.map((item, idx) => (
+                <button
+                  key={idx}
+                  className="categories-dropdown-laptop__link"
+                  value={item.value}
+                  onClick={(e) => handleCategoryBtn(e, router)}
+                >
+                  {item.text}
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -68,13 +67,20 @@ const NavBar = () => {
             Register
           </Link>
         </div>
-        <button className="burger-btn" onClick={handleDropDown}>
+        <button
+          className="burger-btn"
+          onClick={() => setIsDropDown((prev) => !prev)}
+        >
           <span className={`burger-line ${isDropDown ? "active" : ""}`}></span>
           <span className={`burger-line ${isDropDown ? "active" : ""}`}></span>
           <span className={`burger-line ${isDropDown ? "active" : ""}`}></span>
         </button>
       </nav>
-      <DropDown isDropDown={isDropDown} />
+      <DropDown
+        isDropDown={isDropDown}
+        setIsDropDown={setIsDropDown}
+        router={router}
+      />
     </>
   );
 };

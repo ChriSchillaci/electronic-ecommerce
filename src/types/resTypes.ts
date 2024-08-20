@@ -1,6 +1,7 @@
 import type { SchemaProduct } from "./schemaTypes";
+import type { PaginationProps } from "./componentProps";
 
-interface resProductType {
+interface resProductType extends PaginationProps {
   products: SchemaProduct[];
 }
 

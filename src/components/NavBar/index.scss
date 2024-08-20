@@ -5,12 +5,12 @@
   @include mixins.flex(row, space-between, center);
   height: 10vh;
   width: 100%;
-  padding-inline: 10px;
+  padding-inline: 20px;
   background-color: var(--main-color);
   z-index: 4;
 
   @include mixins.breakpoint(laptop) {
-    padding-inline: 20px;
+    padding-inline: 40px;
   }
 
   .search-container {
@@ -74,10 +74,10 @@
         @include mixins.position(absolute);
         z-index: 1;
         display: none;
-        width: 100%;
+        width: 120px;
         background-color: var(--main-color);
 
-        .categories-link {
+        &__link {
           padding-block: 10px;
           border-top: 1px solid var(--main-color-hover);
           width: 100%;

@@ -1,0 +1,31 @@
+@use "../assets/mixins.scss";
+
+.Store {
+  @include mixins.flex(row);
+
+  &__main-container {
+    width: 100%;
+
+    @include mixins.breakpoint(laptop) {
+      width: 75%;
+    }
+    .sort-container--category-title {
+      @include mixins.flex(row, space-between, center);
+      padding-block: 20px;
+
+      .category-title {
+        font-size: 25px;
+        text-transform: capitalize;
+      }
+
+      .sort-container {
+        @include mixins.flex(row, flex-start, center, 10px);
+      }
+    }
+
+    &__products {
+      @include mixins.flex(row, flex-start, flex-start, 16px);
+      flex-wrap: wrap;
+    }
+  }
+}

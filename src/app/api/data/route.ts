@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import dbConnect from "@/utils/db";
 import Product from "@/models/product";
 import type { SchemaProduct } from "@/types/schemaTypes";
-import type { SortByType, SortType } from "@/types/sortTypes";
+import type { SortByType, SortType, CategoryType } from "@/types/queryTypes";
 
 dbConnect();
 
@@ -15,6 +15,7 @@ export async function GET(req: Request) {
     const sortBy = url.searchParams.get("sortby") as SortByType;
     const limit = url.searchParams.get("limit") || "9";
     const page = url.searchParams.get("page") || "1";
+    const category = url.searchParams.get("category") as CategoryType;
 
     const limitNum = Number(limit);
     const pageNum = Number(page);
@@ -28,7 +29,22 @@ export async function GET(req: Request) {
     let sortQuery = {};
 
     if (search) {
-      searchQuery = { title: { $regex: search, $options: "i" } };
+      searchQuery = {
+        title: { $regex: search, $options: "i" },
+      };
+    }
+
+    if (category) {
+      searchQuery = {
+        category: category,
+      };
+    }
+
+    if (search && category) {
+      searchQuery = {
+        title: { $regex: search, $options: "i" },
+        category: category,
+      };
     }
 
     if (sortBy && sort) {
@@ -40,7 +56,7 @@ export async function GET(req: Request) {
       .limit(limitNum * 1)
       .skip((pageNum - 1) * limitNum);
 
-    const countDocs = await Product.countDocuments();
+    const countDocs = await Product.countDocuments(searchQuery);
 
     return NextResponse.json(
       {

@@ -5,7 +5,7 @@
   @include mixins.flex(column, flex-start, flex-start);
   background-color: var(--main-color);
   transition: transform 0.2s ease-out;
-  transform: translateY(-296px);
+  transform: translateY(-310px);
   width: 100%;
   z-index: 3;
 
@@ -29,7 +29,7 @@
     .categories-dropdown {
       display: none;
       @include mixins.position(absolute);
-      width: 50%;
+      width: 30%;
       background-color: var(--main-color);
       box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
       z-index: 1;

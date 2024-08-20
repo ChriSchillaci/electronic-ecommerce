@@ -1,0 +1,9 @@
+.SelectFilter {
+  width: 100px;
+  border: 1px solid black;
+  padding: 5px;
+
+  &:focus {
+    outline: none;
+  }
+}

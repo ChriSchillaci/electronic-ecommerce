@@ -1,16 +1,17 @@
 import Image from "next/image";
 import type { CardProps } from "@/types/componentProps";
 import discountedPrice from "@/utils/discounted-price";
+import { CSSProperties } from "react";
 import "./index.scss";
 
-const Card = ({ product, cardRef }: CardProps) => {
-  const { _id, images, title, description, price, discountPercentage } =
+const Card = ({ product, cardRef, classType = "" }: CardProps) => {
+  const { _id, images, title, description, price, discountPercentage, rating } =
     product;
 
   const isDiscount = discountPercentage > 8;
 
   return (
-    <div id={_id} className="Card" ref={cardRef}>
+    <div id={_id} className={`Card ${classType}`} ref={cardRef}>
       {isDiscount && <p className="Card__sale">Sale</p>}
       <Image
         className="Card__img"
@@ -32,6 +33,10 @@ const Card = ({ product, cardRef }: CardProps) => {
             </p>
           )}
         </div>
+        <div
+          className="Card__container__rating"
+          style={{ "--rating": rating } as CSSProperties}
+        ></div>
       </div>
     </div>
   );

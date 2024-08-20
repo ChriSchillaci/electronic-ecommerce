@@ -10,9 +10,7 @@ const LayoutClient = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       {pathname === "/" && <Slider />}
-      <div className={`main-layout ${pathname === "/" ? "home" : ""}`}>
-        {children}
-      </div>
+      <div className={`main-layout`}>{children}</div>
     </>
   );
 };
