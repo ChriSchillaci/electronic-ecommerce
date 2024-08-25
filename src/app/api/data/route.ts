@@ -1,4 +1,5 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
+import { revalidatePath } from "next/cache";
 import dbConnect from "@/utils/db";
 import Product from "@/models/product";
 import type { SchemaProduct } from "@/types/schemaTypes";
@@ -6,7 +7,7 @@ import type { SortByType, SortType, CategoryType } from "@/types/queryTypes";
 
 dbConnect();
 
-export async function GET(req: Request) {
+export async function GET(req: NextRequest) {
   let statusNum = 500;
   try {
     const url = new URL(req.url);
@@ -57,6 +58,8 @@ export async function GET(req: Request) {
       .skip((pageNum - 1) * limitNum);
 
     const countDocs = await Product.countDocuments(searchQuery);
+
+    revalidatePath("/store");
 
     return NextResponse.json(
       {

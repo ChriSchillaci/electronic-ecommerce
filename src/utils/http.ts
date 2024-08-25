@@ -10,13 +10,10 @@ const httpGET = async (
   page = "1"
 ): Promise<resProductType | resErrorType> => {
   let statusNum = 500;
-  revalidatePath("/store");
   try {
     const url = new URL(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/data`);
 
-    if (page) {
-      url.searchParams.append("page", page);
-    }
+    url.searchParams.append("page", page);
 
     if (category) {
       url.searchParams.append("category", category);

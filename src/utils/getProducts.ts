@@ -18,6 +18,7 @@ const getProducts = async () => {
 
     return responses as resProductType[];
   } catch (error) {
+    console.error(error);
     return error as resErrorType;
   }
 };
