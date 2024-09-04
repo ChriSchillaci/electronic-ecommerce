@@ -5,20 +5,21 @@ import { AuthError } from "next-auth";
 
 const loginCred = async (formData: FormData) => {
   try {
-    await signIn("credentials", {
+    const result = await signIn("credentials", {
       redirect: false,
       email: formData.get("email"),
       password: formData.get("password"),
     });
+
+    return { msg: "Login successful", result };
   } catch (err) {
     if (err instanceof AuthError) {
       if (err.type === "CredentialsSignin") {
-        return { msg: "invalid credentials" };
-      } else {
-        return { msg: "something went wrong" };
+        return { msg: "Invalid credentials" };
       }
+
+      return { msg: "Something went wrong" };
     }
-    throw err;
   }
 };
 

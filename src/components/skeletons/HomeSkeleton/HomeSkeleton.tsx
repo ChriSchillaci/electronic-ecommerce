@@ -15,15 +15,17 @@ const HomeSkeleton = () => {
             {blankCards.map((card, idx) => {
               return (
                 <div key={idx} className="Card skeleton">
-                  <div className="Card__img skeleton"></div>
-                  <div className="Card__container skeleton">
-                    <h2 className="Card__container__title skeleton">
-                      {card.text}
-                    </h2>
-                    <p className="Card__container__description skeleton"></p>
-                    <p className="Card__container__description skeleton"></p>
-                    <div className="price-container skeleton">
-                      <p className="price-container__price skeleton"></p>
+                  <div className="Card__link">
+                    <div className="Card__link__img skeleton"></div>
+                    <div className="Card__link__container skeleton">
+                      <h2 className="Card__link__container__title skeleton">
+                        {card.text}
+                      </h2>
+                      <p className="Card__link__container__description skeleton"></p>
+                      <p className="Card__link__container__description skeleton"></p>
+                      <div className="price-container skeleton">
+                        <p className="price-container__price skeleton"></p>
+                      </div>
                     </div>
                   </div>
                 </div>

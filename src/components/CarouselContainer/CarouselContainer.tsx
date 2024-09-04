@@ -1,12 +1,12 @@
 "use client";
+import type { resProductsType } from "@/types/resTypes";
 import { useRef, useEffect, useState } from "react";
 import handleCarousel from "@/utils/handleCarousel";
-import type { resProductType } from "@/types/resTypes";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import Card from "../Card";
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import "./index.scss";
 
-const CarouselContainer = ({ products }: resProductType) => {
+const CarouselContainer = ({ products }: resProductsType) => {
   const [isBtnClicked, setIsBtnClicked] = useState(false);
   const [isFirstCardVisible, setIsFirstCardVisible] = useState(false);
   const [isLastCardVisible, setIsLastCardVisible] = useState(false);

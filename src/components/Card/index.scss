@@ -2,7 +2,7 @@
 
 .Card {
   position: relative;
-  @include mixins.flex(column, space-between, center);
+  // @include mixins.flex(column, space-between, center);
   min-width: 220px;
   height: 310px;
   border-radius: 10px;
@@ -14,103 +14,113 @@
     height: 340px;
   }
 
-  &__sale {
-    @include mixins.position(absolute, auto, auto, auto, 5%);
-    padding: 3px 5px;
-    border-radius: 20px;
-    background-color: rgb(226, 35, 35);
-    color: white;
-    z-index: 1;
-  }
+  &__link {
+    @include mixins.flex(column, space-between, center);
+    height: 100%;
 
-  &__img {
-    height: 200px;
-    width: 200px;
-    object-fit: contain;
-    transition: transform 0.3s ease-out;
-
-    &:hover {
-      transform: scale(1.2);
-    }
-  }
-
-  &__container {
-    @include mixins.flex(column, flex-start, flex-start, 5px);
-    padding-inline: 10px;
-    padding-bottom: 5px;
-
-    @include mixins.breakpoint(laptop) {
-      padding-bottom: 10px;
+    &__sale {
+      @include mixins.position(absolute, auto, auto, auto, 5%);
+      padding: 3px 5px;
+      border-radius: 20px;
+      background-color: rgb(226, 35, 35);
+      color: white;
+      z-index: 1;
     }
 
-    &__title {
-      font-size: 14px;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-      line-clamp: 1;
-      overflow: hidden;
+    &__img {
+      height: 200px;
+      width: 200px;
+      object-fit: contain;
+      transition: transform 0.3s ease-out;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    &__container {
+      @include mixins.flex(column, flex-start, flex-start, 5px);
+      padding-inline: 10px;
+      padding-bottom: 5px;
 
       @include mixins.breakpoint(laptop) {
-        font-size: 16px;
+        padding-bottom: 10px;
       }
-    }
 
-    &__description {
-      font-size: 10px;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-      line-clamp: 2;
-      overflow: hidden;
-
-      @include mixins.breakpoint(laptop) {
-        font-size: 12px;
-      }
-    }
-
-    .price-container {
-      @include mixins.flex(row, flex-start, flex-start, 7px);
-
-      &__price {
-        font-weight: bold;
+      &__title {
         font-size: 14px;
-
-        @include mixins.breakpoint(laptop) {
-          font-size: 16px;
-        }
-
-        &.cut {
-          text-decoration: line-through;
-          color: rgba(0, 0, 0, 0.5);
-        }
-      }
-
-      &__discounted-price {
-        font-weight: bold;
-        font-size: 14px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        overflow: hidden;
 
         @include mixins.breakpoint(laptop) {
           font-size: 16px;
         }
       }
-    }
-    &__rating {
-      --percent: calc(var(--rating) / 5 * 100%);
 
-      font-size: 18px;
-      line-height: 1;
+      &__description {
+        font-size: 10px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        overflow: hidden;
 
-      &::before {
-        content: "★★★★★";
-        background: linear-gradient(
-          90deg,
-          black var(--percent),
-          var(--main-color-hover) var(--percent)
-        );
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        @include mixins.breakpoint(laptop) {
+          font-size: 12px;
+        }
+      }
+
+      .price-container {
+        @include mixins.flex(row, flex-start, baseline, 6px);
+
+        &__price {
+          font-weight: bold;
+          font-size: 13px;
+
+          @include mixins.breakpoint(laptop) {
+            font-size: 16px;
+          }
+
+          &.cut {
+            text-decoration: line-through;
+            color: rgba(0, 0, 0, 0.5);
+            font-size: 12px;
+
+            @include mixins.breakpoint(laptop) {
+              font-size: 16px;
+            }
+          }
+        }
+
+        &__discounted-price {
+          font-weight: bold;
+          font-size: 13px;
+
+          @include mixins.breakpoint(laptop) {
+            font-size: 16px;
+          }
+        }
+      }
+      &__rating {
+        --percent: calc(var(--rating) / 5 * 100%);
+
+        font-size: 18px;
+        line-height: 1;
+
+        &::before {
+          content: "★★★★★";
+          background: linear-gradient(
+            90deg,
+            black var(--percent),
+            var(--main-color-hover) var(--percent)
+          );
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
       }
     }
   }

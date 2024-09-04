@@ -1,0 +1,139 @@
+@use "../assets/mixins.scss";
+
+.Product {
+  &__container {
+    @include mixins.flex(column, flex-start, normal, 10px);
+
+    @include mixins.breakpoint(laptop) {
+      @include mixins.flex(row, space-between);
+    }
+
+    &__info {
+      @include mixins.breakpoint(laptop) {
+        width: 45%;
+      }
+
+      &__title {
+        font-size: 24px;
+
+        @include mixins.breakpoint(laptop) {
+          font-size: 34px;
+        }
+      }
+
+      &__rating-container {
+        @include mixins.flex(row, flex-start, center, 10px);
+
+        &__rating {
+          --percent: calc(var(--rating) / 5 * 100%);
+
+          border-right: 2px solid rgba(0, 0, 0, 0.7);
+          padding-right: 10px;
+          font-size: 18px;
+          line-height: 1;
+
+          &::before {
+            content: "★★★★★";
+            background: linear-gradient(
+              90deg,
+              black var(--percent),
+              var(--main-color-hover) var(--percent)
+            );
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        }
+      }
+
+      &__price-container {
+        @include mixins.flex(row, flex-start, center, 8px);
+        margin-block: 10px;
+
+        @include mixins.breakpoint(laptop) {
+          margin-block: 20px;
+        }
+
+        &__price {
+          font-size: 24px;
+
+          @include mixins.breakpoint(laptop) {
+            font-size: 30px;
+          }
+
+          &.cut {
+            text-decoration: line-through;
+            color: rgba(0, 0, 0, 0.5);
+          }
+        }
+      }
+
+      &__purchase-policies {
+        @include mixins.flex(column, flex-start, flex-start, 10px);
+        margin-top: 10px;
+
+        @include mixins.breakpoint(laptop) {
+          margin-top: 20px;
+        }
+
+        &__title {
+          font-size: 22px;
+        }
+
+        &__policy-container {
+          @include mixins.flex(row, flex-start, center, 10px);
+
+          &__icon {
+            font-size: 24px;
+          }
+        }
+      }
+    }
+  }
+
+  &__reviews {
+    margin-top: 20px;
+
+    &__title {
+      margin-bottom: 20px;
+    }
+
+    &__reviews-container {
+      @include mixins.flex(column, flex-start, flex-start, 30px);
+
+      &__review {
+        width: 100%;
+        border-bottom: 1px solid rgb(176, 176, 176);
+        padding-bottom: 15px;
+
+        &__name-date {
+          @include mixins.flex(row, flex-start, center, 10px);
+        }
+
+        &__rating {
+          --percent: calc(var(--rating) / 5 * 100%);
+
+          padding-right: 10px;
+          font-size: 18px;
+          line-height: 1;
+
+          &::before {
+            content: "★★★★★";
+            background: linear-gradient(
+              90deg,
+              black var(--percent),
+              var(--main-color-hover) var(--percent)
+            );
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        }
+
+        &__text {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}

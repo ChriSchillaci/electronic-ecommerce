@@ -12,4 +12,8 @@ interface StoreProps {
     | undefined;
 }
 
-export type { StoreProps };
+interface ProductProps {
+  params: { _id: string };
+}
+
+export type { StoreProps, ProductProps };

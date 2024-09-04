@@ -1,59 +1,77 @@
+import type { DropDownProps } from "@/types/componentProps";
 import Link from "next/link";
 import handleCategoryBtn from "@/utils/handleCategoryBtn";
+import handleDropDown from "@/utils/handleDropDown";
 import categoryMocks from "@/mocks/categoryMocks";
-import type { DropDownProps } from "@/types/componentProps";
 import "./index.scss";
 
-const DropDown = ({ isDropDown, setIsDropDown, router }: DropDownProps) => {
+const DropDown = ({
+  isDropDown,
+  setIsDropDown,
+  isCategoryList,
+  setIsCategoryList,
+  router,
+}: DropDownProps) => {
   return (
     <div className={`DropDown ${isDropDown ? "active" : ""}`}>
       <Link
         className="link-container"
         href={"/"}
-        onClick={() => setIsDropDown((prev) => !prev)}
+        onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
       >
         Home
       </Link>
       <Link
         className="link-container"
         href={"/store"}
-        onClick={() => setIsDropDown((prev) => !prev)}
+        onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
       >
         Store
       </Link>
-      <div className="link-container ">
+      <div
+        className="link-container"
+        onClick={() => setIsCategoryList((prev) => !prev)}
+      >
         <p>Categories</p>
-        <div className="categories-dropdown">
-          {categoryMocks.map((item, idx) => (
-            <button
-              key={idx}
-              className="categories-dropdown__link"
-              value={item.value}
-              onClick={(e) => handleCategoryBtn(e, router, null, setIsDropDown)}
-            >
-              {item.text}
-            </button>
-          ))}
-        </div>
+      </div>
+      <div className={`categories-dropdown ${isCategoryList ? "active" : ""}`}>
+        {categoryMocks.map((item, idx) => (
+          <button
+            key={idx}
+            className="categories-dropdown__link"
+            value={item.value}
+            onClick={(e) =>
+              handleCategoryBtn(
+                e,
+                router,
+                null,
+                setIsDropDown,
+                setIsCategoryList
+              )
+            }
+          >
+            {item.text}
+          </button>
+        ))}
       </div>
       <Link
         className="link-container"
         href={"/contact-us"}
-        onClick={() => setIsDropDown((prev) => !prev)}
+        onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
       >
         Contact us
       </Link>
       <Link
         className="link-container"
         href={"/login"}
-        onClick={() => setIsDropDown((prev) => !prev)}
+        onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
       >
         Login
       </Link>
       <Link
         className="link-container"
         href={"/register"}
-        onClick={() => setIsDropDown((prev) => !prev)}
+        onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
       >
         Register
       </Link>

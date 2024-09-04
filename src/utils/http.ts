@@ -1,19 +1,25 @@
 import { revalidatePath } from "next/cache";
 import type { SortType, SortByType, CategoryType } from "@/types/queryTypes";
-import type { resProductType, resErrorType } from "@/types/resTypes";
+import type { resErrorType } from "@/types/resTypes";
 
-const httpGET = async (
+const httpGET = async <T>(
   sort?: SortType,
   sortBy?: SortByType,
   search?: string | null,
   category?: CategoryType,
-  page = "1"
-): Promise<resProductType | resErrorType> => {
+  page = "1",
+  limit = "9",
+  _id = ""
+): Promise<T | resErrorType> => {
   let statusNum = 500;
   try {
-    const url = new URL(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/data`);
+    const url = new URL(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/data/${_id}`
+    );
 
     url.searchParams.append("page", page);
+
+    url.searchParams.append("limit", limit);
 
     if (category) {
       url.searchParams.append("category", category);
@@ -35,7 +41,7 @@ const httpGET = async (
       throw new Error(`Error status ${res.status}`);
     }
 
-    const data: resProductType = await res.json();
+    const data: T = await res.json();
 
     return data;
   } catch (error) {

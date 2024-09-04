@@ -1,0 +1,63 @@
+@use "../../assets/mixins.scss";
+
+.FormProduct {
+  &__quantity-container {
+    width: 100%;
+    @include mixins.flex(column, flex-start, flex-start, 10px);
+    margin-block: 10px;
+
+    @include mixins.breakpoint(laptop) {
+      margin-block: 20px;
+    }
+
+    &__text {
+      font-size: 20px;
+    }
+
+    &__input-container {
+      padding-inline: 5px;
+      background-color: white;
+      border-radius: 15px;
+      @include mixins.flex(row, flex-start, center);
+
+      &__btn {
+        font-size: 24px;
+      }
+
+      &__input {
+        height: 55px;
+        width: 60px;
+        text-align: center;
+        font-size: 24px;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+          appearance: none;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  &__btns-container {
+    width: 100%;
+    @include mixins.flex(column, flex-start, flex-start, 15px);
+
+    @include mixins.breakpoint(laptop) {
+      @include mixins.flex(row, flex-start, flex-start, 15px);
+    }
+
+    &__btn {
+      width: 100%;
+      text-align: center;
+      color: white;
+      background-color: black;
+      padding-block: 10px;
+      border-radius: 20px;
+
+      // @include mixins.breakpoint(laptop) {
+      //   width: 50%;
+      // }
+    }
+  }
+}

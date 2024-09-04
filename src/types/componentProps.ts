@@ -1,10 +1,12 @@
-import { Dispatch, MutableRefObject, SetStateAction } from "react";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import type { Dispatch, MutableRefObject, SetStateAction } from "react";
+import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { SchemaProduct } from "./schemaTypes";
 
 interface DropDownProps {
   isDropDown: boolean;
   setIsDropDown: Dispatch<SetStateAction<boolean>>;
+  isCategoryList: boolean;
+  setIsCategoryList: Dispatch<SetStateAction<boolean>>;
   router: AppRouterInstance;
 }
 
@@ -28,4 +30,15 @@ interface PaginationProps {
   };
 }
 
-export type { CarouselCardsProps, CardProps, PaginationProps, DropDownProps };
+interface ImageContainerProps {
+  images: string[];
+  title: string;
+}
+
+export type {
+  CarouselCardsProps,
+  CardProps,
+  PaginationProps,
+  DropDownProps,
+  ImageContainerProps,
+};

@@ -1,31 +1,33 @@
 "use client";
 
-import { ChangeEvent, FormEvent, useState } from "react";
+import type { ChangeEvent } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { IoIosSearch } from "react-icons/io";
 import DropDown from "../DropDown";
-import handleCategoryBtn from "@/utils/handleCategoryBtn";
 import categoryMocks from "@/mocks/categoryMocks";
+import handleCategoryBtn from "@/utils/handleCategoryBtn";
+import handleSearchForm from "@/utils/handleSearchForm";
+import handleDropDown from "@/utils/handleDropDown";
+import { IoIosSearch } from "react-icons/io";
 import "./index.scss";
 
 const NavBar = () => {
   const [isDropDown, setIsDropDown] = useState(false);
   const [search, setSearch] = useState("");
+  const [isCategoryList, setIsCategoryList] = useState(false);
 
   const router = useRouter();
-
-  const handleSearchForm = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    router.push(`/store?search=${search}`);
-  };
 
   return (
     <>
       <nav className="NavBar">
         <Image src="/images/logo.png" alt="logo" width={50} height={50} />
-        <form onSubmit={handleSearchForm} className="search-container">
+        <form
+          onSubmit={(e) => handleSearchForm(e, search, router)}
+          className="search-container"
+        >
           <button className="search-btn" type="submit">
             <IoIosSearch className="search-icon" />
           </button>
@@ -69,7 +71,7 @@ const NavBar = () => {
         </div>
         <button
           className="burger-btn"
-          onClick={() => setIsDropDown((prev) => !prev)}
+          onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
         >
           <span className={`burger-line ${isDropDown ? "active" : ""}`}></span>
           <span className={`burger-line ${isDropDown ? "active" : ""}`}></span>
@@ -79,6 +81,8 @@ const NavBar = () => {
       <DropDown
         isDropDown={isDropDown}
         setIsDropDown={setIsDropDown}
+        isCategoryList={isCategoryList}
+        setIsCategoryList={setIsCategoryList}
         router={router}
       />
     </>

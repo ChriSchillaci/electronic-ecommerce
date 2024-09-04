@@ -1,10 +1,10 @@
+import type { resProductsType } from "@/types/resTypes";
+import type { StoreProps } from "@/types/pagesProps";
 import { httpGET } from "@/utils/http";
 import Card from "@/components/Card";
 import SelectFilter from "@/components/SelectFilter";
 import Pagination from "@/components/Pagination";
 import SideBar from "@/components/SideBar";
-import type { resProductType } from "@/types/resTypes";
-import type { StoreProps } from "@/types/pagesProps";
 import "../../styles/Store.scss";
 
 export default async function Store({ searchParams }: StoreProps) {
@@ -14,13 +14,18 @@ export default async function Store({ searchParams }: StoreProps) {
   const category = searchParams?.category ?? null;
   const page = searchParams?.page ?? "1";
 
-  const data = await httpGET(sort, sortby, search, category, page);
-  const { products, meta } = data as resProductType;
+  const data = await httpGET<resProductsType>(
+    sort,
+    sortby,
+    search,
+    category,
+    page
+  );
+  const { products, meta } = data as resProductsType;
 
   return (
     <div className="Store">
       <SideBar />
-      {/* START */}
       <div className="Store__main-container">
         <div className="sort-container--category-title">
           <h1 className="category-title">
@@ -45,7 +50,6 @@ export default async function Store({ searchParams }: StoreProps) {
         </div>
         <Pagination meta={meta} />
       </div>
-      {/* END */}
     </div>
   );
 }

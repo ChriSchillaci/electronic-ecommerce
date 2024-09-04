@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
-import { sliderImages } from "@/mocks/sliderImages";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { sliderImages } from "@/mocks/sliderImages";
 import "./index.scss";
 
 const Slider = () => {
@@ -40,7 +40,7 @@ const Slider = () => {
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam,
           quia?
         </h1>
-        <Link className="slider-btn" href={"/"}>
+        <Link className="slider-btn" href={"/store"}>
           Shop Now
         </Link>
       </div>

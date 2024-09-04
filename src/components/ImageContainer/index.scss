@@ -1,0 +1,38 @@
+@use "../../assets/mixins.scss";
+
+.ImageContainer {
+  // border: 1px solid red;
+  @include mixins.flex(column, flex-start, flex-start, 10px);
+
+  @include mixins.breakpoint(laptop) {
+    width: 50%;
+  }
+
+  &__img {
+    width: 100%;
+    object-fit: contain;
+    background-color: white;
+    border-radius: 15px;
+  }
+
+  &__images {
+    @include mixins.flex(row, flex-start, flex-start, 15px);
+    overflow-x: scroll;
+
+    @include mixins.breakpoint(laptop) {
+      overflow-x: hidden;
+    }
+
+    &__img {
+      background-color: white;
+      border-radius: 15px;
+      object-fit: contain;
+      opacity: 0.85;
+
+      &.active {
+        opacity: 1;
+        border: 1px solid black;
+      }
+    }
+  }
+}

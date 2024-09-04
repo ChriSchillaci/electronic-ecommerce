@@ -5,7 +5,7 @@
   margin-inline: auto;
   margin-bottom: 40px;
   padding-top: 10vh;
-  padding-inline: 20px;
+  padding-inline: 10px;
 
   @include mixins.breakpoint(laptop) {
     padding-inline: 40px;

@@ -23,31 +23,28 @@
     }
   }
 
-  .link-container:nth-child(3) {
-    position: relative;
+  .categories-dropdown {
+    max-height: 0;
+    overflow: hidden;
+    width: 100%;
+    background-color: var(--main-color);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    transition: max-height 0.3s ease-out;
 
-    .categories-dropdown {
-      display: none;
-      @include mixins.position(absolute);
-      width: 30%;
-      background-color: var(--main-color);
-      box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
-      z-index: 1;
+    &__link {
+      width: 100%;
+      padding: 10px;
+      text-align: left;
+      background-color: black;
+      color: white;
 
-      &__link {
-        padding-block: 10px;
-        width: 100%;
-
-        &:hover {
-          background-color: var(--main-color-hover);
-        }
+      &:hover {
+        background-color: var(--main-color-hover);
       }
     }
 
-    &:hover {
-      .categories-dropdown {
-        @include mixins.flex(column);
-      }
+    &.active {
+      max-height: 500px;
     }
   }
 }

@@ -1,13 +1,13 @@
 import { httpGET } from "@/utils/http";
-import type { resErrorType, resProductType } from "@/types/resTypes";
+import type { resErrorType, resProductsType } from "@/types/resTypes";
 
 const getProducts = async () => {
   // await new Promise((resolve) => setTimeout(resolve, 5000));
   try {
     const responses = await Promise.all([
-      httpGET(),
-      httpGET("desc", "price"),
-      httpGET("desc", "discountPercentage"),
+      httpGET<resProductsType>(),
+      httpGET<resProductsType>("desc", "price"),
+      httpGET<resProductsType>("desc", "discountPercentage"),
     ]);
 
     const resErr = responses.find((res) => "status" in res && res.status > 400);
@@ -16,7 +16,7 @@ const getProducts = async () => {
       throw resErr;
     }
 
-    return responses as resProductType[];
+    return responses as resProductsType[];
   } catch (error) {
     console.error(error);
     return error as resErrorType;

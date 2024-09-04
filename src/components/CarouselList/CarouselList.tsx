@@ -1,8 +1,9 @@
+import type { resProductsType } from "@/types/resTypes";
 import getProducts from "@/utils/getProducts";
 import categoryImages from "@/mocks/categoryImages";
 import CarouselCards from "../CarouselCards";
 import Image from "next/image";
-import type { resProductType } from "@/types/resTypes";
+import Link from "next/link";
 import "./index.scss";
 
 const CarouselList = async () => {
@@ -13,7 +14,7 @@ const CarouselList = async () => {
   }
 
   const [featuredProducts, popularProducts, saleProducts] =
-    data as resProductType[];
+    data as resProductsType[];
 
   return (
     <section className="CarouselList">
@@ -30,7 +31,12 @@ const CarouselList = async () => {
           <div key={idx} className="category-box">
             <div className="category-info">
               <h1 className="category-title">{item.text}</h1>
-              <button className="category-btn">Browse</button>
+              <Link
+                href={`/store?category=${item.query}`}
+                className="category-btn"
+              >
+                Browse
+              </Link>
             </div>
             <Image
               className="category-img"
