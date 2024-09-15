@@ -4,7 +4,14 @@ const handleDropDown = (
   setIsCategoryList: Dispatch<SetStateAction<boolean>>,
   setIsDropDown: Dispatch<SetStateAction<boolean>>
 ) => {
-  setIsDropDown((prev) => !prev);
+  setIsDropDown((prev) => {
+    if (prev) {
+      document.body.style.overflow = "auto";
+    } else {
+      document.body.style.overflow = "hidden";
+    }
+    return !prev;
+  });
   setIsCategoryList(false);
 };
 

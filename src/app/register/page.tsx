@@ -1,9 +1,10 @@
-import RegisterForm from "@/components/RegisterForm";
+import CredForm from "@/components/CredForm";
+import CredFormWrapper from "@/components/CredFormWrapper";
 
-export default function registerPage() {
+export default function RegisterPage() {
   return (
-    <div>
-      <RegisterForm />
-    </div>
+    <CredFormWrapper>
+      <CredForm btnText="Sign Up" />
+    </CredFormWrapper>
   );
 }

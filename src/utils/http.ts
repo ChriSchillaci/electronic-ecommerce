@@ -1,4 +1,3 @@
-import { revalidatePath } from "next/cache";
 import type { SortType, SortByType, CategoryType } from "@/types/queryTypes";
 import type { resErrorType } from "@/types/resTypes";
 
@@ -54,7 +53,7 @@ const httpGET = async <T>(
 
     return {
       status: statusNum,
-      message: "An error occured",
+      message: "An error occurred",
     };
   }
 };

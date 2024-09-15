@@ -10,6 +10,7 @@ import { MdLocalShipping, MdKeyboardReturn } from "react-icons/md";
 import { HiBadgeCheck } from "react-icons/hi";
 import "../../../styles/Product.scss";
 
+// The dynamic param not included in generateStaticParams will return a 404 page
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
@@ -39,6 +40,11 @@ export default async function Product({ params }: ProductProps) {
     "1",
     _id
   );
+
+  if ("status" in data && data.status > 400) {
+    return <div>{data.message}</div>;
+  }
+
   const { product } = data as resProductType;
   const {
     title,

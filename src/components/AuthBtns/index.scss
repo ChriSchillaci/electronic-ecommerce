@@ -1,0 +1,16 @@
+@use "../../assets/mixins.scss";
+
+.AuthBtns {
+  display: none;
+
+  @include mixins.breakpoint(laptop) {
+    @include mixins.flex(row, flex-start, center, 15px);
+  }
+
+  .register-btn {
+    color: white;
+    background-color: black;
+    border-radius: 80px;
+    padding: 10px 15px;
+  }
+}

@@ -1,0 +1,50 @@
+@use "../../assets/mixins.scss";
+
+.CredForm {
+  @include mixins.flex(column, normal, center, 10px);
+  width: 80%;
+
+  &__error-container {
+    visibility: hidden;
+    @include mixins.flex(row, normal, center, 10px);
+    width: 80%;
+    background-color: rgb(255, 100, 100);
+    border-radius: 10px;
+    height: 54px;
+    padding-inline: 10px;
+
+    &.active {
+      visibility: visible;
+    }
+
+    &__icon {
+      font-size: 24px;
+    }
+  }
+
+  &__input {
+    height: 40px;
+    width: 100%;
+    padding-left: 10px;
+    border-radius: 10px;
+    background-color: var(--main-color);
+  }
+
+  &__submit {
+    width: 100%;
+    margin-top: 5px;
+    border-radius: 10px;
+    padding-block: 10px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+
+    &.pending {
+      opacity: 0.6;
+    }
+  }
+
+  &__link {
+    text-decoration: underline;
+  }
+}

@@ -2,13 +2,15 @@
 
 .Card {
   position: relative;
-  // @include mixins.flex(column, space-between, center);
   min-width: 220px;
   height: 310px;
   border-radius: 10px;
   background-color: white;
   padding-top: 10px;
   scroll-snap-align: start;
+  overflow: hidden;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
   @include mixins.breakpoint(laptop) {
     height: 340px;
@@ -107,8 +109,12 @@
       &__rating {
         --percent: calc(var(--rating) / 5 * 100%);
 
-        font-size: 18px;
+        font-size: 16px;
         line-height: 1;
+
+        @include mixins.breakpoint(laptop) {
+          font-size: 18px;
+        }
 
         &::before {
           content: "★★★★★";

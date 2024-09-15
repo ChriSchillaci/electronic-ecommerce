@@ -1,6 +1,7 @@
 @use "../assets/mixins.scss";
 
 .Product {
+  margin-top: 40px;
   &__container {
     @include mixins.flex(column, flex-start, normal, 10px);
 

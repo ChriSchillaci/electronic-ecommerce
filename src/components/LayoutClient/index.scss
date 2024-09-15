@@ -9,5 +9,6 @@
 
   @include mixins.breakpoint(laptop) {
     padding-inline: 40px;
+    min-height: calc(100vh - 297px - 40px);
   }
 }

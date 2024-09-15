@@ -11,7 +11,7 @@
 
     @include mixins.breakpoint(laptop) {
       @include mixins.flex(row, space-between, center);
-      padding-inline: 20px;
+      padding-inline: 40px;
     }
 
     &__logo {
@@ -37,7 +37,7 @@
 
     @include mixins.breakpoint(laptop) {
       @include mixins.flex(row, space-between, flex-start);
-      padding-inline: 20px;
+      padding-inline: 40px;
     }
 
     &__links {

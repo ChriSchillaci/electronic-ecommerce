@@ -1,11 +1,14 @@
 "use client";
 
 import type { ChangeEvent } from "react";
+import type { NavBarProps } from "@/types/componentProps";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import DropDown from "../DropDown";
+import AuthBtns from "../AuthBtns";
+import AuthLogoutBtn from "../AuthLogoutBtn";
 import categoryMocks from "@/mocks/categoryMocks";
 import handleCategoryBtn from "@/utils/handleCategoryBtn";
 import handleSearchForm from "@/utils/handleSearchForm";
@@ -13,7 +16,7 @@ import handleDropDown from "@/utils/handleDropDown";
 import { IoIosSearch } from "react-icons/io";
 import "./index.scss";
 
-const NavBar = () => {
+const NavBar = ({ session }: NavBarProps) => {
   const [isDropDown, setIsDropDown] = useState(false);
   const [search, setSearch] = useState("");
   const [isCategoryList, setIsCategoryList] = useState(false);
@@ -63,12 +66,7 @@ const NavBar = () => {
             </div>
           </div>
         </div>
-        <div className="credential-container">
-          <Link href={"/login"}>Login</Link>
-          <Link className="register-btn" href={"/register"}>
-            Register
-          </Link>
-        </div>
+        {!session ? <AuthBtns /> : <AuthLogoutBtn />}
         <button
           className="burger-btn"
           onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
@@ -84,6 +82,7 @@ const NavBar = () => {
         isCategoryList={isCategoryList}
         setIsCategoryList={setIsCategoryList}
         router={router}
+        session={session}
       />
     </>
   );

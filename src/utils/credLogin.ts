@@ -3,24 +3,23 @@
 import { signIn } from "@/app/auth";
 import { AuthError } from "next-auth";
 
-const loginCred = async (formData: FormData) => {
+const credLogin = async (formData: FormData) => {
   try {
-    const result = await signIn("credentials", {
+    await signIn("credentials", {
       redirect: false,
       email: formData.get("email"),
       password: formData.get("password"),
     });
 
-    return { msg: "Login successful", result };
+    return { message: "Login successful", status: true };
   } catch (err) {
     if (err instanceof AuthError) {
       if (err.type === "CredentialsSignin") {
-        return { msg: "Invalid credentials" };
+        return { message: "Invalid credentials", status: false };
       }
-
-      return { msg: "Something went wrong" };
     }
+    return { message: "Something went wrong", status: false };
   }
 };
 
-export default loginCred;
+export default credLogin;

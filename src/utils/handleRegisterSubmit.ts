@@ -1,6 +1,11 @@
-import type { FormEvent } from "react";
+import type { Dispatch, FormEvent, SetStateAction } from "react";
+import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
-const handleRegisterSubmit = async (e: FormEvent<HTMLFormElement>) => {
+const handleRegisterSubmit = async (
+  e: FormEvent<HTMLFormElement>,
+  router: AppRouterInstance,
+  setIsError: Dispatch<SetStateAction<{ status: boolean; message: string }>>
+) => {
   e.preventDefault();
   const form = new FormData(e.currentTarget);
   const formDataEntries = Object.fromEntries(form);
@@ -23,11 +28,14 @@ const handleRegisterSubmit = async (e: FormEvent<HTMLFormElement>) => {
     });
 
     if (res.status === 409) {
-      throw new Error("user already exists");
+      throw new Error("User already exists");
     }
+
+    router.push("/login");
   } catch (e) {
     if (e instanceof Error) {
-      console.log(e.message);
+      console.error(e);
+      setIsError({ status: false, message: e.message });
     }
   }
 };

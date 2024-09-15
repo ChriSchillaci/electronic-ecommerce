@@ -1,8 +1,12 @@
 import type { Dispatch, MutableRefObject, SetStateAction } from "react";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { SchemaProduct } from "./schemaTypes";
+import type { Session } from "next-auth";
 
-interface DropDownProps {
+interface NavBarProps {
+  session: Session | null;
+}
+interface DropDownProps extends NavBarProps {
   isDropDown: boolean;
   setIsDropDown: Dispatch<SetStateAction<boolean>>;
   isCategoryList: boolean;
@@ -35,10 +39,23 @@ interface ImageContainerProps {
   title: string;
 }
 
+interface CredFormProps {
+  btnText: string;
+}
+
+interface AuthLogoutBtnProps {
+  classType?: string;
+  setIsDropDown?: Dispatch<SetStateAction<boolean>>;
+  setIsCategoryList?: Dispatch<SetStateAction<boolean>>;
+}
+
 export type {
+  NavBarProps,
   CarouselCardsProps,
   CardProps,
   PaginationProps,
   DropDownProps,
   ImageContainerProps,
+  CredFormProps,
+  AuthLogoutBtnProps,
 };

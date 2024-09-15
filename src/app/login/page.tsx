@@ -1,30 +1,13 @@
-import LoginForm from "@/components/LoginForm";
-// import { auth } from "@/app/auth";
-// import { signOut } from "@/app/auth";
-// import { redirect } from "next/navigation";
+import CredForm from "@/components/CredForm";
+import CredFormWrapper from "@/components/CredFormWrapper";
 
-export default async function loginPage() {
+export default async function LoginPage() {
   // const session = await auth();
   // if (!session) redirect("/");
 
   return (
-    <div>
-      <LoginForm />
-      {/* {session?.user ? (
-        <>
-          <div>{session.user.email}</div>
-          <form
-            action={async () => {
-              "use server";
-              await signOut();
-            }}
-          >
-            <button type="submit">logout</button>
-          </form>
-        </>
-      ) : (
-        <div>niente sessione</div>
-      )} */}
-    </div>
+    <CredFormWrapper>
+      <CredForm btnText="Sign in" />
+    </CredFormWrapper>
   );
 }
