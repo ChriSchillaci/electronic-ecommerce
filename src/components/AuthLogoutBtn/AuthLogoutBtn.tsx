@@ -1,6 +1,8 @@
+"use client";
+
 import type { AuthLogoutBtnProps } from "@/types/componentProps";
 import logoutAction from "@/utils/logoutAction";
-import handleDropDown from "@/utils/handleDropDown";
+// import handleDropDown from "@/utils/handleDropDown";
 import "./index.scss";
 
 const AuthLogoutBtn = ({
@@ -9,19 +11,22 @@ const AuthLogoutBtn = ({
   setIsDropDown,
 }: AuthLogoutBtnProps) => {
   return (
-    <form
+    // <form
+    //   className={`AuthLogoutBtn ${classType}`}
+    //   action={logoutAction}
+    //   onClick={
+    //     setIsCategoryList && setIsDropDown
+    //       ? () => handleDropDown(setIsCategoryList, setIsDropDown)
+    //       : undefined
+    //   }
+    // >
+    <button
       className={`AuthLogoutBtn ${classType}`}
-      action={logoutAction}
-      onClick={
-        setIsCategoryList && setIsDropDown
-          ? () => handleDropDown(setIsCategoryList, setIsDropDown)
-          : undefined
-      }
+      onClick={() => logoutAction(setIsCategoryList, setIsDropDown)}
     >
-      <button className={`AuthLogoutBtn__btn ${classType}`} type="submit">
-        Logout
-      </button>
-    </form>
+      Logout
+    </button>
+    // </form>
   );
 };
 

@@ -63,13 +63,6 @@ const DropDown = ({
             </button>
           ))}
         </div>
-        <Link
-          className="link-container"
-          href={"/contact-us"}
-          onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
-        >
-          Contact us
-        </Link>
         {!session ? (
           <>
             <Link

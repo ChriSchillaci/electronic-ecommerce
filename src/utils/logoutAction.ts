@@ -1,9 +1,18 @@
-"use server";
+"use client";
 
-import { signOut } from "@/app/auth";
+import { signOut } from "next-auth/react";
+import type { Dispatch, SetStateAction } from "react";
+import handleDropDown from "./handleDropDown";
 
-const logoutAction = async () => {
-  await signOut({ redirectTo: "/login" });
+const logoutAction = (
+  setIsCategoryList?: Dispatch<SetStateAction<boolean>>,
+  setIsDropDown?: Dispatch<SetStateAction<boolean>>
+) => {
+  if (setIsCategoryList && setIsDropDown) {
+    handleDropDown(setIsCategoryList, setIsDropDown);
+  }
+
+  signOut({ callbackUrl: "/login" });
 };
 
 export default logoutAction;

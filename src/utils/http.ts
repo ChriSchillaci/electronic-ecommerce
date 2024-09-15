@@ -47,7 +47,7 @@ const httpGET = async <T>(
     if (error instanceof Error) {
       return {
         status: statusNum,
-        message: error.message,
+        message: `${error.message} httpGET`,
       };
     }
 

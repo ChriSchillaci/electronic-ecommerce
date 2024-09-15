@@ -11,6 +11,7 @@ const handleLoginSubmit = async (
   const formData = new FormData(e.currentTarget);
 
   const res = await credLogin(formData);
+  console.log(res);
 
   if (!res.status) {
     setIsError({ status: res.status, message: res.message });
