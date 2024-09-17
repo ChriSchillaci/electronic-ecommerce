@@ -4,7 +4,7 @@ declare global {
   var prisma: PrismaClient | undefined;
 }
 
-const config = process.env.DATABASE_URI;
+const config = process.env.DATABASE_URL;
 
 export const db = new PrismaClient({
   datasources: {
