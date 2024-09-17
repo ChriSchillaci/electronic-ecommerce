@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import dbConnect from "@/utils/db";
+import { db } from "@/utils/db";
 import bcrypt from "bcryptjs";
-import User from "@/models/user";
-
-dbConnect();
 
 export async function POST(req: NextRequest) {
   let statusNumber = 500;
@@ -11,7 +8,7 @@ export async function POST(req: NextRequest) {
   try {
     const { email, password } = await req.json();
 
-    const existingUser = await User.findOne({ email });
+    const existingUser = await db.users.findUnique({ where: { email } });
 
     if (existingUser) {
       statusNumber = 409;
@@ -20,12 +17,12 @@ export async function POST(req: NextRequest) {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = new User({
-      email,
-      password: hashedPassword,
+    await db.users.create({
+      data: {
+        email,
+        password: hashedPassword,
+      },
     });
-
-    await user.save();
 
     return NextResponse.json({ message: "User registered" }, { status: 201 });
   } catch (e) {

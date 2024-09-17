@@ -25,12 +25,12 @@ export async function generateStaticParams() {
   const { products } = data as resProductsType;
 
   return products.map((product) => ({
-    _id: product._id,
+    id: product.id,
   }));
 }
 
 export default async function Product({ params }: ProductProps) {
-  const { _id } = params;
+  const { id } = params;
   const data = await httpGET<resProductType>(
     null,
     null,
@@ -38,7 +38,7 @@ export default async function Product({ params }: ProductProps) {
     null,
     "1",
     "1",
-    _id
+    id
   );
 
   if ("status" in data && data.status > 400) {

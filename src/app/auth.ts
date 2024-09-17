@@ -1,8 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import User from "@/models/user";
 import bcrypt from "bcryptjs";
-import dbConnect from "@/utils/db";
+import { db } from "@/utils/db";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -13,13 +12,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
       authorize: async (credentials) => {
         try {
-          await dbConnect();
-          const user = await User.findOne({ email: credentials?.email });
+          const user = await db.users.findUnique({
+            where: { email: credentials.email as string },
+          });
 
           if (user) {
             if (
               await bcrypt.compare(
-                credentials?.password as string,
+                credentials.password as string,
                 user.password
               )
             ) {
@@ -31,8 +31,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           return null;
         } catch (err) {
           if (err instanceof Error) {
-            console.error("errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
-            throw new Error(err.message);
+            console.error(
+              "errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
+              err.message
+            );
           }
           return null;
         }

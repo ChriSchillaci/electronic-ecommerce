@@ -1,5 +1,5 @@
 interface SchemaProduct {
-  _id: string;
+  id: string;
   title: string;
   description: string;
   category: "smartphones" | "mobile-accessories" | "tablets" | "laptops";

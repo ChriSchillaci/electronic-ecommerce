@@ -13,7 +13,7 @@ interface StoreProps {
 }
 
 interface ProductProps {
-  params: { _id: string };
+  params: { id: string };
 }
 
 export type { StoreProps, ProductProps };

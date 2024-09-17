@@ -1,0 +1,56 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URI")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Users {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId // Unique identifier (equivalent to Mongoose's default _id)
+  email    String @unique // Unique email field
+  password String
+  // createdAt DateTime @default(now()) // Automatically sets the creation date
+  // updatedAt DateTime @updatedAt // Automatically updates the timestamp on updates
+}
+
+model Products {
+  id                   String     @id @default(auto()) @map("_id") @db.ObjectId
+  title                String     @default("Product Name")
+  description          String     @default("Description Text")
+  category             String
+  price                Float
+  discountPercentage   Float
+  rating               Float
+  stock                Int
+  tags                 String[]
+  brand                String
+  sku                  String
+  weight               Float
+  dimensions           Dimensions // Nested object (separate model for dimensions)
+  warrantyInformation  String
+  shippingInformation  String
+  availabilityStatus   String
+  reviews              Review[] // Array of nested objects (separate model for reviews)
+  returnPolicy         String
+  minimumOrderQuantity Int
+  images               String[]
+  thumbnail            String
+  // createdAt            DateTime   @default(now())
+  // updatedAt            DateTime   @updatedAt
+}
+
+type Dimensions {
+  width  Float
+  height Float
+  depth  Float
+}
+
+type Review {
+  rating        Int
+  comment       String
+  date          String
+  reviewerName  String
+  reviewerEmail String
+}

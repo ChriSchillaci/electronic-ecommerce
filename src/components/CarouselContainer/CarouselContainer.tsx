@@ -1,4 +1,5 @@
 "use client";
+
 import type { resProductsType } from "@/types/resTypes";
 import { useRef, useEffect, useState } from "react";
 import handleCarousel from "@/utils/handleCarousel";
@@ -68,7 +69,7 @@ const CarouselContainer = ({ products }: resProductsType) => {
               ? firstCardRef
               : null;
 
-          return <Card key={product._id} product={product} cardRef={cardRef} />;
+          return <Card key={product.id} product={product} cardRef={cardRef} />;
         })}
       </div>
       <button

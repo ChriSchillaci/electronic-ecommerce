@@ -32,8 +32,10 @@
     &__img {
       height: 200px;
       width: 200px;
+      padding-block: 10px;
       object-fit: contain;
       transition: transform 0.3s ease-out;
+      -webkit-user-drag: none;
 
       &:hover {
         transform: scale(1.2);

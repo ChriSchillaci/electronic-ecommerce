@@ -1,11 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import { revalidatePath } from "next/cache";
-import dbConnect from "@/utils/db";
-import Product from "@/models/product";
-import type { SchemaProduct } from "@/types/schemaTypes";
+import { db } from "@/utils/db";
 import type { SortByType, SortType, CategoryType } from "@/types/queryTypes";
-
-dbConnect();
 
 export async function GET(req: NextRequest) {
   let statusNum = 500;
@@ -26,38 +22,46 @@ export async function GET(req: NextRequest) {
       throw new Error("Number is mandatory");
     }
 
-    let searchQuery = {};
-    let sortQuery = {};
+    let whereClause = {};
 
     if (search) {
-      searchQuery = {
-        title: { $regex: search, $options: "i" },
+      whereClause = {
+        title: {
+          contains: search,
+          mode: "insensitive",
+        },
       };
     }
 
     if (category) {
-      searchQuery = {
-        category: category,
+      whereClause = {
+        category,
       };
     }
 
     if (search && category) {
-      searchQuery = {
-        title: { $regex: search, $options: "i" },
-        category: category,
+      whereClause = {
+        title: {
+          contains: search,
+          mode: "insensitive",
+        },
+        category,
       };
     }
 
-    if (sortBy && sort) {
-      sortQuery = { [sortBy]: sort === "asc" ? 1 : -1 };
-    }
+    const sortQuery =
+      sortBy && sort ? { [sortBy]: sort === "asc" ? "asc" : "desc" } : {};
 
-    const products: SchemaProduct[] = await Product.find(searchQuery)
-      .sort(sortQuery)
-      .limit(limitNum * 1)
-      .skip((pageNum - 1) * limitNum);
+    const products = await db.products.findMany({
+      where: whereClause,
+      orderBy: sortQuery,
+      take: limitNum,
+      skip: (pageNum - 1) * limitNum,
+    });
 
-    const countDocs = await Product.countDocuments(searchQuery);
+    const countDocs = await db.products.count({
+      where: whereClause,
+    });
 
     revalidatePath("/store");
 
