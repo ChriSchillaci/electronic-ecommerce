@@ -18,25 +18,23 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             where: { email: credentials.email as string },
           });
 
-          if (user) {
-            if (
-              await bcrypt.compare(
-                credentials.password as string,
-                user.password
-              )
-            ) {
-              console.log("user logged in");
-              return user;
-            }
+          if (!user) {
+            throw new Error("User not found");
           }
-          console.log("invalid credentials");
-          return null;
+
+          if (
+            !(await bcrypt.compare(
+              credentials.password as string,
+              user.password
+            ))
+          ) {
+            throw new Error("invalid credentials");
+          }
+
+          return user;
         } catch (err) {
           if (err instanceof Error) {
-            console.error(
-              "errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",
-              err.message
-            );
+            console.error(err.message);
           }
           return null;
         }

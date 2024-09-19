@@ -37,6 +37,10 @@ svg {
   max-width: 100%;
 }
 
+img {
+  -webkit-user-drag: none;
+}
+
 input,
 button,
 textarea,

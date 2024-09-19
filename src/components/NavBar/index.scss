@@ -107,6 +107,7 @@
     @include mixins.flex(column, center, center, 4px);
     width: 26px;
     height: 26px;
+    cursor: pointer;
 
     @include mixins.breakpoint(laptop) {
       display: none;

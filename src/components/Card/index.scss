@@ -35,7 +35,6 @@
       padding-block: 10px;
       object-fit: contain;
       transition: transform 0.3s ease-out;
-      -webkit-user-drag: none;
 
       &:hover {
         transform: scale(1.2);
@@ -132,13 +131,15 @@
       }
     }
   }
-}
 
-.Card.Card__Store {
-  min-width: auto;
-  flex-basis: calc(50% - 8px);
+  &.Card__Store {
+    min-width: auto;
+    flex-basis: calc(50% - 8px);
 
-  @include mixins.breakpoint(desktop) {
-    flex-basis: calc(33.3% - 10.5px);
+    @include mixins.breakpoint(desktop) {
+      flex-basis: calc(33.3% - 10.5px);
+    }
   }
 }
+
+// .Card.Card__Store
