@@ -1,0 +1,59 @@
+@use "../../assets/mixins.scss";
+
+.CartProduct {
+  display: grid;
+  grid-template-columns: 120px 1fr 1fr;
+  grid-template-areas:
+    "image title cross"
+    "image price input";
+  column-gap: 15px;
+
+  @include mixins.breakpoint(laptop) {
+    grid-template-columns: 120px repeat(3, 1fr) 20px;
+    grid-template-areas: none;
+    place-items: center;
+  }
+
+  &__img {
+    grid-area: image;
+    border-radius: 15px;
+    background-color: white;
+    object-fit: contain;
+
+    @include mixins.breakpoint(laptop) {
+      grid-area: auto;
+    }
+  }
+
+  &__title {
+    grid-area: title;
+
+    @include mixins.breakpoint(laptop) {
+      grid-area: auto;
+      place-self: center start;
+      font-size: 14px;
+    }
+  }
+
+  &__price {
+    grid-area: price;
+    place-self: end start;
+
+    @include mixins.breakpoint(laptop) {
+      place-self: auto;
+      grid-area: auto;
+      font-size: 16px;
+    }
+  }
+
+  &__icon {
+    grid-area: cross;
+    place-self: start end;
+    cursor: pointer;
+
+    @include mixins.breakpoint(laptop) {
+      place-self: auto;
+      grid-area: auto;
+    }
+  }
+}

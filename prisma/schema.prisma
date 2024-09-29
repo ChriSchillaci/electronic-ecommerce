@@ -8,9 +8,10 @@ generator client {
 }
 
 model Users {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId // Unique identifier (equivalent to Mongoose's default _id)
-  email    String @unique // Unique email field
-  password String
+  id            String        @id @default(auto()) @map("_id") @db.ObjectId // Unique identifier (equivalent to Mongoose's default _id)
+  email         String        @unique // Unique email field
+  password      String
+  cart_products CartProduct[]
   // createdAt DateTime @default(now()) // Automatically sets the creation date
   // updatedAt DateTime @updatedAt // Automatically updates the timestamp on updates
 }
@@ -37,6 +38,7 @@ model Products {
   minimumOrderQuantity Int
   images               String[]
   thumbnail            String
+
   // createdAt            DateTime   @default(now())
   // updatedAt            DateTime   @updatedAt
 }
@@ -53,4 +55,12 @@ type Review {
   date          String
   reviewerName  String
   reviewerEmail String
+}
+
+type CartProduct {
+  id       String
+  title    String @default("Product Name")
+  image    String
+  quantity Int
+  price    Float
 }

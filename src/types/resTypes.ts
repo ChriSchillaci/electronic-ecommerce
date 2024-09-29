@@ -1,4 +1,4 @@
-import type { SchemaProduct } from "./schemaTypes";
+import type { SchemaProduct, SchemaCartProduct } from "./schemaTypes";
 import type { PaginationProps } from "./componentProps";
 
 interface resProductsType extends PaginationProps {
@@ -9,9 +9,20 @@ interface resProductType {
   product: SchemaProduct;
 }
 
-interface resErrorType {
+interface resCartProductType {
+  cart_products: SchemaCartProduct[];
+}
+interface resMessageType {
   message: string;
+}
+interface resErrorType extends resMessageType {
   status: number;
 }
 
-export type { resProductsType, resProductType, resErrorType };
+export type {
+  resProductsType,
+  resProductType,
+  resMessageType,
+  resErrorType,
+  resCartProductType,
+};

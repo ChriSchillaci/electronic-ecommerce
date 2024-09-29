@@ -1,3 +1,4 @@
+import type { SchemaUser } from "@/types/schemaTypes";
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/utils/db";
 import bcrypt from "bcryptjs";
@@ -6,7 +7,7 @@ export async function POST(req: NextRequest) {
   let statusNumber = 500;
 
   try {
-    const { email, password } = await req.json();
+    const { email, password }: SchemaUser = await req.json();
 
     const existingUser = await db.users.findUnique({ where: { email } });
 
@@ -21,14 +22,15 @@ export async function POST(req: NextRequest) {
       data: {
         email,
         password: hashedPassword,
+        cart_products: [],
       },
     });
 
     return NextResponse.json({ message: "User registered" }, { status: 201 });
-  } catch (e) {
-    if (e instanceof Error) {
+  } catch (err) {
+    if (err instanceof Error) {
       return NextResponse.json(
-        { message: e.message },
+        { message: err.message },
         { status: statusNumber }
       );
     }

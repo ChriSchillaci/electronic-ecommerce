@@ -69,7 +69,7 @@ const CarouselContainer = ({ products }: resProductsType) => {
               ? firstCardRef
               : null;
 
-          return <Card key={product.id} product={product} cardRef={cardRef} />;
+          return <Card key={idx} product={product} cardRef={cardRef} />;
         })}
       </div>
       <button

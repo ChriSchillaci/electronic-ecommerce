@@ -1,5 +1,6 @@
 import type { Dispatch, FormEvent, SetStateAction } from "react";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import type { resMessageType } from "@/types/resTypes";
 
 const handleRegisterSubmit = async (
   e: FormEvent<HTMLFormElement>,
@@ -27,8 +28,10 @@ const handleRegisterSubmit = async (
       body: JSON.stringify(getFormData),
     });
 
+    const data: resMessageType = await res.json();
+
     if (res.status === 409) {
-      throw new Error("User already exists");
+      throw new Error(data.message);
     }
 
     router.push("/login");

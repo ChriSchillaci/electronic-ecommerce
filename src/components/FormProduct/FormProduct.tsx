@@ -1,59 +1,40 @@
 "use client";
 
-import { useState } from "react";
-import { HiOutlinePlusSm, HiOutlineMinusSm } from "react-icons/hi";
+import type { FormProductProps } from "@/types/componentProps";
+import handleProductSubmit from "@/utils/handleProductSubmit";
+import InputQuantity from "../InputQuantity";
+import { useRouter } from "next/navigation";
 import "./index.scss";
 
-const FormProduct = () => {
-  const [quantityValue, setQuantityValue] = useState(1);
-
-  const handleQuantityValue = (type: "prev" | "next") => {
-    if (type === "prev") {
-      setQuantityValue((prev) => prev - 1);
-      return;
-    }
-
-    setQuantityValue((prev) => prev + 1);
-  };
+const FormProduct = ({ userId, id, title, image, price }: FormProductProps) => {
+  const router = useRouter();
 
   return (
-    <form className="FormProduct">
+    <form
+      className="FormProduct"
+      onSubmit={(e) =>
+        handleProductSubmit(e, userId, { id, title, image, price }, router)
+      }
+    >
       <div className="FormProduct__quantity-container">
         <p className="FormProduct__quantity-container__text">Quantity</p>
-        <div className="FormProduct__quantity-container__input-container">
-          <button
-            type="button"
-            className="FormProduct__quantity-container__input-container__btn"
-            onClick={() => handleQuantityValue("prev")}
-            disabled={quantityValue <= 1}
-          >
-            <HiOutlineMinusSm />
-          </button>
-          <input
-            className="FormProduct__quantity-container__input-container__input"
-            type="number"
-            value={quantityValue}
-            readOnly
-            onKeyDown={(e) => {
-              e.preventDefault();
-            }}
-          />
-          <button
-            type="button"
-            className="FormProduct__quantity-container__input-container__btn"
-            onClick={() => handleQuantityValue("next")}
-            disabled={quantityValue >= 10}
-          >
-            <HiOutlinePlusSm />
-          </button>
-        </div>
+        <InputQuantity />
       </div>
-
       <div className="FormProduct__btns-container">
-        <button className="FormProduct__btns-container__btn">
+        <button
+          className="FormProduct__btns-container__btn"
+          id="add-btn"
+          type="submit"
+        >
           Add to cart
         </button>
-        <button className="FormProduct__btns-container__btn">Buy now</button>
+        <button
+          className="FormProduct__btns-container__btn"
+          id="buy-btn"
+          type="submit"
+        >
+          Buy now
+        </button>
       </div>
     </form>
   );

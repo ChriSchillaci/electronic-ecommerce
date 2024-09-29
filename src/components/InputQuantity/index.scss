@@ -1,0 +1,49 @@
+@use "../../assets/mixins.scss";
+
+.InputQuantity {
+  @include mixins.flex(row, space-between, center);
+  padding-inline: 5px;
+  background-color: white;
+  border-radius: 15px;
+  width: 115px;
+  height: 55px;
+
+  &__input {
+    width: 60px;
+    height: 100%;
+    text-align: center;
+    font-size: 24px;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      appearance: none;
+      margin: 0;
+    }
+
+    &.Cart {
+      width: 30px;
+      font-size: 18px;
+    }
+  }
+
+  &__btn {
+    cursor: pointer;
+    font-size: 24px;
+
+    &.Cart {
+      font-size: 18px;
+    }
+  }
+
+  &.Cart {
+    width: 85px;
+    height: 30px;
+    grid-area: input;
+    place-self: end;
+
+    @include mixins.breakpoint(laptop) {
+      place-self: auto;
+      grid-area: auto;
+    }
+  }
+}

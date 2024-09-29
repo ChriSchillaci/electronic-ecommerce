@@ -1,6 +1,7 @@
 import type { resProductsType, resProductType } from "@/types/resTypes";
-import type { ProductProps } from "@/types/pagesProps";
+import type { ParamsProp } from "@/types/pagesProps";
 import type { CSSProperties } from "react";
+import { auth } from "@/app/auth";
 import { httpGET } from "@/utils/http";
 import discountedPrice from "@/utils/discounted-price";
 import modifiedDate from "@/utils/modifiedDate";
@@ -29,7 +30,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Product({ params }: ProductProps) {
+export default async function Product({ params }: ParamsProp) {
+  const session = await auth();
+
   const { id } = params;
   const data = await httpGET<resProductType>(
     null,
@@ -60,9 +63,10 @@ export default async function Product({ params }: ProductProps) {
   } = product;
 
   const isDiscount = discountPercentage > 8;
+  const discountPrice = discountedPrice(price, discountPercentage);
 
   return (
-    <div className="Product">
+    <div id={id} className="Product">
       <section className="Product__container">
         <ImageContainer images={images} title={title} />
         <div className="Product__container__info">
@@ -88,14 +92,20 @@ export default async function Product({ params }: ProductProps) {
             </p>
             {isDiscount && (
               <p className="Product__container__info__price-container__price">
-                €{discountedPrice(price, discountPercentage)}
+                €{discountPrice}
               </p>
             )}
           </div>
 
           <p>{description}</p>
 
-          <FormProduct />
+          <FormProduct
+            userId={session?.user?.id}
+            id={id}
+            title={title}
+            image={images[0]}
+            price={isDiscount ? discountPrice : price}
+          />
 
           <div className="Product__container__info__purchase-policies">
             <h2 className="Product__container__info__purchase-policies__title">

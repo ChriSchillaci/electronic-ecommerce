@@ -1,6 +1,6 @@
 import type { Dispatch, MutableRefObject, SetStateAction } from "react";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import type { SchemaProduct } from "./schemaTypes";
+import type { SchemaCartProduct, SchemaProduct } from "./schemaTypes";
 import type { Session } from "next-auth";
 
 interface NavBarProps {
@@ -49,6 +49,24 @@ interface AuthLogoutBtnProps {
   setIsCategoryList?: Dispatch<SetStateAction<boolean>>;
 }
 
+interface FormProductProps {
+  userId: string | undefined;
+  id: string;
+  title: string;
+  image: string;
+  price: number;
+}
+
+interface InputQuantityProps {
+  classType?: string;
+  quantity?: number;
+}
+
+interface CartProductProps {
+  cart_product: SchemaCartProduct;
+  userId: string | undefined;
+}
+
 export type {
   NavBarProps,
   CarouselCardsProps,
@@ -58,4 +76,7 @@ export type {
   ImageContainerProps,
   CredFormProps,
   AuthLogoutBtnProps,
+  FormProductProps,
+  InputQuantityProps,
+  CartProductProps,
 };

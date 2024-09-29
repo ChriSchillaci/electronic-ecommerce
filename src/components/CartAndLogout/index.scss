@@ -1,0 +1,13 @@
+@use "../../assets/mixins.scss";
+
+.CartAndLogout {
+  display: none;
+
+  @include mixins.breakpoint(laptop) {
+    @include mixins.flex(row, flex-start, center, 20px);
+  }
+
+  &__icon {
+    font-size: 22px;
+  }
+}

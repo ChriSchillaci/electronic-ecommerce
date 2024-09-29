@@ -1,13 +1,19 @@
 @use "../../assets/mixins.scss";
 
 .CredFormWrapper {
-  @include mixins.flex(column, normal, center, 20px);
   margin-top: 40px;
-  margin-inline: auto;
-  background-color: white;
-  padding-block: 30px;
-  border-radius: 10px;
-  max-width: 425px;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  min-height: calc(
+    100vh - 10vh - 40px - 40px
+  ); //Navbar's height - CredFormWrapper's margin top - main-layout's margin bottom
+
+  &__container {
+    @include mixins.flex(column, normal, center, 20px);
+    margin-inline: auto;
+    background-color: white;
+    padding-block: 30px;
+    border-radius: 10px;
+    max-width: 425px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  }
 }

@@ -1,0 +1,64 @@
+@use "../../assets/mixins.scss";
+
+.Checkout {
+  position: sticky;
+  bottom: 0;
+  border-top: 2px solid rgb(176, 176, 176);
+  padding-block: 10px;
+  background-color: var(--main-color);
+  place-self: start;
+
+  @include mixins.breakpoint(laptop) {
+    bottom: auto;
+    top: calc(10vh + 40px); //Navbar's height + CartPage's margin top
+    background-color: var(--main-color-hover);
+    border-top: 0;
+    padding: 20px;
+    margin-bottom: 20px;
+    min-width: 200px;
+    grid-area: checkout;
+  }
+
+  @include mixins.breakpoint(desktop) {
+    min-width: 400px;
+  }
+
+  &__title {
+    display: none;
+    margin-bottom: 30px;
+
+    @include mixins.breakpoint(laptop) {
+      display: block;
+    }
+  }
+
+  &__summary {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    row-gap: 20px;
+
+    &__price {
+      place-self: end;
+    }
+  }
+
+  &__total {
+    @include mixins.flex(row, space-between, center);
+    margin-top: 30px;
+
+    &__price {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  &__btn {
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    padding-block: 10px;
+  }
+}

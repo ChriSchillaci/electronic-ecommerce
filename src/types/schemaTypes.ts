@@ -37,4 +37,12 @@ interface SchemaUser {
   password: string;
 }
 
-export type { SchemaProduct, SchemaUser };
+interface SchemaCartProduct {
+  id: string;
+  title: string;
+  image: string;
+  quantity?: number;
+  price: number;
+}
+
+export type { SchemaProduct, SchemaUser, SchemaCartProduct };

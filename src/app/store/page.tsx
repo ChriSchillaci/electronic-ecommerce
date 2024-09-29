@@ -29,9 +29,7 @@ export default async function Store({ searchParams }: StoreProps) {
       <div className="Store__main-container">
         <div className="sort-container--category-title">
           <h1 className="category-title">
-            {searchParams?.category === null || !searchParams?.category
-              ? "all products"
-              : searchParams?.category}
+            {!category ? "all products" : category}
           </h1>
           <div className="sort-container">
             <p>Sort by:</p>

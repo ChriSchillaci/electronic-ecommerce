@@ -3,7 +3,7 @@ const discountedPrice = (initialPrice: number, discountPercentage: number) => {
 
   const discountedPrice = initialPrice - discountAmount;
 
-  return discountedPrice.toFixed(2);
+  return Number(discountedPrice.toFixed(2));
 };
 
 export default discountedPrice;

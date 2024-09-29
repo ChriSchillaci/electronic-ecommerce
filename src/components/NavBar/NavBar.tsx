@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import DropDown from "../DropDown";
 import AuthBtns from "../AuthBtns";
-import AuthLogoutBtn from "../AuthLogoutBtn";
+import CartAndLogout from "../CartAndLogout";
 import categoryMocks from "@/mocks/categoryMocks";
 import handleCategoryBtn from "@/utils/handleCategoryBtn";
 import handleSearchForm from "@/utils/handleSearchForm";
@@ -66,7 +66,7 @@ const NavBar = ({ session }: NavBarProps) => {
             </div>
           </div>
         </div>
-        {!session ? <AuthBtns /> : <AuthLogoutBtn />}
+        {!session ? <AuthBtns /> : <CartAndLogout />}
         <button
           className="burger-btn"
           onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
