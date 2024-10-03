@@ -21,7 +21,7 @@ export async function GET(req: NextRequest, { params }: ParamsProp) {
   } catch (err) {
     if (err instanceof Error) {
       return NextResponse.json(
-        { message: err.message },
+        { message: err.message, status: statusNumber },
         { status: statusNumber }
       );
     }
@@ -65,7 +65,7 @@ export async function POST(req: NextRequest, { params }: ParamsProp) {
   } catch (err) {
     if (err instanceof Error) {
       return NextResponse.json(
-        { message: err.message },
+        { message: err.message, status: statusNumber },
         { status: statusNumber }
       );
     }
@@ -101,7 +101,7 @@ export async function PUT(req: NextRequest, { params }: ParamsProp) {
   } catch (err) {
     if (err instanceof Error) {
       return NextResponse.json(
-        { message: err.message },
+        { message: err.message, status: statusNumber },
         { status: statusNumber }
       );
     }

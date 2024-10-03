@@ -59,12 +59,24 @@ interface FormProductProps {
 
 interface InputQuantityProps {
   classType?: string;
+  id?: string;
   quantity?: number;
+  setClientCart?: Dispatch<SetStateAction<SchemaCartProduct[]>>;
 }
 
 interface CartProductProps {
-  cart_product: SchemaCartProduct;
+  clientCartProd: SchemaCartProduct;
   userId: string | undefined;
+  setClientCart: Dispatch<SetStateAction<SchemaCartProduct[]>>;
+}
+
+interface CartProductsAndCheckoutProps {
+  cart_products: SchemaCartProduct[];
+  session: Session | null;
+}
+
+interface CheckoutProps {
+  clientCardProds: SchemaCartProduct[];
 }
 
 export type {
@@ -79,4 +91,6 @@ export type {
   FormProductProps,
   InputQuantityProps,
   CartProductProps,
+  CartProductsAndCheckoutProps,
+  CheckoutProps,
 };

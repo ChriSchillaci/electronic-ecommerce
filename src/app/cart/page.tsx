@@ -1,6 +1,5 @@
 import type { resCartProductType } from "@/types/resTypes";
-import CartProduct from "@/components/CartProduct";
-import Checkout from "@/components/Checkout";
+import CartProductsAndCheckout from "@/components/CartProductsAndCheckout";
 import userCart from "@/utils/userCart";
 import { auth } from "../auth";
 import "../../styles/Cart.scss";
@@ -19,22 +18,10 @@ export default async function Cart() {
         <h3 className="CartPage__products-details__quantity">Quantity</h3>
         <h3 className="CartPage__products-details__price">Price</h3>
       </div>
-      <div className="CartPage__products-container">
-        {cart_products.length ? (
-          cart_products.map((cart_product) => (
-            <CartProduct
-              key={cart_product.id}
-              cart_product={cart_product}
-              userId={session?.user?.id}
-            />
-          ))
-        ) : (
-          <h2 className="CartPage__products-container__empty-cart">
-            The cart is empty
-          </h2>
-        )}
-      </div>
-      <Checkout />
+      <CartProductsAndCheckout
+        cart_products={cart_products}
+        session={session}
+      />
     </div>
   );
 }

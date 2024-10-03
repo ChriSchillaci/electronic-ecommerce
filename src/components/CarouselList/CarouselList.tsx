@@ -9,7 +9,7 @@ import "./index.scss";
 const CarouselList = async () => {
   const data = await getProducts();
 
-  if ("status" in data && data.status > 400) {
+  if ("status" in data && data.status && data.status > 400) {
     return <div>Something went wrong</div>;
   }
 

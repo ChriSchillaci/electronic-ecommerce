@@ -14,15 +14,12 @@ interface resCartProductType {
 }
 interface resMessageType {
   message: string;
-}
-interface resErrorType extends resMessageType {
-  status: number;
+  status?: number;
 }
 
 export type {
   resProductsType,
   resProductType,
   resMessageType,
-  resErrorType,
   resCartProductType,
 };

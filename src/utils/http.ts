@@ -1,5 +1,5 @@
 import type { SortType, SortByType, CategoryType } from "@/types/queryTypes";
-import type { resErrorType } from "@/types/resTypes";
+import type { resMessageType } from "@/types/resTypes";
 
 const httpGET = async <T>(
   sort?: SortType,
@@ -9,7 +9,7 @@ const httpGET = async <T>(
   page = "1",
   limit = "9",
   id = ""
-): Promise<T | resErrorType> => {
+): Promise<T | resMessageType> => {
   let statusNum = 500;
   try {
     const url = new URL(

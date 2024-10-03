@@ -41,7 +41,7 @@ interface SchemaCartProduct {
   id: string;
   title: string;
   image: string;
-  quantity?: number;
+  quantity: number;
   price: number;
 }
 

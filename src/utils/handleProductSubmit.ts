@@ -7,7 +7,7 @@ import userCart from "./userCart";
 const handleProductSubmit = async (
   e: FormEvent<HTMLFormElement>,
   userId: string | undefined,
-  product: SchemaCartProduct,
+  product: Omit<SchemaCartProduct, "quantity">,
   router: AppRouterInstance
 ) => {
   e.preventDefault();
@@ -33,6 +33,10 @@ const handleProductSubmit = async (
   };
 
   const data = await userCart<resMessageType>("POST", userId, getFormData);
+
+  if (data.status && data.status >= 400) {
+    return console.log(data.message, data.status);
+  }
 
   console.log(data.message);
 

@@ -44,7 +44,7 @@ export default async function Product({ params }: ParamsProp) {
     id
   );
 
-  if ("status" in data && data.status > 400) {
+  if ("status" in data && data.status && data.status > 400) {
     return <div>{data.message}</div>;
   }
 

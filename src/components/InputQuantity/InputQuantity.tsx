@@ -1,16 +1,28 @@
 "use client";
 
 import type { InputQuantityProps } from "@/types/componentProps";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HiOutlinePlusSm, HiOutlineMinusSm } from "react-icons/hi";
 import handleQuantityValue from "@/utils/handleQuantityValue";
 import "./index.scss";
 
 const InputQuantity = ({
   classType = "",
+  id,
   quantity = 1,
+  setClientCart,
 }: InputQuantityProps) => {
   const [quantityValue, setQuantityValue] = useState(quantity);
+
+  useEffect(() => {
+    if (setClientCart && id) {
+      setClientCart((prev) =>
+        prev.map((product) =>
+          product.id === id ? { ...product, quantity: quantityValue } : product
+        )
+      );
+    }
+  }, [quantityValue, setClientCart, id]);
 
   return (
     <div className={`InputQuantity ${classType}`}>

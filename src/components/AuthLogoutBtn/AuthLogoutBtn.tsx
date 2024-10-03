@@ -26,26 +26,3 @@ const AuthLogoutBtn = ({
 };
 
 export default AuthLogoutBtn;
-
-// "use client";
-
-// import type { AuthLogoutBtnProps } from "@/types/componentProps";
-// import logoutAction from "@/utils/logoutAction";
-// import "./index.scss";
-
-// const AuthLogoutBtn = ({
-//   classType = "",
-//   setIsCategoryList,
-//   setIsDropDown,
-// }: AuthLogoutBtnProps) => {
-//   return (
-//     <button
-//       className={`AuthLogoutBtn ${classType}`}
-//       onClick={() => logoutAction(setIsCategoryList, setIsDropDown)}
-//     >
-//       Logout
-//     </button>
-//   );
-// };
-
-// export default AuthLogoutBtn;

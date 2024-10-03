@@ -82,13 +82,16 @@ const DropDown = ({
           </>
         ) : (
           <>
-            <Link
+            <div
               className={`link-container`}
-              href={"/cart"}
-              onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
+              onClick={() => {
+                handleDropDown(setIsCategoryList, setIsDropDown);
+                router.push("/cart");
+                router.refresh();
+              }}
             >
               Cart
-            </Link>
+            </div>
             <AuthLogoutBtn
               classType="dropdown"
               setIsCategoryList={setIsCategoryList}

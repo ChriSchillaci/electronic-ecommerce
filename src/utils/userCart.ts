@@ -7,8 +7,10 @@ const userCart = async <T>(
   cartProductData?: SchemaCartProduct,
   id?: string
 ): Promise<T | resMessageType> => {
+  let statusNumber = 500;
   try {
     if (!userId) {
+      statusNumber = 400;
       throw new Error("userId invalid");
     }
 
@@ -30,6 +32,7 @@ const userCart = async <T>(
 
     if (res.status >= 400) {
       const errData: resMessageType = await res.json();
+      statusNumber = res.status;
       throw new Error(errData.message);
     }
 
@@ -39,11 +42,12 @@ const userCart = async <T>(
   } catch (err) {
     if (err instanceof Error) {
       console.error(err);
-      return { message: err.message } as resMessageType;
+      return { message: err.message, status: statusNumber } as resMessageType;
     }
   }
   return {
     message: "Something unexpected happened",
+    status: statusNumber,
   };
 };
 
