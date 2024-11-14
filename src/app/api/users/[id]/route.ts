@@ -76,21 +76,10 @@ export async function PUT(req: NextRequest, { params }: ParamsProp) {
   let statusNumber = 500;
 
   try {
-    const { id }: { id: string } = await req.json();
+    const { id, cart }: { id: string; cart: SchemaCartProduct[] } =
+      await req.json();
 
-    const getUserCart = await db.users.findUnique({
-      where: { id: params.id },
-      select: { cart_products: true },
-    });
-
-    if (!getUserCart) {
-      statusNumber = 404;
-      throw new Error("Cart not found");
-    }
-
-    const updatedUserCart = getUserCart.cart_products.filter(
-      (prod) => prod.id !== id
-    );
+    const updatedUserCart = cart.filter((prod) => prod.id !== id);
 
     await db.users.update({
       where: { id: params.id },
@@ -98,6 +87,29 @@ export async function PUT(req: NextRequest, { params }: ParamsProp) {
     });
 
     return NextResponse.json({ message: "Cart updated" }, { status: 200 });
+  } catch (err) {
+    if (err instanceof Error) {
+      return NextResponse.json(
+        { message: err.message, status: statusNumber },
+        { status: statusNumber }
+      );
+    }
+  }
+}
+
+export async function DELETE(req: NextRequest, { params }: ParamsProp) {
+  let statusNumber = 500;
+
+  try {
+    await db.users.update({
+      where: { id: params.id },
+      data: { cart_products: { set: [] } },
+    });
+
+    return NextResponse.json(
+      { message: "Products purchased" },
+      { status: 200 }
+    );
   } catch (err) {
     if (err instanceof Error) {
       return NextResponse.json(

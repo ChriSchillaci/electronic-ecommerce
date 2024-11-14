@@ -1,14 +1,25 @@
 import type { FormEvent } from "react";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { SchemaCartProduct } from "@/types/schemaTypes";
-import type { resMessageType } from "@/types/resTypes";
-import userCart from "./userCart";
+import type { ThunkDispatch, UnknownAction } from "@reduxjs/toolkit";
+import type { UserStateType } from "@/types/reduxTypes";
+import type { Dispatch } from "@reduxjs/toolkit";
+import { fetchAddProd } from "./redux-store/features/user/userSlice";
+import { handleModal } from "./redux-store/features/user/userSlice";
 
 const handleProductSubmit = async (
   e: FormEvent<HTMLFormElement>,
   userId: string | undefined,
   product: Omit<SchemaCartProduct, "quantity">,
-  router: AppRouterInstance
+  router: AppRouterInstance,
+  dispatch: ThunkDispatch<
+    {
+      user: UserStateType;
+    },
+    undefined,
+    UnknownAction
+  > &
+    Dispatch<UnknownAction>
 ) => {
   e.preventDefault();
 
@@ -24,7 +35,7 @@ const handleProductSubmit = async (
   const form = new FormData(e.currentTarget);
   const formEntries = Object.fromEntries(form);
 
-  const getFormData = {
+  const userCartProdData = {
     id,
     title,
     image,
@@ -32,18 +43,15 @@ const handleProductSubmit = async (
     price,
   };
 
-  const data = await userCart<resMessageType>("POST", userId, getFormData);
-
-  if (data.status && data.status >= 400) {
-    return console.log(data.message, data.status);
-  }
-
-  console.log(data.message);
+  await dispatch(fetchAddProd({ userId, userCartProdData }));
 
   if (idBtn === "buy-btn") {
     router.push("/cart");
     router.refresh();
+    return;
   }
+
+  dispatch(handleModal());
 };
 
 export default handleProductSubmit;

@@ -1,4 +1,4 @@
-const blankCards = [
+const blankHomeCards = [
   {
     text: "",
   },
@@ -16,4 +16,16 @@ const blankCards = [
   },
 ];
 
-export default blankCards;
+const blankCartCards = [
+  {
+    text: "",
+  },
+  {
+    text: "",
+  },
+  {
+    text: "",
+  },
+];
+
+export { blankHomeCards, blankCartCards };

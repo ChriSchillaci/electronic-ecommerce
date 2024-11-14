@@ -1,9 +1,10 @@
-import type { SchemaCartProduct } from "@/types/schemaTypes";
+import type { UserStateType } from "@/types/reduxTypes";
+import type { WritableDraft } from "immer";
 
-const handleCheckoutPrice = (clientCardProds: SchemaCartProduct[]) => {
+const handleCheckoutPrice = (state: WritableDraft<UserStateType>) => {
   const tax = 10;
 
-  const totalProductPrice = clientCardProds.map(
+  const totalProductPrice = state.cart_products.map(
     (product) => product.price * product.quantity
   );
 
@@ -13,7 +14,7 @@ const handleCheckoutPrice = (clientCardProds: SchemaCartProduct[]) => {
 
   const totalPrice = subResult + taxResult;
 
-  return {
+  state.checkout = {
     subResult: Number(subResult.toFixed(2)),
     taxResult: Number(taxResult.toFixed(2)),
     totalPrice: Number(totalPrice.toFixed(2)),

@@ -1,7 +1,6 @@
 @use "../../assets/mixins.scss";
 
 .ImageContainer {
-  // border: 1px solid red;
   @include mixins.flex(column, flex-start, flex-start, 10px);
 
   @include mixins.breakpoint(laptop) {
@@ -9,6 +8,7 @@
   }
 
   &__img {
+    padding: 20px;
     width: 100%;
     object-fit: contain;
     background-color: white;
@@ -24,6 +24,7 @@
     }
 
     &__img {
+      padding: 5px;
       background-color: white;
       border-radius: 15px;
       object-fit: contain;

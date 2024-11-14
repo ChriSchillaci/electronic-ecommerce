@@ -69,7 +69,7 @@ const NavBar = ({ session }: NavBarProps) => {
         {!session ? <AuthBtns /> : <CartAndLogout />}
         <button
           className="burger-btn"
-          onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
+          onClick={() => handleDropDown(setIsDropDown, setIsCategoryList)}
         >
           <span className={`burger-line ${isDropDown ? "active" : ""}`}></span>
           <span className={`burger-line ${isDropDown ? "active" : ""}`}></span>

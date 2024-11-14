@@ -1,4 +1,4 @@
-import blankCards from "@/mocks/blankCards";
+import { blankHomeCards } from "@/mocks/blankCards";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import "./index.scss";
 
@@ -12,7 +12,7 @@ const HomeSkeleton = () => {
             <MdChevronLeft className="carousel-btn__icon" />
           </button>
           <div className="carousel">
-            {blankCards.map((card, idx) => {
+            {blankHomeCards.map((card, idx) => {
               return (
                 <div key={idx} className="Card skeleton">
                   <div className="Card__link">

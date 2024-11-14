@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import LayoutClient from "@/components/LayoutClient";
+import StoreProvider from "@/components/StoreProvider";
 import { auth } from "./auth";
 import "./globals.scss";
 
@@ -23,9 +24,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NavBar session={session} />
-        <LayoutClient>{children}</LayoutClient>
-        <Footer />
+        <StoreProvider>
+          <NavBar session={session} />
+          <LayoutClient session={session}>{children}</LayoutClient>
+          <Footer />
+        </StoreProvider>
       </body>
     </html>
   );

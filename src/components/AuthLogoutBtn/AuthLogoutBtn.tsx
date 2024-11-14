@@ -14,7 +14,7 @@ const AuthLogoutBtn = ({
       action={logoutAction}
       onClick={
         setIsCategoryList && setIsDropDown
-          ? () => handleDropDown(setIsCategoryList, setIsDropDown)
+          ? () => handleDropDown(setIsDropDown, setIsCategoryList)
           : undefined
       }
     >

@@ -37,3 +37,17 @@
     }
   }
 }
+
+@mixin skeleton-keyframe {
+  @keyframes skeleton-color {
+    0% {
+      background-color: var(--primary-color-skeleton);
+    }
+    50% {
+      background-color: var(--secondary-color-skeleton);
+    }
+    100% {
+      background-color: var(--primary-color-skeleton);
+    }
+  }
+}

@@ -1,10 +1,10 @@
-import { Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 const handleDropDown = (
-  setIsCategoryList: Dispatch<SetStateAction<boolean>>,
-  setIsDropDown: Dispatch<SetStateAction<boolean>>
+  setIsOpen: Dispatch<SetStateAction<boolean>>,
+  setIsCategoryList?: Dispatch<SetStateAction<boolean>>
 ) => {
-  setIsDropDown((prev) => {
+  setIsOpen((prev) => {
     if (prev) {
       document.body.style.overflow = "auto";
     } else {
@@ -12,7 +12,7 @@ const handleDropDown = (
     }
     return !prev;
   });
-  setIsCategoryList(false);
+  setIsCategoryList && setIsCategoryList(false);
 };
 
 export default handleDropDown;

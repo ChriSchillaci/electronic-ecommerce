@@ -1,0 +1,29 @@
+@use "../../../assets/mixins.scss";
+
+.CartProduct {
+  &__img.skeleton {
+    width: 120px;
+    height: 120px;
+    animation: skeleton-color 2s infinite;
+  }
+
+  &__title.skeleton {
+    height: 15px;
+    width: 100%;
+    border-radius: 10px;
+    animation: skeleton-color 2s infinite;
+  }
+
+  .InputQuantity.Cart.skeleton {
+    animation: skeleton-color 2s infinite;
+  }
+
+  &__price.skeleton {
+    height: 15px;
+    min-width: 70px;
+    border-radius: 10px;
+    animation: skeleton-color 2s infinite;
+  }
+}
+
+@include mixins.skeleton-keyframe;

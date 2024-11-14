@@ -4,18 +4,24 @@ import InputQuantity from "../InputQuantity";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { RxCross1 } from "react-icons/rx";
+import { useAppDispatch, useAppSelector } from "@/utils/redux-store/hooks";
+import { useState } from "react";
 import "./index.scss";
 
-const CartProduct = ({
-  clientCartProd,
-  userId,
-  setClientCart,
-}: CartProductProps) => {
+const CartProduct = ({ clientCartProd }: CartProductProps) => {
+  const [isPending, setIsPending] = useState(false);
+
   const router = useRouter();
+  const userId = useAppSelector((state) => state.user.user?.user?.id);
+  const cart = useAppSelector((state) => state.user.cart_products);
+  const dispatch = useAppDispatch();
   const { id, title, image, quantity, price } = clientCartProd;
 
   return (
-    <div id={id} className="CartProduct">
+    <li
+      id={id}
+      className={`CartProduct ${isPending ? 'active' : ''}`}
+    >
       <Image
         className="CartProduct__img"
         src={image}
@@ -24,18 +30,18 @@ const CartProduct = ({
         height={120}
       />
       <h3 className="CartProduct__title">{title}</h3>
-      <InputQuantity
-        classType="Cart"
-        id={id}
-        quantity={quantity}
-        setClientCart={setClientCart}
-      />
+      <InputQuantity classType="Cart" id={id} quantity={quantity} />
       <h3 className="CartProduct__price">${price}</h3>
-      <RxCross1
+      <button
         className="CartProduct__icon"
-        onClick={() => handleDeleteProduct(userId, id, router)}
-      />
-    </div>
+        disabled={isPending}
+        onClick={() =>
+          handleDeleteProduct(userId, id, router, cart, setIsPending, dispatch)
+        }
+      >
+        <RxCross1 />
+      </button>
+    </li>
   );
 };
 

@@ -4,25 +4,23 @@ import type { InputQuantityProps } from "@/types/componentProps";
 import { useState, useEffect } from "react";
 import { HiOutlinePlusSm, HiOutlineMinusSm } from "react-icons/hi";
 import handleQuantityValue from "@/utils/handleQuantityValue";
+import { useAppDispatch } from "@/utils/redux-store/hooks";
+import { updateCart } from "@/utils/redux-store/features/user/userSlice";
 import "./index.scss";
 
 const InputQuantity = ({
   classType = "",
   id,
   quantity = 1,
-  setClientCart,
 }: InputQuantityProps) => {
   const [quantityValue, setQuantityValue] = useState(quantity);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (setClientCart && id) {
-      setClientCart((prev) =>
-        prev.map((product) =>
-          product.id === id ? { ...product, quantity: quantityValue } : product
-        )
-      );
+    if (id) {
+      dispatch(updateCart({ id, quantityValue }));
     }
-  }, [quantityValue, setClientCart, id]);
+  }, [quantityValue, id, dispatch]);
 
   return (
     <div className={`InputQuantity ${classType}`}>

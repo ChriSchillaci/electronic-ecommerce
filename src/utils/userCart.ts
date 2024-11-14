@@ -2,10 +2,11 @@ import type { resMessageType } from "@/types/resTypes";
 import type { SchemaCartProduct } from "@/types/schemaTypes";
 
 const userCart = async <T>(
-  method: "GET" | "POST" | "PUT",
+  method: "GET" | "POST" | "PUT" | "DELETE",
   userId: string | undefined,
   cartProductData?: SchemaCartProduct,
-  id?: string
+  id?: string,
+  cart?: SchemaCartProduct[]
 ): Promise<T | resMessageType> => {
   let statusNumber = 500;
   try {
@@ -24,8 +25,8 @@ const userCart = async <T>(
         body:
           method === "POST" && cartProductData
             ? JSON.stringify(cartProductData)
-            : method === "PUT" && id
-            ? JSON.stringify({ id })
+            : method === "PUT" && id && cart
+            ? JSON.stringify({ id, cart })
             : null,
       }
     );

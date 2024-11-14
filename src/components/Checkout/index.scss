@@ -5,6 +5,7 @@
   bottom: 0;
   border-top: 2px solid rgb(176, 176, 176);
   padding-block: 10px;
+  width: 100%;
   background-color: var(--main-color);
   place-self: start;
 
@@ -34,7 +35,7 @@
 
   &__summary {
     display: grid;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 1fr 1fr;
     row-gap: 20px;
 
     &__price {
@@ -60,5 +61,9 @@
     color: white;
     border-radius: 20px;
     padding-block: 10px;
+
+    &.active {
+      opacity: 0.5;
+    }
   }
 }

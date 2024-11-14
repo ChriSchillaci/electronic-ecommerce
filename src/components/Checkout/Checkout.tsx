@@ -1,12 +1,16 @@
 "use client";
 
-import type { CheckoutProps } from "@/types/componentProps";
-import handleCheckoutPrice from "@/utils/handleCheckoutPrice";
+import { useAppDispatch, useAppSelector } from "@/utils/redux-store/hooks";
+import { handleModal } from "@/utils/redux-store/features/user/userSlice";
 import "./index.scss";
 
-const Checkout = ({ clientCardProds }: CheckoutProps) => {
-  const { subResult, taxResult, totalPrice } =
-    handleCheckoutPrice(clientCardProds);
+const Checkout = () => {
+  const { subResult, taxResult, totalPrice } = useAppSelector(
+    (state) => state.user.checkout
+  );
+  const { cart_products } = useAppSelector((state) => state.user);
+
+  const dispatch = useAppDispatch();
 
   return (
     <div className="Checkout">
@@ -21,7 +25,18 @@ const Checkout = ({ clientCardProds }: CheckoutProps) => {
         <p>Total</p>
         <p className="Checkout__total__price">€{totalPrice}</p>
       </div>
-      <button className="Checkout__btn">Checkout</button>
+      <button
+        type="button"
+        className={`Checkout__btn ${!cart_products.length ? "active" : ""}`}
+        disabled={!cart_products.length}
+        onClick={() =>
+          dispatch(
+            handleModal("Are you sure you want to purchase these items?")
+          )
+        }
+      >
+        Checkout
+      </button>
     </div>
   );
 };

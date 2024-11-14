@@ -1,0 +1,48 @@
+@use "../../assets/mixins.scss";
+
+.Modal {
+  // display: none;
+  @include mixins.flex(row, center, center);
+  @include mixins.position(fixed, 0, unset, unset, 0);
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  transition: background-color 0.3s ease-out;
+
+  &.active {
+    visibility: visible;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  &__container {
+    @include mixins.flex(column, center, center, 15px);
+    background-color: white;
+    max-width: 350px;
+    border-radius: 20px;
+    padding: 20px;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease-out;
+
+    &.active {
+      transform: translateY(0);
+    }
+
+    &__message {
+      text-align: center;
+    }
+
+    &__btns {
+      @include mixins.flex(row, normal, normal, 10px);
+
+      &__btn {
+        cursor: pointer;
+        background-color: black;
+        color: white;
+        padding: 7px 20px;
+        border-radius: 15px;
+      }
+    }
+  }
+}

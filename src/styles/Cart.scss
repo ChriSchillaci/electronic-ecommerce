@@ -37,25 +37,4 @@
       place-self: center;
     }
   }
-
-  &__products-container {
-    position: relative;
-    min-height: calc(100vh - 10vh - 186px); // Navbar - Checkout's height
-    @include mixins.flex(column, normal, normal, 20px);
-    grid-area: products;
-    padding-block: 20px;
-
-    @include mixins.breakpoint(laptop) {
-      min-height: calc(
-        100vh - 10vh - 40px - 35px
-      ); // Navbar - CartPage's margin top - __product's details' height
-    }
-
-    &__empty-cart {
-      @include mixins.position(absolute, 50%, auto, auto, 50%);
-      opacity: 0.7;
-      text-align: center;
-      transform: translate(-50%, -50%);
-    }
-  }
 }

@@ -18,20 +18,20 @@ const DropDown = ({
     <>
       <div
         className={`DropDown__bg-opacity ${isDropDown ? "active" : ""}`}
-        onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
+        onClick={() => handleDropDown(setIsDropDown, setIsCategoryList)}
       />
       <div className={`DropDown ${isDropDown ? "active" : ""}`}>
         <Link
           className="link-container"
           href={"/"}
-          onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
+          onClick={() => handleDropDown(setIsDropDown, setIsCategoryList)}
         >
           Home
         </Link>
         <Link
           className="link-container"
           href={"/store"}
-          onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
+          onClick={() => handleDropDown(setIsDropDown, setIsCategoryList)}
         >
           Store
         </Link>
@@ -68,14 +68,14 @@ const DropDown = ({
             <Link
               className={`link-container`}
               href={"/login"}
-              onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
+              onClick={() => handleDropDown(setIsDropDown, setIsCategoryList)}
             >
               Login
             </Link>
             <Link
               className={`link-container`}
               href={"/register"}
-              onClick={() => handleDropDown(setIsCategoryList, setIsDropDown)}
+              onClick={() => handleDropDown(setIsDropDown, setIsCategoryList)}
             >
               Register
             </Link>
@@ -85,7 +85,7 @@ const DropDown = ({
             <div
               className={`link-container`}
               onClick={() => {
-                handleDropDown(setIsCategoryList, setIsDropDown);
+                handleDropDown(setIsDropDown, setIsCategoryList);
                 router.push("/cart");
                 router.refresh();
               }}

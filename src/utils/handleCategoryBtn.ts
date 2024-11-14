@@ -12,10 +12,10 @@ const handleCategoryBtn = (
   const { value } = e.currentTarget;
   const url = new URL(`${process.env.NEXT_PUBLIC_API_BASE_URL}/store`);
 
-  setIsSideBar && setIsSideBar((prev) => !prev);
+  setIsSideBar && handleDropDown(setIsSideBar);
 
   if (setIsDropDown && setIsCategoryList)
-    handleDropDown(setIsCategoryList, setIsDropDown);
+    handleDropDown(setIsDropDown, setIsCategoryList);
 
   if (!value) {
     return router.push(url.toString());

@@ -8,6 +8,10 @@
     "image price input";
   column-gap: 15px;
 
+  &.active {
+    opacity: 0.5;
+  }
+
   @include mixins.breakpoint(laptop) {
     grid-template-columns: 120px repeat(3, 1fr) 20px;
     grid-template-areas: none;
@@ -15,6 +19,7 @@
   }
 
   &__img {
+    padding: 5px;
     grid-area: image;
     border-radius: 15px;
     background-color: white;

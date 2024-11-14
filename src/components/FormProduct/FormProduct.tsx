@@ -4,16 +4,24 @@ import type { FormProductProps } from "@/types/componentProps";
 import handleProductSubmit from "@/utils/handleProductSubmit";
 import InputQuantity from "../InputQuantity";
 import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/utils/redux-store/hooks";
 import "./index.scss";
 
 const FormProduct = ({ userId, id, title, image, price }: FormProductProps) => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   return (
     <form
       className="FormProduct"
       onSubmit={(e) =>
-        handleProductSubmit(e, userId, { id, title, image, price }, router)
+        handleProductSubmit(
+          e,
+          userId,
+          { id, title, image, price },
+          router,
+          dispatch
+        )
       }
     >
       <div className="FormProduct__quantity-container">

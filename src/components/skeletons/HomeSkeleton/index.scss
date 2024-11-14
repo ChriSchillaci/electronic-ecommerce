@@ -1,7 +1,7 @@
 @use "../../../assets/mixins.scss";
 
 .CarouselCards {
-  .CarouselCards__title.skeleton {
+  &__title.skeleton {
     border-radius: 20px;
     height: 29px;
     width: 200px;
@@ -63,14 +63,4 @@
   }
 }
 
-@keyframes skeleton-color {
-  0% {
-    background-color: var(--primary-color-skeleton);
-  }
-  50% {
-    background-color: var(--secondary-color-skeleton);
-  }
-  100% {
-    background-color: var(--primary-color-skeleton);
-  }
-}
+@include mixins.skeleton-keyframe;
