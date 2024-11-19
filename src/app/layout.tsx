@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { resCartProductType } from "@/types/resTypes";
 import { Inter } from "next/font/google";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import LayoutClient from "@/components/LayoutClient";
 import StoreProvider from "@/components/StoreProvider";
 import { auth } from "./auth";
+import userCart from "@/utils/userCart";
 import "./globals.scss";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,12 +23,18 @@ export default async function RootLayout({
 }>) {
   const session = await auth();
 
+  const cart = await userCart<resCartProductType>("GET", session?.user?.id);
+
+  const { cart_products } = cart as resCartProductType;
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <StoreProvider>
           <NavBar session={session} />
-          <LayoutClient session={session}>{children}</LayoutClient>
+          <LayoutClient session={session} cart_products={cart_products}>
+            {children}
+          </LayoutClient>
           <Footer />
         </StoreProvider>
       </body>

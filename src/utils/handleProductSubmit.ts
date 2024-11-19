@@ -52,6 +52,7 @@ const handleProductSubmit = async (
   }
 
   dispatch(handleModal());
+  router.refresh();
 };
 
 export default handleProductSubmit;

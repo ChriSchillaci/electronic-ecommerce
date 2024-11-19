@@ -10,6 +10,7 @@ interface UserStateType {
     taxResult: number;
     totalPrice: number;
   };
+  totalQuantity: number;
   isModal: boolean;
   message: string | null;
 }

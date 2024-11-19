@@ -10,6 +10,7 @@ import type { SchemaCartProduct } from "@/types/schemaTypes";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import userCart from "@/utils/userCart";
 import handleCheckoutPrice from "@/utils/handleCheckoutPrice";
+import handleCartQuantity from "@/utils/handleCartQuantity";
 
 export const fetchDeleteCartProd = createAsyncThunk<
   string,
@@ -82,6 +83,7 @@ const initialState: UserStateType = {
     taxResult: 0,
     totalPrice: 0,
   },
+  totalQuantity: 0,
   isModal: false,
   message: null,
 };
@@ -96,6 +98,8 @@ export const userSlice = createSlice({
     addCart: (state, action: PayloadAction<SchemaCartProduct[]>) => {
       state.cart_products = action.payload;
 
+      handleCartQuantity(state);
+
       handleCheckoutPrice(state);
     },
     updateCart: (
@@ -107,6 +111,8 @@ export const userSlice = createSlice({
       state.cart_products = state.cart_products.map((product) =>
         product.id === id ? { ...product, quantity: quantityValue } : product
       );
+
+      handleCartQuantity(state);
 
       handleCheckoutPrice(state);
     },

@@ -1,7 +1,14 @@
+import { ReactNode } from "react";
 import type { Dispatch, MutableRefObject, SetStateAction } from "react";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { SchemaCartProduct, SchemaProduct } from "./schemaTypes";
 import type { Session } from "next-auth";
+
+interface LayoutClientProps {
+  children: ReactNode;
+  session: Session | null;
+  cart_products: SchemaCartProduct[];
+}
 
 interface NavBarProps {
   session: Session | null;
@@ -67,15 +74,12 @@ interface CartProductProps {
   clientCartProd: SchemaCartProduct;
 }
 
-interface CartProductsProps {
-  cart_products: SchemaCartProduct[];
-}
-
 interface CheckoutProps {
   clientCardProds?: SchemaCartProduct[];
 }
 
 export type {
+  LayoutClientProps,
   NavBarProps,
   CarouselCardsProps,
   CardProps,
@@ -87,6 +91,5 @@ export type {
   FormProductProps,
   InputQuantityProps,
   CartProductProps,
-  CartProductsProps,
   CheckoutProps,
 };

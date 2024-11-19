@@ -7,8 +7,25 @@
     @include mixins.flex(row, flex-start, center, 20px);
   }
 
-  &__icon {
+  &__icon-container {
+    position: relative;
     cursor: pointer;
-    font-size: 22px;
+
+    &__icon {
+      font-size: 35px;
+    }
+
+    &__counter {
+      @include mixins.position(absolute, unset, 0, 0);
+      @include mixins.flex(row, center, center);
+      font-size: 11px;
+      background-color: black;
+      color: white;
+      transform: translate(10px, 5px);
+      border-radius: 50%;
+      height: 25px;
+      width: 25px;
+      border: 1px solid var(--main-color);
+    }
   }
 }
