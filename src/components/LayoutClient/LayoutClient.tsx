@@ -26,7 +26,7 @@ const LayoutClient = ({
     }
 
     dispatch(addUser(session));
-  }, [dispatch, session, user, cart_products]);
+  }, [dispatch, session, user, pathname, cart_products]);
 
   return (
     <>

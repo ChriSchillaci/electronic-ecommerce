@@ -78,6 +78,7 @@
         border-right: 1px solid var(--main-color-hover);
 
         &__link {
+          cursor: pointer;
           padding-block: 10px;
           border-top: 1px solid var(--main-color-hover);
           width: 100%;

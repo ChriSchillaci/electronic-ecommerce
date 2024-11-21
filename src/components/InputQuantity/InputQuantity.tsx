@@ -22,6 +22,10 @@ const InputQuantity = ({
     }
   }, [quantityValue, id, dispatch]);
 
+  useEffect(() => {
+    setQuantityValue(quantity);
+  }, [quantity]);
+
   return (
     <div className={`InputQuantity ${classType}`}>
       <button

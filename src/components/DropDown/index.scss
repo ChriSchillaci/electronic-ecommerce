@@ -37,6 +37,7 @@
   }
 
   .link-container {
+    cursor: pointer;
     width: 100%;
     padding-block: 20px;
     padding-left: 10px;
@@ -56,6 +57,7 @@
     transition: max-height 0.3s ease-out;
 
     &__link {
+      cursor: pointer;
       width: 100%;
       padding: 10px;
       text-align: left;
