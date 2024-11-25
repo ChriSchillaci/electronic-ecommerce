@@ -13,6 +13,8 @@ const handleRegisterSubmit = async (
   const getFormData = {
     email: formDataEntries.email as string,
     password: formDataEntries.password as string,
+    first_name: formDataEntries.first_name as string,
+    last_name: formDataEntries.last_name as string,
   };
 
   try {

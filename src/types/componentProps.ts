@@ -3,11 +3,12 @@ import type { Dispatch, MutableRefObject, SetStateAction } from "react";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { SchemaCartProduct, SchemaProduct } from "./schemaTypes";
 import type { Session } from "next-auth";
+import type { resCartProductType, resMessageType } from "./resTypes";
 
 interface LayoutClientProps {
   children: ReactNode;
   session: Session | null;
-  cart_products: SchemaCartProduct[];
+  cart: resCartProductType | resMessageType;
 }
 
 interface NavBarProps {

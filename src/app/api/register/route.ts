@@ -7,7 +7,8 @@ export async function POST(req: NextRequest) {
   let statusNumber = 500;
 
   try {
-    const { email, password }: SchemaUser = await req.json();
+    const { email, password, first_name, last_name }: SchemaUser =
+      await req.json();
 
     const existingUser = await db.users.findUnique({ where: { email } });
 
@@ -22,6 +23,8 @@ export async function POST(req: NextRequest) {
       data: {
         email,
         password: hashedPassword,
+        first_name,
+        last_name,
         cart_products: [],
       },
     });

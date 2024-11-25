@@ -35,6 +35,8 @@ interface SchemaProduct {
 interface SchemaUser {
   email: string;
   password: string;
+  first_name: string;
+  last_name: string;
 }
 
 interface SchemaCartProduct {

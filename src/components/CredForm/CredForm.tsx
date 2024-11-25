@@ -31,18 +31,36 @@ const CredForm = ({ btnText }: CredFormProps) => {
           handleCredSubmit(e, router, setIsError, setIsPending, isLoginPage)
         }
       >
+        {!isLoginPage && (
+          <>
+            <input
+              className="CredForm__input"
+              name="first_name"
+              placeholder="First Name"
+              minLength={5}
+              required
+            />
+            <input
+              className="CredForm__input"
+              name="last_name"
+              placeholder="Last Name"
+              minLength={5}
+              required
+            />
+          </>
+        )}
         <input
           className="CredForm__input"
           type="email"
           name="email"
-          placeholder="email"
+          placeholder="Email"
           required
         />
         <input
           className="CredForm__input"
           type="password"
           name="password"
-          placeholder="password"
+          placeholder="Password"
           required
         />
         <button

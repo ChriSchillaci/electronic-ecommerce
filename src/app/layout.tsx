@@ -25,14 +25,12 @@ export default async function RootLayout({
 
   const cart = await userCart<resCartProductType>("GET", session?.user?.id);
 
-  const { cart_products } = cart as resCartProductType;
-
   return (
     <html lang="en">
       <body className={inter.className}>
         <StoreProvider>
           <NavBar session={session} />
-          <LayoutClient session={session} cart_products={cart_products}>
+          <LayoutClient session={session} cart={cart}>
             {children}
           </LayoutClient>
           <Footer />

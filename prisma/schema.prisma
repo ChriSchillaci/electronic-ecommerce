@@ -11,6 +11,8 @@ model Users {
   id            String        @id @default(auto()) @map("_id") @db.ObjectId // Unique identifier (equivalent to Mongoose's default _id)
   email         String        @unique // Unique email field
   password      String
+  first_name    String
+  last_name     String
   cart_products CartProduct[]
   // createdAt DateTime @default(now()) // Automatically sets the creation date
   // updatedAt DateTime @updatedAt // Automatically updates the timestamp on updates

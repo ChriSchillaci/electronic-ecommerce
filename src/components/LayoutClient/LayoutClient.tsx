@@ -8,25 +8,28 @@ import { useAppDispatch, useAppSelector } from "@/utils/redux-store/hooks";
 import { addUser } from "@/utils/redux-store/features/user/userSlice";
 import { addCart } from "@/utils/redux-store/features/user/userSlice";
 import "./index.scss";
+import { resCartProductType } from "@/types/resTypes";
 
-const LayoutClient = ({
-  children,
-  session,
-  cart_products,
-}: LayoutClientProps) => {
+const LayoutClient = ({ children, session, cart }: LayoutClientProps) => {
   const pathname = usePathname();
-
-  const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
+  const { user } = useAppSelector((state) => state.user);
+
+  const { cart_products } = cart as resCartProductType;
+
   useEffect(() => {
+    if ("status" in cart && cart.status && cart.status >= 400) {
+      return;
+    }
+
     if (user) {
       dispatch(addCart(cart_products));
       return;
     }
 
     dispatch(addUser(session));
-  }, [dispatch, session, user, pathname, cart_products]);
+  }, [dispatch, session, user, pathname, cart, cart_products]);
 
   return (
     <>
