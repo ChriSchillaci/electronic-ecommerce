@@ -19,16 +19,13 @@ const LayoutClient = ({ children, session, cart }: LayoutClientProps) => {
   const { cart_products } = cart as resCartProductType;
 
   useEffect(() => {
+    dispatch(addUser(session));
+
     if ("status" in cart && cart.status && cart.status >= 400) {
       return;
     }
 
-    if (user) {
-      dispatch(addCart(cart_products));
-      return;
-    }
-
-    dispatch(addUser(session));
+    dispatch(addCart(cart_products));
   }, [dispatch, session, user, pathname, cart, cart_products]);
 
   return (

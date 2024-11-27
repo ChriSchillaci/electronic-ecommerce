@@ -17,7 +17,16 @@ const handleRegisterSubmit = async (
     last_name: formDataEntries.last_name as string,
   };
 
+  const isFirstNameCapitalized =
+    getFormData.first_name[0] !== getFormData.first_name[0].toUpperCase();
+  const isLastNameCapitalized =
+    getFormData.last_name[0] !== getFormData.last_name[0].toUpperCase();
+
   try {
+    if (isFirstNameCapitalized || isLastNameCapitalized) {
+      throw new Error("First and last name must be capitalized");
+    }
+
     if (getFormData.password.length < 5) {
       throw new Error("Insert a longer password");
     }
