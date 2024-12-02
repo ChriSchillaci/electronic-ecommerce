@@ -3,9 +3,9 @@
 .NavBar {
   @include mixins.position(fixed, 0);
   @include mixins.flex(row, space-between, center);
-  height: 10vh;
+  height: 80px;
   width: 100%;
-  padding-inline: 10px;
+  padding-inline: 20px;
   background-color: var(--main-color);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   z-index: 4;
@@ -14,35 +14,9 @@
     padding-inline: 40px;
   }
 
-  .search-container {
-    @include mixins.flex(row, space-between, center);
-    width: 250px;
-    height: 35px;
-
-    @include mixins.breakpoint(desktop) {
-      width: 350px;
-    }
-
-    .search-btn {
-      @include mixins.flex(row, center, center);
-      width: 15%;
-      height: 100%;
-      background-color: black;
-      border-radius: 10px 0 0 10px;
-      cursor: pointer;
-
-      .search-icon {
-        color: white;
-        font-size: 20px;
-      }
-    }
-
-    .search-input {
-      height: 100%;
-      width: 85%;
-      background-color: white;
-      border-radius: 0 10px 10px 0;
-      padding-left: 15px;
+  &__link-logo {
+    @include mixins.breakpoint(laptop) {
+      display: none;
     }
   }
 
@@ -50,7 +24,7 @@
     display: none;
 
     @include mixins.breakpoint(laptop) {
-      @include mixins.flex(row, flex-start, flex-start, 20px);
+      @include mixins.flex(row, flex-start, center, 24px);
     }
 
     .categories-container {
@@ -99,6 +73,38 @@
           @include mixins.flex(column);
         }
       }
+    }
+  }
+
+  .search-container {
+    @include mixins.flex(row, space-between, center);
+    width: 250px;
+    height: 35px;
+
+    @include mixins.breakpoint(desktop) {
+      width: 350px;
+    }
+
+    .search-btn {
+      @include mixins.flex(row, center, center);
+      width: 15%;
+      height: 100%;
+      background-color: black;
+      border-radius: 10px 0 0 10px;
+      cursor: pointer;
+
+      .search-icon {
+        color: white;
+        font-size: 20px;
+      }
+    }
+
+    .search-input {
+      height: 100%;
+      width: 85%;
+      background-color: white;
+      border-radius: 0 10px 10px 0;
+      padding-left: 15px;
     }
   }
 

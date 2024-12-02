@@ -4,8 +4,8 @@
   max-width: 1440px;
   margin-inline: auto;
   margin-bottom: 40px;
-  padding-top: 10vh;
-  padding-inline: 10px;
+  padding-top: 80px;
+  padding-inline: 20px;
 
   @include mixins.breakpoint(laptop) {
     padding-inline: 40px;

@@ -10,7 +10,7 @@
   transition: all 0.3s ease-out;
 
   @include mixins.breakpoint(laptop) {
-    @include mixins.position(sticky, 10vh);
+    @include mixins.position(sticky, 80px);
     width: 25%;
     z-index: 0;
     transition: none;

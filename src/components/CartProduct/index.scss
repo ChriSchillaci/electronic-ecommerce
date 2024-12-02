@@ -32,11 +32,11 @@
 
   &__title {
     grid-area: title;
+    font-size: 14px;
 
     @include mixins.breakpoint(laptop) {
       grid-area: auto;
       place-self: center start;
-      font-size: 14px;
     }
   }
 

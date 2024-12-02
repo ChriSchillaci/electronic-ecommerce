@@ -1,80 +1,57 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  FaLinkedin,
-  FaGithubSquare,
-  FaInstagram,
-  FaFacebookSquare,
-} from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
-
+import socialLinks from "@/mocks/socialLinks";
+import footerSections from "@/mocks/footerSections";
 import "./index.scss";
 
 const Footer = () => {
   return (
     <footer className="Footer">
       <div className="Footer__logo-socials">
-        <Image
-          className="Footer__logo-socials__logo"
-          src={"/images/logo.png"}
-          alt="logo"
-          height={60}
-          width={60}
-        />
+        <Link href={"/"}>
+          <Image
+            className="Footer__logo-socials__logo"
+            src={"/images/logo.png"}
+            alt="logo"
+            height={60}
+            width={60}
+          />
+        </Link>
         <div className="Footer__logo-socials__socials">
-          <FaLinkedin className="Footer__logo-socials__socials__social" />
-          <FaSquareXTwitter className="Footer__logo-socials__socials__social" />
-          <FaGithubSquare className="Footer__logo-socials__socials__social" />
-          <FaInstagram className="Footer__logo-socials__socials__social" />
-          <FaFacebookSquare className="Footer__logo-socials__socials__social" />
+          {socialLinks.map((social, idx) => (
+            <Link key={idx} href={social.link}>
+              {social.icon}
+            </Link>
+          ))}
         </div>
       </div>
       <div className="Footer__info">
-        <div className="Footer__info__links">
-          <h2 className="Footer__info__links__title">Company</h2>
-          <Link className="Footer__info__links__link" href={"/"}>
-            Lorem, ipsum dolor.
-          </Link>
-          <Link className="Footer__info__links__link" href={"/"}>
-            Lorem, ipsum dolor.
-          </Link>
-          <Link className="Footer__info__links__link" href={"/"}>
-            Lorem, ipsum dolor.
-          </Link>
-        </div>
-        <div className="Footer__info__links">
-          <h2 className="Footer__info__links__title">Partners</h2>
-          <Link className="Footer__info__links__link" href={"/"}>
-            Lorem, ipsum dolor.
-          </Link>
-          <Link className="Footer__info__links__link" href={"/"}>
-            Lorem, ipsum dolor.
-          </Link>
-          <Link className="Footer__info__links__link" href={"/"}>
-            Lorem, ipsum dolor.
-          </Link>
-        </div>
-        <div className="Footer__info__links">
-          <h2 className="Footer__info__links__title">Help</h2>
-          <Link className="Footer__info__links__link" href={"/"}>
-            Lorem, ipsum dolor.
-          </Link>
-          <Link className="Footer__info__links__link" href={"/"}>
-            Lorem, ipsum dolor.
-          </Link>
-          <Link className="Footer__info__links__link" href={"/"}>
-            Lorem, ipsum dolor.
-          </Link>
-        </div>
+        {footerSections.map((item, idx) => (
+          <div key={idx} className="Footer__info__links">
+            <h2 className="Footer__info__links__title">{item.section_text}</h2>
+            {item.links.map((link, idxLink) => (
+              <Link
+                key={idxLink}
+                className="Footer__info__links__link"
+                href={"/"}
+              >
+                {link.text}
+              </Link>
+            ))}
+          </div>
+        ))}
         <div className="Footer__info__links">
           <h2 className="Footer__info__links__title">Subscribe</h2>
           <input
             className="Footer__info__links__input"
             placeholder="Enter your email"
           />
-          <button className="Footer__info__links__btn">Subscribe</button>
+          <Link href={"/"} className="Footer__info__links__btn">
+            Subscribe
+          </Link>
         </div>
       </div>
+      <p className="Footer__signature">Made by Christian Schillaci</p>
     </footer>
   );
 };

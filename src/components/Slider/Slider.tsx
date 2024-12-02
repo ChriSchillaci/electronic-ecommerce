@@ -37,8 +37,7 @@ const Slider = () => {
       ))}
       <div className="Slider__info">
         <h1 className="slider-title">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam,
-          quia?
+          Discover the best quality at unbeatable prices. Start shopping now!
         </h1>
         <Link className="slider-btn" href={"/store"}>
           Shop Now

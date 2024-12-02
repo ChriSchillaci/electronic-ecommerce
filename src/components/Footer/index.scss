@@ -6,7 +6,7 @@
 
   &__logo-socials {
     @include mixins.flex(column, flex-start, center, 10px);
-    padding: 20px 10px;
+    padding: 20px;
     border-bottom: 1px solid var(--main-color);
 
     @include mixins.breakpoint(laptop) {
@@ -23,6 +23,7 @@
 
       &__social {
         font-size: 26px;
+        color: white;
 
         @include mixins.breakpoint(laptop) {
           font-size: 32px;
@@ -33,7 +34,7 @@
 
   &__info {
     @include mixins.flex(column, flex-start, flex-start, 20px);
-    padding: 20px 10px;
+    padding: 20px;
 
     @include mixins.breakpoint(laptop) {
       @include mixins.flex(row, space-between, flex-start);
@@ -65,11 +66,19 @@
       }
 
       &__btn {
+        text-align: center;
         color: inherit;
         border: 1px solid var(--main-color);
         width: 100%;
         padding-block: 5px;
       }
     }
+  }
+
+  &__signature {
+    text-align: center;
+    background-color: var(--main-color);
+    color: black;
+    padding-block: 4px;
   }
 }

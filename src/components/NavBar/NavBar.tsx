@@ -26,25 +26,13 @@ const NavBar = ({ session }: NavBarProps) => {
   return (
     <>
       <nav className="NavBar">
-        <Image src="/images/logo.png" alt="logo" width={50} height={50} />
-        <form
-          onSubmit={(e) => handleSearchForm(e, search, router)}
-          className="search-container"
-        >
-          <button className="search-btn" type="submit">
-            <IoIosSearch className="search-icon" />
-          </button>
-          <input
-            className="search-input"
-            type="text"
-            placeholder="Search..."
-            value={search}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setSearch(e.target.value)
-            }
-          />
-        </form>
+        <Link className="NavBar__link-logo" href={"/"}>
+          <Image src="/images/logo.png" alt="logo" width={50} height={50} />
+        </Link>
         <div className="links">
+          <Link href={"/"}>
+            <Image src="/images/logo.png" alt="logo" width={50} height={50} />
+          </Link>
           <Link href={"/"}>Home</Link>
           <Link href={"/store"}>Store</Link>
           <div className="categories-container">
@@ -66,6 +54,23 @@ const NavBar = ({ session }: NavBarProps) => {
             </div>
           </div>
         </div>
+        <form
+          onSubmit={(e) => handleSearchForm(e, search, router)}
+          className="search-container"
+        >
+          <button className="search-btn" type="submit">
+            <IoIosSearch className="search-icon" />
+          </button>
+          <input
+            className="search-input"
+            type="text"
+            placeholder="Search..."
+            value={search}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setSearch(e.target.value)
+            }
+          />
+        </form>
         {!session ? <AuthBtns /> : <CartAndLogout />}
         <button
           className="burger-btn"

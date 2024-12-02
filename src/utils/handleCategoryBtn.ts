@@ -12,7 +12,9 @@ const handleCategoryBtn = (
   const { value } = e.currentTarget;
   const url = new URL(`${process.env.NEXT_PUBLIC_API_BASE_URL}/store`);
 
-  setIsSideBar && handleDropDown(setIsSideBar);
+  if (setIsSideBar && innerWidth < 768) {
+    handleDropDown(setIsSideBar);
+  }
 
   if (setIsDropDown && setIsCategoryList)
     handleDropDown(setIsDropDown, setIsCategoryList);

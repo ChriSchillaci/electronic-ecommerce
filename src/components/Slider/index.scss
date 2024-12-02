@@ -2,12 +2,8 @@
 
 .Slider {
   position: relative;
-  height: 50vh;
-  padding-top: 10vh;
-
-  @include mixins.breakpoint(laptop) {
-    height: 90vh;
-  }
+  height: calc(100vh - 80px);
+  padding-top: 80px;
 
   &__img {
     @include mixins.position(absolute);
@@ -16,17 +12,16 @@
     height: 100%;
     opacity: 0;
     transition: opacity 0.5s ease-out;
-  }
 
-  &__img.active {
-    opacity: 1;
+    &.active {
+      opacity: 1;
+    }
   }
 
   &__info {
     @include mixins.flex(column, flex-start, flex-start, 10px);
     @include mixins.position(absolute, 50%, auto, auto, 10%);
-    // transform: translateY(-50%);
-    transform: translateY(-10%);
+    transform: translateY(-20%);
     width: 200px;
     z-index: 2;
 
