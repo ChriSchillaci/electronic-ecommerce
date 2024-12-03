@@ -30,8 +30,7 @@
     }
 
     &__img {
-      height: 200px;
-      width: 200px;
+      width: auto;
       padding-block: 10px;
       object-fit: contain;
       transition: transform 0.3s ease-out;
