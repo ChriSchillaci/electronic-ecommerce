@@ -30,6 +30,10 @@
       background-color: rgb(226, 35, 35);
       color: white;
       z-index: 1;
+
+      @include mixins.breakpoint(laptop) {
+        @include mixins.position(absolute, auto, auto, auto, 24px);
+      }
     }
 
     &__img {
