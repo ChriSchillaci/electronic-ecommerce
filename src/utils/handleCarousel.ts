@@ -7,9 +7,9 @@ const handleCarousel = (
 ) => {
   if (carousel.current) {
     if (type === "prev") {
-      carousel.current.scrollBy({ left: -200 });
+      carousel.current.scrollBy({ left: -220 });
     } else {
-      carousel.current.scrollBy({ left: 200 });
+      carousel.current.scrollBy({ left: 220 });
     }
     setIsBtnClicked((prev) => !prev);
   }

@@ -10,20 +10,29 @@
 
   .Card {
     &.skeleton {
-      @include mixins.flex(column, space-between, normal);
+      height: 336px;
+      @include mixins.flex(column, space-between, center);
+
+      @include mixins.breakpoint(desktop) {
+        height: 375px;
+      }
     }
 
     &__link {
       &__img.skeleton {
         margin-inline: auto;
         object-fit: none;
-        width: 200px;
+        width: 188px;
         height: 200px;
         border-radius: 10px;
         animation: skeleton-color 2s infinite;
 
         &:hover {
           transform: none;
+        }
+
+        @include mixins.breakpoint(desktop) {
+          width: 172px;
         }
       }
 

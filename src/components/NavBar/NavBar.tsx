@@ -27,7 +27,13 @@ const NavBar = ({ session }: NavBarProps) => {
     <>
       <nav className="NavBar">
         <Link className="NavBar__link-logo" href={"/"}>
-          <Image src="/images/logo.png" alt="logo" width={50} height={50} />
+          <Image
+            className="NavBar__link-logo__logo"
+            src="/images/logo.png"
+            alt="logo"
+            width={50}
+            height={50}
+          />
         </Link>
         <div className="links">
           <Link href={"/"}>

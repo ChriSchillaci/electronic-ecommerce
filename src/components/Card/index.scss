@@ -3,25 +3,28 @@
 .Card {
   position: relative;
   min-width: 220px;
-  height: 310px;
   border-radius: 10px;
   background-color: white;
-  padding-top: 10px;
+  padding: 16px;
   scroll-snap-align: start;
   overflow: hidden;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
   @include mixins.breakpoint(laptop) {
-    height: 340px;
+    padding: 24px;
   }
 
   &__link {
-    @include mixins.flex(column, space-between, center);
+    @include mixins.flex(column, space-between, center, 16px);
     height: 100%;
 
+    @include mixins.breakpoint(laptop) {
+      @include mixins.flex(column, space-between, center, 24px);
+    }
+
     &__sale {
-      @include mixins.position(absolute, auto, auto, auto, 5%);
+      @include mixins.position(absolute, auto, auto, auto, 16px);
       padding: 3px 5px;
       border-radius: 20px;
       background-color: rgb(226, 35, 35);
@@ -31,7 +34,6 @@
 
     &__img {
       width: auto;
-      padding-block: 10px;
       object-fit: contain;
       transition: transform 0.3s ease-out;
 
@@ -42,12 +44,12 @@
 
     &__container {
       @include mixins.flex(column, flex-start, flex-start, 5px);
-      padding-inline: 10px;
-      padding-bottom: 5px;
+      // padding-inline: 10px;
+      // padding-bottom: 5px;
 
-      @include mixins.breakpoint(laptop) {
-        padding-bottom: 10px;
-      }
+      // @include mixins.breakpoint(laptop) {
+      //   padding-bottom: 10px;
+      // }
 
       &__title {
         font-size: 14px;
@@ -140,5 +142,3 @@
     }
   }
 }
-
-// .Card.Card__Store

@@ -4,7 +4,7 @@
   @include mixins.position(fixed, 0, auto, auto, -40vh);
   width: 40vh;
   height: 100vh;
-  padding-top: 5px;
+  padding-top: 10px;
   z-index: 4;
   background-color: var(--main-color);
   transition: all 0.3s ease-out;
@@ -28,7 +28,7 @@
 
   &__category-title {
     margin-block: 20px;
-    padding-left: 15px;
+    padding-left: 16px;
 
     @include mixins.breakpoint(laptop) {
       padding-left: 0;
@@ -36,7 +36,7 @@
   }
 
   &__categories {
-    padding-left: 15px;
+    padding-left: 16px;
     @include mixins.flex(column, flex-start, flex-start, 10px);
 
     @include mixins.breakpoint(laptop) {

@@ -5,12 +5,11 @@
   color: white;
 
   &__logo-socials {
-    @include mixins.flex(column, flex-start, center, 10px);
+    @include mixins.flex(row, space-between, center);
     padding: 20px;
     border-bottom: 1px solid var(--main-color);
 
     @include mixins.breakpoint(laptop) {
-      @include mixins.flex(row, space-between, center);
       padding-inline: 40px;
     }
 

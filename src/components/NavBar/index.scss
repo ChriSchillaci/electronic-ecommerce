@@ -2,7 +2,7 @@
 
 .NavBar {
   @include mixins.position(fixed, 0);
-  @include mixins.flex(row, space-between, center);
+  @include mixins.flex(row, space-between, center, 16px);
   height: 80px;
   width: 100%;
   padding-inline: 20px;
@@ -17,6 +17,10 @@
   &__link-logo {
     @include mixins.breakpoint(laptop) {
       display: none;
+    }
+
+    &__logo {
+      object-fit: contain;
     }
   }
 
@@ -78,12 +82,12 @@
 
   .search-container {
     @include mixins.flex(row, space-between, center);
-    width: 250px;
+    // width: 200px;
     height: 35px;
 
-    @include mixins.breakpoint(desktop) {
-      width: 350px;
-    }
+    // @include mixins.breakpoint(laptop) {
+    //   width: 350px;
+    // }
 
     .search-btn {
       @include mixins.flex(row, center, center);
