@@ -18,10 +18,7 @@ const CartProduct = ({ clientCartProd }: CartProductProps) => {
   const { id, title, image, quantity, price } = clientCartProd;
 
   return (
-    <li
-      id={id}
-      className={`CartProduct ${isPending ? 'active' : ''}`}
-    >
+    <li id={id} className={`CartProduct ${isPending ? "active" : ""}`}>
       <Image
         className="CartProduct__img"
         src={image}
@@ -38,6 +35,7 @@ const CartProduct = ({ clientCartProd }: CartProductProps) => {
         onClick={() =>
           handleDeleteProduct(userId, id, router, cart, setIsPending, dispatch)
         }
+        aria-label="Delete product"
       >
         <RxCross1 />
       </button>

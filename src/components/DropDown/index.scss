@@ -10,7 +10,7 @@
   z-index: 3;
 
   &.active {
-    transform: translateY(80px);
+    transform: translateY(0px);
   }
 
   @include mixins.breakpoint(laptop) {
@@ -37,6 +37,7 @@
   }
 
   .link-container {
+    @include mixins.flex(row, normal, center, 10px);
     cursor: pointer;
     width: 100%;
     padding: 20px;

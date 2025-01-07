@@ -57,6 +57,7 @@ const CarouselContainer = ({ products }: resProductsType) => {
       <button
         className={`carousel-btn ${isFirstCardVisible ? "hidden" : ""}`}
         onClick={() => handleCarousel("prev", carouselRef, setIsBtnClicked)}
+        aria-label="previous"
       >
         <MdChevronLeft className="carousel-btn__icon" />
       </button>
@@ -75,6 +76,7 @@ const CarouselContainer = ({ products }: resProductsType) => {
       <button
         className={`carousel-btn ${isLastCardVisible ? "hidden" : ""}`}
         onClick={() => handleCarousel("next", carouselRef, setIsBtnClicked)}
+        aria-label="next"
       >
         <MdChevronRight className="carousel-btn__icon" />
       </button>

@@ -17,14 +17,12 @@ const CredForm = ({ btnText }: CredFormProps) => {
 
   return (
     <>
-      <div
-        className={`CredForm__error-container ${
-          !isError.status ? "active" : ""
-        }`}
-      >
-        <MdErrorOutline className="CredForm__error-container__icon" />
-        <p className="CredForm__error-container__text">{isError.message}</p>
-      </div>
+      {!isError.status && (
+        <div className={`CredForm__error-container`}>
+          <MdErrorOutline className="CredForm__error-container__icon" />
+          <p className="CredForm__error-container__text">{isError.message}</p>
+        </div>
+      )}
       <form
         className="CredForm"
         onSubmit={(e) =>
@@ -38,6 +36,7 @@ const CredForm = ({ btnText }: CredFormProps) => {
               name="first_name"
               placeholder="First Name"
               minLength={5}
+              aria-label="First Name"
               required
             />
             <input
@@ -45,6 +44,7 @@ const CredForm = ({ btnText }: CredFormProps) => {
               name="last_name"
               placeholder="Last Name"
               minLength={5}
+              aria-label="Last Name"
               required
             />
           </>
@@ -54,6 +54,7 @@ const CredForm = ({ btnText }: CredFormProps) => {
           type="email"
           name="email"
           placeholder="Email"
+          aria-label="Email"
           required
         />
         <input
@@ -61,6 +62,7 @@ const CredForm = ({ btnText }: CredFormProps) => {
           type="password"
           name="password"
           placeholder="Password"
+          aria-label="Password"
           required
         />
         <button

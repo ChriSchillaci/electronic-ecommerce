@@ -64,13 +64,14 @@ const NavBar = ({ session }: NavBarProps) => {
           onSubmit={(e) => handleSearchForm(e, search, router)}
           className="search-container"
         >
-          <button className="search-btn" type="submit">
+          <button className="search-btn" type="submit" aria-label="Search">
             <IoIosSearch className="search-icon" />
           </button>
           <input
             className="search-input"
             type="text"
             placeholder="Search..."
+            aria-label="Search"
             value={search}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setSearch(e.target.value)
@@ -81,6 +82,7 @@ const NavBar = ({ session }: NavBarProps) => {
         <button
           className="burger-btn"
           onClick={() => handleDropDown(setIsDropDown, setIsCategoryList)}
+          aria-label="Menu burger"
         >
           <span className={`burger-line ${isDropDown ? "active" : ""}`}></span>
           <span className={`burger-line ${isDropDown ? "active" : ""}`}></span>

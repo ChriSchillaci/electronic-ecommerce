@@ -4,6 +4,7 @@ import handleCategoryBtn from "@/utils/handleCategoryBtn";
 import handleDropDown from "@/utils/handleDropDown";
 import categoryMocks from "@/mocks/categoryMocks";
 import AuthLogoutBtn from "../AuthLogoutBtn";
+import CartCounter from "../CartCounter";
 import "./index.scss";
 
 const DropDown = ({
@@ -90,7 +91,8 @@ const DropDown = ({
                 router.refresh();
               }}
             >
-              Cart
+              <p>Cart</p>
+              <CartCounter />
             </div>
             <AuthLogoutBtn
               classType="dropdown"

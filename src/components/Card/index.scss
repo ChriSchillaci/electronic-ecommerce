@@ -48,12 +48,8 @@
 
     &__container {
       @include mixins.flex(column, flex-start, flex-start, 5px);
-      // padding-inline: 10px;
-      // padding-bottom: 5px;
-
-      // @include mixins.breakpoint(laptop) {
-      //   padding-bottom: 10px;
-      // }
+      position: relative;
+      z-index: 1;
 
       &__title {
         font-size: 14px;
@@ -94,7 +90,7 @@
 
           &.cut {
             text-decoration: line-through;
-            color: rgba(0, 0, 0, 0.5);
+            color: rgba(0, 0, 0, 0.65);
             font-size: 12px;
 
             @include mixins.breakpoint(laptop) {
@@ -141,8 +137,12 @@
     min-width: auto;
     flex-basis: calc(50% - 8px);
 
+    @include mixins.breakpoint(laptop) {
+      flex-basis: calc(50% - 12px);
+    }
+
     @include mixins.breakpoint(desktop) {
-      flex-basis: calc(33.3% - 10.5px);
+      flex-basis: calc(33.3% - 16px);
     }
   }
 }

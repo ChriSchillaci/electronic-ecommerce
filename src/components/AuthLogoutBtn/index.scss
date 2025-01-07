@@ -8,11 +8,12 @@
 
   &__btn {
     cursor: pointer;
+    color: rgb(226, 35, 35);
 
     &.dropdown {
       text-align: left;
       width: 100%;
-      color: black;
+      color: rgb(226, 35, 35);
       background-color: unset;
       border-radius: unset;
       padding: 20px;

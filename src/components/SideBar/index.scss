@@ -10,7 +10,8 @@
   transition: all 0.3s ease-out;
 
   @include mixins.breakpoint(laptop) {
-    @include mixins.position(sticky, 80px);
+    @include mixins.position(sticky, 120px);
+    height: auto;
     width: 25%;
     z-index: 0;
     transition: none;
@@ -27,11 +28,12 @@
   }
 
   &__category-title {
-    margin-block: 20px;
     padding-left: 16px;
+    margin-block: 20px;
 
     @include mixins.breakpoint(laptop) {
       padding-left: 0;
+      margin-top: 0;
     }
   }
 

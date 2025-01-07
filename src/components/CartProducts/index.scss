@@ -2,15 +2,20 @@
 
 .CartProducts {
   position: relative;
-  min-height: calc(100vh - 10vh - 179px); // Navbar - Checkout's height
-  @include mixins.flex(column, normal, normal, 20px);
+  min-height: calc(
+    100vh - 80px - 160px - 16px
+  ); // Navbar - Checkout's height - CartProducts' padding bottom
+  @include mixins.flex(column, normal, normal, 16px);
   grid-area: products;
-  padding-block: 20px;
+  padding-top: 0;
+  padding-bottom: 16px;
 
   @include mixins.breakpoint(laptop) {
     min-height: calc(
-      100vh - 10vh - 40px - 35px
-    ); // Navbar - CartPage's margin top - __product's details' height
+      100vh - 80px - 40px - 35px - 40px
+    ); // Navbar - main-layout's padding top - __product's details' height - CartProducts' padding block
+    padding-top: 20px;
+    padding-bottom: 0;
   }
 
   &__empty-cart {

@@ -2,7 +2,6 @@
 
 .Pagination {
   @include mixins.flex(row, center, center, 10px);
-  padding-block: 20px;
 
   &__btn {
     font-size: 30px;

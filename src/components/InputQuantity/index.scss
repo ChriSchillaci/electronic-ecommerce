@@ -33,6 +33,10 @@
     &.Cart {
       font-size: 18px;
     }
+
+    &.active {
+      cursor: not-allowed;
+    }
   }
 
   &.Cart {

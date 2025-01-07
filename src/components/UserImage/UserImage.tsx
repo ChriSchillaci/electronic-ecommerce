@@ -15,14 +15,15 @@ const UserImage = ({
   const { first_name, last_name } = user || {};
 
   return (
-    <div
+    <button
       className={`UserImage ${classType}`}
       onClick={() =>
         setIsUserDropdown ? setIsUserDropdown((prev) => !prev) : undefined
       }
+      aria-label="User"
     >
       {first_name && last_name && getUserFirstLetters(first_name, last_name)}
-    </div>
+    </button>
   );
 };
 

@@ -10,26 +10,31 @@ const socialLinks = [
   {
     icon: <FaLinkedin className="Footer__logo-socials__socials__social" />,
     link: "https://www.linkedin.com/in/christian-schillaci-61ba2b26a/",
+    label: "LinkedIn",
   },
   {
     icon: (
       <FaSquareXTwitter className="Footer__logo-socials__socials__social" />
     ),
     link: "/",
+    label: "Twitter",
   },
   {
     icon: <FaGithubSquare className="Footer__logo-socials__socials__social" />,
     link: "https://github.com/ChriSchillaci",
+    label: "GitHub",
   },
   {
     icon: <FaInstagram className="Footer__logo-socials__socials__social" />,
     link: "/",
+    label: "Instagram",
   },
   {
     icon: (
       <FaFacebookSquare className="Footer__logo-socials__socials__social" />
     ),
     link: "/",
+    label: "Facebook",
   },
 ];
 

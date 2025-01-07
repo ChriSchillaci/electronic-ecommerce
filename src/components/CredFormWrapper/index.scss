@@ -1,10 +1,15 @@
 @use "../../assets/mixins.scss";
 
 .CredFormWrapper {
-  margin-top: 40px;
   min-height: calc(
-    100vh - 10vh - 40px - 40px
-  ); //Navbar's height - CredFormWrapper's margin top - main-layout's margin bottom
+    100vh - 80px - 16px - 40px
+  ); //Navbar's height - main-layout's padding-top - main-layout's padding-bottom
+
+  @include mixins.breakpoint(laptop) {
+    min-height: calc(
+      100vh - 80px - 80px
+    ); //Navbar's height - main-layout's padding-block
+  }
 
   &__container {
     @include mixins.flex(column, normal, center, 20px);

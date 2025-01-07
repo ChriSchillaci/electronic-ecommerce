@@ -11,11 +11,10 @@
 
   @include mixins.breakpoint(laptop) {
     bottom: auto;
-    top: calc(10vh + 40px); //Navbar's height + CartPage's margin top
+    top: calc(80px + 40px); //Navbar's height + main-layout's padding top
     background-color: var(--main-color-hover);
     border-top: 0;
     padding: 20px;
-    margin-bottom: 20px;
     min-width: 200px;
     grid-area: checkout;
   }
@@ -36,7 +35,6 @@
   &__summary {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    row-gap: 20px;
 
     &__price {
       place-self: end;
@@ -45,7 +43,7 @@
 
   &__total {
     @include mixins.flex(row, space-between, center);
-    margin-top: 30px;
+    margin-top: 24px;
 
     &__price {
       font-size: 20px;

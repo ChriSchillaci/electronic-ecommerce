@@ -5,17 +5,11 @@
   width: 80%;
 
   &__error-container {
-    visibility: hidden;
-    @include mixins.flex(row, normal, center, 10px);
+    @include mixins.flex(row, center, center, 10px);
     width: 80%;
     background-color: rgb(255, 100, 100);
     border-radius: 10px;
-    height: 54px;
-    padding-inline: 10px;
-
-    &.active {
-      visibility: visible;
-    }
+    padding: 16px 10px;
 
     &__icon {
       font-size: 24px;

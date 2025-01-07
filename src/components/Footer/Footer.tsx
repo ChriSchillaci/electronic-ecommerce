@@ -19,7 +19,7 @@ const Footer = () => {
         </Link>
         <div className="Footer__logo-socials__socials">
           {socialLinks.map((social, idx) => (
-            <Link key={idx} href={social.link}>
+            <Link key={idx} href={social.link} aria-label={social.label}>
               {social.icon}
             </Link>
           ))}
@@ -45,6 +45,7 @@ const Footer = () => {
           <input
             className="Footer__info__links__input"
             placeholder="Enter your email"
+            aria-label="Enter your email"
           />
           <Link href={"/"} className="Footer__info__links__btn">
             Subscribe

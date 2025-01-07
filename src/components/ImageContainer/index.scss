@@ -16,7 +16,7 @@
   }
 
   &__images {
-    @include mixins.flex(row, flex-start, flex-start, 15px);
+    @include mixins.flex(row, flex-start, flex-start, 16px);
     overflow-x: scroll;
 
     @include mixins.breakpoint(laptop) {
@@ -24,6 +24,7 @@
     }
 
     &__img {
+      cursor: pointer;
       padding: 5px;
       background-color: white;
       border-radius: 15px;

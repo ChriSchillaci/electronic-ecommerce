@@ -4,14 +4,21 @@
   @include mixins.flex(row);
 
   &__main-container {
+    @include mixins.flex(column, normal, normal, 16px);
+    min-height: calc(
+      100vh - 80px - 16px - 40px
+    ); // navbar - main layout's padding top - main layout's padding bottom
     width: 100%;
 
     @include mixins.breakpoint(laptop) {
+      @include mixins.flex(column, normal, normal, 20px);
+      min-height: calc(
+        100vh - 80px - 40px - 40px
+      ); // navbar - main layout's padding top - main layout's padding bottom
       width: 75%;
     }
     .sort-container--category-title {
       @include mixins.flex(row, space-between, center);
-      padding-block: 20px;
 
       .category-title {
         font-size: 24px;
@@ -26,6 +33,10 @@
     &__products {
       @include mixins.flex(row, flex-start, flex-start, 16px);
       flex-wrap: wrap;
+
+      @include mixins.breakpoint(laptop) {
+        @include mixins.flex(row, flex-start, flex-start, 24px);
+      }
     }
   }
 }

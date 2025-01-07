@@ -30,9 +30,12 @@ const InputQuantity = ({
     <div className={`InputQuantity ${classType}`}>
       <button
         type="button"
-        className={`InputQuantity__btn ${classType}`}
+        className={`InputQuantity__btn ${classType} ${
+          quantityValue <= 1 ? "active" : ""
+        }`}
         onClick={() => handleQuantityValue("prev", setQuantityValue)}
         disabled={quantityValue <= 1}
+        aria-label="decrement"
       >
         <HiOutlineMinusSm />
       </button>
@@ -42,15 +45,16 @@ const InputQuantity = ({
         name="quantity"
         value={quantityValue}
         readOnly
-        onKeyDown={(e) => {
-          e.preventDefault();
-        }}
+        aria-label="quantity"
       />
       <button
         type="button"
-        className={`InputQuantity__btn ${classType}`}
+        className={`InputQuantity__btn ${classType} ${
+          quantityValue >= 5 ? "active" : ""
+        }`}
         onClick={() => handleQuantityValue("next", setQuantityValue)}
         disabled={quantityValue >= 5}
+        aria-label="increment"
       >
         <HiOutlinePlusSm />
       </button>
