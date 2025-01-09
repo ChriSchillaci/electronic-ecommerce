@@ -32,7 +32,7 @@ export default async function Store({ searchParams }: StoreProps) {
             {!category ? "all products" : category}
           </h1>
           <div className="sort-container">
-            <p>Sort by:</p>
+            <label htmlFor="filter">Sort by:</label>
             <SelectFilter />
           </div>
         </div>

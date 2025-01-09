@@ -85,17 +85,17 @@ export default async function Product({ params }: ParamsProp) {
             </div>
 
             <div className="Product__container__info__price-container">
-              <p
+              <h2
                 className={`Product__container__info__price-container__price ${
                   isDiscount ? "cut" : ""
                 }`}
               >
                 €{price}
-              </p>
+              </h2>
               {isDiscount && (
-                <p className="Product__container__info__price-container__price">
+                <h2 className="Product__container__info__price-container__price">
                   €{discountPrice}
-                </p>
+                </h2>
               )}
             </div>
 

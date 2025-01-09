@@ -2,6 +2,7 @@
 
 import type { LayoutClientProps } from "@/types/componentProps";
 import type { resCartProductType } from "@/types/resTypes";
+import Toast from "../Toast";
 import Slider from "../Slider";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
@@ -33,6 +34,7 @@ const LayoutClient = ({ children, session, cart }: LayoutClientProps) => {
 
   return (
     <>
+      <Toast />
       {pathname === "/" && <Slider />}
       <div className={`main-layout ${checkPathname}`}>{children}</div>
     </>

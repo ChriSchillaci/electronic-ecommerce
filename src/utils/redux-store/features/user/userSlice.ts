@@ -85,6 +85,7 @@ const initialState: UserStateType = {
   },
   totalQuantity: 0,
   isModal: false,
+  isToast: false,
   message: null,
 };
 
@@ -129,6 +130,9 @@ export const userSlice = createSlice({
         state.loading = "idle";
         state.message = action.payload;
       }
+    },
+    handleToast: (state, action: PayloadAction<boolean>) => {
+      state.isToast = action.payload;
     },
   },
   extraReducers(builder) {
@@ -206,6 +210,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { addUser, addCart, updateCart, handleModal } = userSlice.actions;
+export const { addUser, addCart, updateCart, handleModal, handleToast } =
+  userSlice.actions;
 
 export default userSlice.reducer;

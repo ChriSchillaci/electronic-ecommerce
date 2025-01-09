@@ -5,7 +5,7 @@ import type { ThunkDispatch, UnknownAction } from "@reduxjs/toolkit";
 import type { UserStateType } from "@/types/reduxTypes";
 import type { Dispatch } from "@reduxjs/toolkit";
 import { fetchAddProd } from "./redux-store/features/user/userSlice";
-import { handleModal } from "./redux-store/features/user/userSlice";
+import { handleToast } from "./redux-store/features/user/userSlice";
 
 const handleProductSubmit = async (
   e: FormEvent<HTMLFormElement>,
@@ -51,7 +51,7 @@ const handleProductSubmit = async (
     return;
   }
 
-  dispatch(handleModal());
+  dispatch(handleToast(true));
   router.refresh();
 };
 

@@ -15,23 +15,31 @@ const Pagination = ({ meta }: PaginationProps) => {
 
   return (
     <div className="Pagination">
-      <MdChevronLeft
+      <button
         className={`Pagination__btn ${currentPage === 1 ? "disabled" : ""}`}
         onClick={() =>
           handlePagination("prev", currentPage, pathname, searchParams, router)
         }
-      />
+        disabled={currentPage === 1}
+        aria-label="Previous page"
+      >
+        <MdChevronLeft />
+      </button>
       <p>
         Page {currentPage} of {totalPages}
       </p>
-      <MdChevronRight
+      <button
         className={`Pagination__btn ${
           currentPage === totalPages ? "disabled" : ""
         }`}
         onClick={() =>
           handlePagination("next", currentPage, pathname, searchParams, router)
         }
-      />
+        disabled={currentPage === totalPages}
+        aria-label="Next page"
+      >
+        <MdChevronRight />
+      </button>
     </div>
   );
 };

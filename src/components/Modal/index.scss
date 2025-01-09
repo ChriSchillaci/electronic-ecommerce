@@ -1,7 +1,6 @@
 @use "../../assets/mixins.scss";
 
 .Modal {
-  // display: none;
   @include mixins.flex(row, center, center);
   @include mixins.position(fixed, 0, unset, unset, 0);
   background-color: rgba(0, 0, 0, 0);

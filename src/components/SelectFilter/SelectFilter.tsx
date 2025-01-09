@@ -11,6 +11,8 @@ const SelectFilter = () => {
 
   return (
     <select
+      name="filter"
+      id="filter"
       className="SelectFilter"
       onChange={(e) => handleSort(e, pathname, searchParams, router)}
     >

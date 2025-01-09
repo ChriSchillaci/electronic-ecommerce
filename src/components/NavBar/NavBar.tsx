@@ -43,7 +43,7 @@ const NavBar = ({ session }: NavBarProps) => {
           <Link href={"/store"}>Store</Link>
           <div className="categories-container">
             <div className="categories-container__text">
-              <p>Categories</p>
+              <button>Categories</button>
               <span className="arrow"></span>
             </div>
             <div className="categories-dropdown-laptop">

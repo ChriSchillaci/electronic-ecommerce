@@ -1,0 +1,62 @@
+@use "../../assets/mixins.scss";
+
+.Toast {
+  @include mixins.position(fixed, 20%, 0);
+  @include mixins.flex(row, center, center, 10px);
+  padding: 15px 10px;
+  background-color: var(--main-color);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px 0 0 10px;
+  transition: all 0.3s ease-out;
+  transform: translateX(100%);
+  overflow: hidden;
+  z-index: 4;
+
+  &.active {
+    transform: translateX(0);
+  }
+
+  &__pending {
+    animation: pending 1s ease-out infinite;
+  }
+
+  &__pending,
+  &__check,
+  &__error {
+    font-size: 36px;
+  }
+
+  &__cross {
+    @include mixins.position(absolute, 5px, 5px);
+    cursor: pointer;
+  }
+
+  &__timer {
+    @include mixins.position(absolute, unset, unset, 0, 0);
+    width: 0;
+    height: 3px;
+    background-color: black;
+
+    &.active {
+      animation: timer 5s linear forwards;
+    }
+  }
+}
+
+@keyframes timer {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}
+
+@keyframes pending {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

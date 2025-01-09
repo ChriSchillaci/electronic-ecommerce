@@ -12,6 +12,7 @@ interface UserStateType {
   };
   totalQuantity: number;
   isModal: boolean;
+  isToast: boolean;
   message: string | null;
 }
 

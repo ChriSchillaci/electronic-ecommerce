@@ -39,27 +39,6 @@ const Modal = () => {
               </button>
             </>
           )}
-          {loading === "succeeded" && (
-            <>
-              <button
-                className="Modal__container__btns__btn"
-                onClick={() => dispatch(handleModal())}
-              >
-                Close
-              </button>
-            </>
-          )}
-
-          {loading === "failed" && (
-            <>
-              <button
-                className="Modal__container__btns__btn"
-                onClick={() => dispatch(handleModal())}
-              >
-                Close
-              </button>
-            </>
-          )}
         </div>
       </div>
     </div>
