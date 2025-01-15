@@ -59,13 +59,15 @@
     &__link {
       cursor: pointer;
       width: 100%;
-      padding: 10px;
+      padding-block: 10px;
+      padding-left: 20px;
       text-align: left;
       background-color: black;
       color: white;
 
       &:hover {
         background-color: var(--main-color-hover);
+        color: black;
       }
     }
 

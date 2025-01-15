@@ -19,6 +19,7 @@
   }
 
   &__close-icon {
+    cursor: pointer;
     font-size: 24px;
     margin-left: 5px;
 
@@ -66,6 +67,7 @@
   height: 35px;
   font-size: 24px;
   color: white;
+  cursor: pointer;
 
   @include mixins.breakpoint(laptop) {
     display: none;

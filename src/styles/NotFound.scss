@@ -1,0 +1,42 @@
+@use "../assets/mixins.scss";
+
+.NotFound {
+  min-height: calc(
+    100vh - 80px - 16px - 40px
+  ); // navbar's height - main-layout's padding block
+  @include mixins.flex(column, center, center);
+
+  @include mixins.breakpoint(laptop) {
+    min-height: calc(
+      100vh - 80px - 40px - 40px
+    ); // navbar's height - main-layout's padding block
+  }
+
+  &__container {
+    @include mixins.flex(column, center, center);
+    text-align: center;
+
+    &__number {
+      @include mixins.flex(row, center, center);
+      font-size: 60px;
+
+      &__icon {
+        color: rgb(228, 30, 19);
+      }
+    }
+
+    &__btn {
+      color: white;
+      background-color: black;
+      padding: 20px;
+      border-radius: 50px;
+      transition: background-color 0.3s ease-out;
+      font-size: 18px;
+      margin-top: 20px;
+
+      &:hover {
+        background-color: var(--primary-btn-color-hover);
+      }
+    }
+  }
+}

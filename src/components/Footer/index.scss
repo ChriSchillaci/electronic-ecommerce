@@ -23,6 +23,11 @@
       &__social {
         font-size: 26px;
         color: white;
+        transition: color 0.3s ease-out;
+
+        &:hover {
+          color: var(--secondary-btn-color-hover);
+        }
 
         @include mixins.breakpoint(laptop) {
           font-size: 32px;
@@ -50,6 +55,12 @@
 
       &__link {
         color: inherit;
+        border-bottom: 2px solid transparent;
+        transition: all 0.2s ease-out;
+
+        &:hover {
+          border-bottom: 2px solid var(--main-color);
+        }
       }
 
       &__input {
@@ -69,7 +80,8 @@
         color: inherit;
         border: 1px solid var(--main-color);
         width: 100%;
-        padding-block: 5px;
+        padding-block: 10px;
+        border-radius: 4px;
       }
     }
   }

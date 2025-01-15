@@ -31,10 +31,16 @@
     padding-block: 10px;
     background-color: black;
     color: white;
+    transition: background-color 0.3s ease-out;
     cursor: pointer;
+
+    &:hover {
+      background-color: var(--primary-btn-color-hover);
+    }
 
     &.pending {
       opacity: 0.6;
+      cursor: not-allowed;
     }
   }
 

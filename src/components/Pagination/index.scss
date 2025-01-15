@@ -8,11 +8,20 @@
     color: white;
     background-color: black;
     border-radius: 50%;
+    transition: background-color 0.3s ease-out;
     cursor: pointer;
+
+    &:hover {
+      background-color: var(--primary-btn-color-hover);
+    }
 
     &.disabled {
       opacity: 0.6;
       cursor: not-allowed;
+
+      &:hover {
+        background-color: black;
+      }
     }
   }
 }

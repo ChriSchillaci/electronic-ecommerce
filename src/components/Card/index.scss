@@ -19,6 +19,12 @@
     @include mixins.flex(column, space-between, center, 16px);
     height: 100%;
 
+    &:hover {
+      .Card__link__img {
+        transform: scale(1.2);
+      }
+    }
+
     @include mixins.breakpoint(laptop) {
       @include mixins.flex(column, space-between, center, 24px);
     }
@@ -27,7 +33,7 @@
       @include mixins.position(absolute, auto, auto, auto, 16px);
       padding: 3px 5px;
       border-radius: 20px;
-      background-color: rgb(226, 35, 35);
+      background-color: rgb(228, 30, 19);
       color: white;
       z-index: 1;
 
@@ -40,10 +46,6 @@
       width: auto;
       object-fit: contain;
       transition: transform 0.3s ease-out;
-
-      &:hover {
-        transform: scale(1.2);
-      }
     }
 
     &__container {

@@ -7,10 +7,27 @@
     @include mixins.flex(row, flex-start, center, 24px);
   }
 
+  .login-btn {
+    padding: 8px 15px;
+    border: 2px solid black;
+    border-radius: 4px;
+
+    &:hover,
+    &:focus-within {
+      background-color: black;
+      color: white;
+    }
+  }
+
   .register-btn {
     color: white;
     background-color: black;
-    border-radius: 80px;
+    border-radius: 4px;
     padding: 10px 15px;
+    transition: background-color 0.3s ease-out;
+
+    &:hover {
+      background-color: var(--primary-btn-color-hover);
+    }
   }
 }

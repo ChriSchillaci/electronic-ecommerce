@@ -59,10 +59,19 @@
     color: white;
     border-radius: 20px;
     padding-block: 10px;
+    transition: background-color 0.3s ease-out;
+
+    &:hover {
+      background-color: var(--primary-btn-color-hover);
+    }
 
     &.active {
       opacity: 0.5;
       cursor: not-allowed;
+
+      &:hover {
+        background-color: black;
+      }
     }
   }
 }

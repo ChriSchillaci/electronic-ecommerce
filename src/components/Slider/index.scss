@@ -19,47 +19,37 @@
   }
 
   &__info {
-    @include mixins.flex(column, flex-start, flex-start, 10px);
-    @include mixins.position(absolute, 50%, auto, auto, 10%);
-    transform: translateY(-50%);
-    width: 200px;
+    @include mixins.flex(column, flex-start, center, 20px);
+    @include mixins.position(absolute, 50%, 50%);
+    transform: translate(50%, -50%);
+    width: 300px;
     z-index: 2;
 
     @include mixins.breakpoint(laptop) {
-      @include mixins.flex(column, flex-start, flex-start, 20px);
       width: 450px;
     }
 
-    .slider-title {
-      font-size: 20px;
+    &__title {
+      font-size: 34px;
+      text-align: center;
+      color: rgb(228, 30, 19);
 
       @include mixins.breakpoint(laptop) {
         font-size: 42px;
       }
     }
 
-    .slider-btn {
+    &__btn {
       color: white;
       background-color: black;
-      padding: 10px;
+      padding: 20px;
       border-radius: 50px;
+      transition: background-color 0.3s ease-out;
+      font-size: 22px;
 
-      @include mixins.breakpoint(laptop) {
-        padding: 20px;
-        font-size: 22px;
+      &:hover {
+        background-color: var(--primary-btn-color-hover);
       }
     }
-  }
-  &__gradient {
-    @include mixins.position(absolute);
-    width: 100%;
-    height: 100%;
-    background: rgb(221, 221, 221);
-    background: linear-gradient(
-      90deg,
-      rgba(221, 221, 221, 1) 25%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    z-index: 1;
   }
 }

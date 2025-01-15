@@ -36,14 +36,13 @@ const Slider = () => {
         />
       ))}
       <div className="Slider__info">
-        <h1 className="slider-title">
-          Discover the best quality at unbeatable prices. Start shopping now!
+        <h1 className="Slider__info__title">
+          Huge discounts on top products. Shop now!
         </h1>
-        <Link className="slider-btn" href={"/store"}>
+        <Link className="Slider__info__btn" href={"/store"}>
           Shop Now
         </Link>
       </div>
-      <div className="Slider__gradient"></div>
     </section>
   );
 };

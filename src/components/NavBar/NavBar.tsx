@@ -35,15 +35,21 @@ const NavBar = ({ session }: NavBarProps) => {
             height={50}
           />
         </Link>
-        <div className="links">
+        <div className="NavBar__links">
           <Link href={"/"}>
             <Image src="/images/logo.png" alt="logo" width={50} height={50} />
           </Link>
-          <Link href={"/"}>Home</Link>
-          <Link href={"/store"}>Store</Link>
+          <Link className="NavBar__links__link" href={"/"}>
+            Home
+          </Link>
+          <Link className="NavBar__links__link" href={"/store"}>
+            Store
+          </Link>
           <div className="categories-container">
             <div className="categories-container__text">
-              <button>Categories</button>
+              <button className="categories-container__text__btn">
+                Categories
+              </button>
               <span className="arrow"></span>
             </div>
             <div className="categories-dropdown-laptop">

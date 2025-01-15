@@ -4,7 +4,9 @@ import "./index.scss";
 const AuthBtns = () => {
   return (
     <div className="AuthBtns">
-      <Link href={"/login"}>Login</Link>
+      <Link className="login-btn" href={"/login"}>
+        Login
+      </Link>
       <Link className="register-btn" href={"/register"}>
         Register
       </Link>
