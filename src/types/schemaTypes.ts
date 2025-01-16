@@ -1,6 +1,5 @@
 interface SchemaProduct {
-  _id?: string;
-  id: string;
+  _id: string;
   title: string;
   description: string;
   category: "smartphones" | "mobile-accessories" | "tablets" | "laptops";
@@ -48,14 +47,4 @@ interface SchemaCartProduct {
   price: number;
 }
 
-type ModifiedProductType = {
-  _id: string;
-  [key: string]: SchemaProduct[keyof SchemaProduct];
-};
-
-export type {
-  SchemaProduct,
-  SchemaUser,
-  SchemaCartProduct,
-  ModifiedProductType,
-};
+export type { SchemaProduct, SchemaUser, SchemaCartProduct };

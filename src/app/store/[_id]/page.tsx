@@ -26,14 +26,14 @@ export async function generateStaticParams() {
   const { products } = data as resProductsType;
 
   return products.map((product) => ({
-    id: product._id,
+    _id: product._id,
   }));
 }
 
 export default async function Product({ params }: ParamsPromise) {
   const session = await auth();
 
-  const { id } = await params;
+  const { _id } = await params;
   const data = await httpGET<resProductType>(
     null,
     null,
@@ -41,7 +41,7 @@ export default async function Product({ params }: ParamsPromise) {
     null,
     "1",
     "1",
-    id
+    _id
   );
 
   const { product } = data as resProductType;
@@ -62,7 +62,7 @@ export default async function Product({ params }: ParamsPromise) {
   const discountPrice = discountedPrice(price, discountPercentage);
 
   return (
-    <div id={id} className="Product">
+    <div id={_id} className="Product">
       <section className="Product__container">
         <ImageContainer images={images} title={title} />
         <div className="Product__container__info">
@@ -97,7 +97,7 @@ export default async function Product({ params }: ParamsPromise) {
 
           <FormProduct
             userId={session?.user?.id}
-            id={id}
+            _id={_id}
             title={title}
             image={images[0]}
             price={isDiscount ? discountPrice : price}

@@ -16,7 +16,7 @@ interface ParamsProp {
   params: { id: string };
 }
 interface ParamsPromise {
-  params: Promise<{ id: string }>;
+  params: Promise<{ _id: string }>;
 }
 
 export type { StoreProps, ParamsProp, ParamsPromise };

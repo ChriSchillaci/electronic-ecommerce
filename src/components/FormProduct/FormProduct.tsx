@@ -7,7 +7,13 @@ import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/utils/redux-store/hooks";
 import "./index.scss";
 
-const FormProduct = ({ userId, id, title, image, price }: FormProductProps) => {
+const FormProduct = ({
+  userId,
+  _id,
+  title,
+  image,
+  price,
+}: FormProductProps) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
@@ -18,7 +24,7 @@ const FormProduct = ({ userId, id, title, image, price }: FormProductProps) => {
         handleProductSubmit(
           e,
           userId,
-          { id, title, image, price },
+          { id: _id, title, image, price },
           router,
           dispatch
         )

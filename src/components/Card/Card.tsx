@@ -6,14 +6,14 @@ import Link from "next/link";
 import "./index.scss";
 
 const Card = ({ product, cardRef, classType = "" }: CardProps) => {
-  const { id, images, title, description, price, discountPercentage, rating } =
+  const { _id, images, title, description, price, discountPercentage, rating } =
     product;
 
   const isDiscount = discountPercentage > 8;
 
   return (
-    <div id={id} className={`Card ${classType}`} ref={cardRef}>
-      <Link className="Card__link" href={`/store/${id}`}>
+    <div id={_id} className={`Card ${classType}`} ref={cardRef}>
+      <Link className="Card__link" href={`/store/${_id}`}>
         {isDiscount && <p className="Card__link__sale">Sale</p>}
         <Image
           className="Card__link__img"

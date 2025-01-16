@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { ModifiedProductType } from "@/types/schemaTypes";
 import { db } from "@/utils/db";
 
 export async function GET(
@@ -30,12 +29,10 @@ export async function GET(
       throw new Error("Couldn't find the product");
     }
 
-    const modifiedProduct: ModifiedProductType = {
+    const modifiedProduct = {
       _id: product.id,
       ...product,
     };
-
-    delete modifiedProduct.id;
 
     return NextResponse.json({ product: modifiedProduct }, { status: 200 });
   } catch (error) {

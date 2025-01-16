@@ -59,7 +59,7 @@ interface AuthLogoutBtnProps {
 
 interface FormProductProps {
   userId: string | undefined;
-  id: string;
+  _id: string;
   title: string;
   image: string;
   price: number;

@@ -5,7 +5,7 @@ const userCart = async <T>(
   method: "GET" | "POST" | "PUT" | "DELETE",
   userId: string | undefined,
   cartProductData?: SchemaCartProduct,
-  id?: string,
+  _id?: string,
   cart?: SchemaCartProduct[]
 ): Promise<T | resMessageType> => {
   let statusNumber = 500;
@@ -25,8 +25,8 @@ const userCart = async <T>(
         body:
           method === "POST" && cartProductData
             ? JSON.stringify(cartProductData)
-            : method === "PUT" && id && cart
-            ? JSON.stringify({ id, cart })
+            : method === "PUT" && _id && cart
+            ? JSON.stringify({ _id, cart })
             : null,
       }
     );

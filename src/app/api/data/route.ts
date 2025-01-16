@@ -63,14 +63,21 @@ export async function GET(req: NextRequest) {
       where: whereClause,
     });
 
+    const modifiedProducts = products.map((product) => {
+      return {
+        _id: product.id, // Add _id field with the value of id
+        ...product,
+      };
+    });
+
     revalidatePath("/store");
 
     return NextResponse.json(
       {
-        products,
+        products: modifiedProducts,
         meta: {
           totalItems: countDocs,
-          itemCount: products.length,
+          itemCount: modifiedProducts.length,
           totalPages: Math.ceil(countDocs / limitNum),
           currentPage: pageNum,
         },

@@ -39,7 +39,7 @@ export default async function Store({ searchParams }: StoreProps) {
         <div className="Store__main-container__products">
           {products.map((product) => (
             <Card
-              key={product.id}
+              key={product._id}
               product={product}
               cardRef={null}
               classType="Card__Store"

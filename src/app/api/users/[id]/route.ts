@@ -76,10 +76,10 @@ export async function PUT(req: NextRequest, { params }: ParamsProp) {
   let statusNumber = 500;
 
   try {
-    const { id, cart }: { id: string; cart: SchemaCartProduct[] } =
+    const { _id, cart }: { _id: string; cart: SchemaCartProduct[] } =
       await req.json();
 
-    const updatedUserCart = cart.filter((prod) => prod.id !== id);
+    const updatedUserCart = cart.filter((prod) => prod.id !== _id);
 
     await db.users.update({
       where: { id: params.id },

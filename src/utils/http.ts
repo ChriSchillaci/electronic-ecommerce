@@ -8,12 +8,12 @@ const httpGET = async <T>(
   category?: CategoryType,
   page = "1",
   limit = "9",
-  id = ""
+  _id = ""
 ): Promise<T | resMessageType> => {
   let statusNum = 500;
   try {
     const url = new URL(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/data/${id}`
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/data/${_id}`
     );
 
     url.searchParams.append("page", page);
