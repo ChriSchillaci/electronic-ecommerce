@@ -1,5 +1,5 @@
 import type { resProductsType, resProductType } from "@/types/resTypes";
-import type { ParamsProp } from "@/types/pagesProps";
+import type { ParamsPromise } from "@/types/pagesProps";
 import type { CSSProperties } from "react";
 import { auth } from "@/app/auth";
 import { httpGET } from "@/utils/http";
@@ -30,10 +30,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function Product({ params }: ParamsProp) {
+export default async function Product({ params }: ParamsPromise) {
   const session = await auth();
 
-  const { id } = params;
+  const { id } = await params;
   const data = await httpGET<resProductType>(
     null,
     null,
