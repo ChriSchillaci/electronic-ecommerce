@@ -15,19 +15,32 @@ import "../../../styles/Product.scss";
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const data = await httpGET<resProductsType>(
-    null,
-    null,
-    null,
-    null,
-    "1",
-    "38"
-  );
-  const { products } = data as resProductsType;
+  try {
+    const data = await httpGET<resProductsType>(
+      null,
+      null,
+      null,
+      null,
+      "1",
+      "38"
+    );
+    const { products } = data as resProductsType;
 
-  return products.map((product) => ({
-    id: product._id,
-  }));
+    if (!products || products.length === 0) {
+      console.error("No products found");
+      return [];
+    }
+
+    console.log(`Fetched ${products.length} products`);
+    console.log(products);
+
+    return products.map((product) => ({
+      id: product._id,
+    }));
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
 }
 
 export default async function Product({ params }: ParamsPromise) {
