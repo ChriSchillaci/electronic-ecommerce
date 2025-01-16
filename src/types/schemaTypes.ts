@@ -48,4 +48,14 @@ interface SchemaCartProduct {
   price: number;
 }
 
-export type { SchemaProduct, SchemaUser, SchemaCartProduct };
+type ModifiedProductType = {
+  _id: string;
+  [key: string]: SchemaProduct[keyof SchemaProduct];
+};
+
+export type {
+  SchemaProduct,
+  SchemaUser,
+  SchemaCartProduct,
+  ModifiedProductType,
+};
