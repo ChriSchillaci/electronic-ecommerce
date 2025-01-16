@@ -25,6 +25,8 @@ export async function generateStaticParams() {
   );
   const { products } = data as resProductsType;
 
+  console.log(products[0]);
+
   return products.map((product) => ({
     _id: product._id,
   }));
