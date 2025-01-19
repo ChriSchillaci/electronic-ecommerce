@@ -65,13 +65,13 @@
 @mixin skeleton-keyframe {
   @keyframes skeleton-color {
     0% {
-      background-color: var(--primary-color-skeleton);
+      background-color: var(--primary-skeleton-color);
     }
     50% {
-      background-color: var(--secondary-color-skeleton);
+      background-color: var(--secondary-skeleton-color);
     }
     100% {
-      background-color: var(--primary-color-skeleton);
+      background-color: var(--primary-skeleton-color);
     }
   }
 }

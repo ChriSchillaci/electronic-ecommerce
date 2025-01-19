@@ -3,6 +3,14 @@
 .CarouselCards {
   @include mixins.flex(column, flex-start, flex-start, 40px);
   width: 100%;
+  padding-inline: 16px;
+  padding-block: 60px;
+  background-color: white;
+
+  @include mixins.breakpoint(laptop) {
+    padding-inline: 24px;
+    padding-block: 80px;
+  }
 
   &__title {
     font-size: 24px;

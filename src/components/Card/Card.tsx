@@ -26,14 +26,14 @@ const Card = ({ product, cardRef, classType = "" }: CardProps) => {
           <h2 className="Card__link__container__title">{title}</h2>
           <p className="Card__link__container__description">{description}</p>
           <div className="price-container">
-            <p className={`price-container__price ${isDiscount ? "cut" : ""}`}>
-              €{price}
-            </p>
             {isDiscount && (
               <p className="price-container__discounted-price">
                 €{discountedPrice(price, discountPercentage)}
               </p>
             )}
+            <p className={`price-container__price ${isDiscount ? "cut" : ""}`}>
+              €{price}
+            </p>
           </div>
           <div
             className="Card__link__container__rating"

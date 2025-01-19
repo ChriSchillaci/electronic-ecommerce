@@ -4,9 +4,10 @@
   @include mixins.flex(row, space-between, center);
   padding-inline: 5px;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 4px;
   width: 115px;
-  height: 55px;
+  height: 40px;
+  box-shadow: var(--box-shadow-secondary);
 
   &__input {
     width: 60px;
@@ -46,7 +47,7 @@
     place-self: end;
 
     @include mixins.breakpoint(laptop) {
-      place-self: auto;
+      place-self: center start;
       grid-area: auto;
     }
   }

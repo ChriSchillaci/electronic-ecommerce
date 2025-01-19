@@ -1,22 +1,30 @@
 @use "../../assets/mixins.scss";
 
 .CarouselContainer {
-  @include mixins.flex(row, flex-start, center, 10px);
-  margin-inline: auto;
+  @include mixins.flex(column, flex-start, normal, 10px);
+  position: relative;
   width: 100%;
+
+  @include mixins.breakpoint(laptop) {
+    display: block;
+  }
 
   &__carousel {
     @include mixins.flex(row, flex-start, flex-start, 16px);
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    overflow-x: scroll;
     scrollbar-width: none;
+    scroll-padding-left: 16px;
+    overflow-x: scroll;
     width: 100%;
-    padding-bottom: 3px;
+    margin-left: -16px;
+    padding: 16px;
 
     @include mixins.breakpoint(laptop) {
       @include mixins.flex(row, flex-start, flex-start, 24px);
-      width: 95%;
+      scroll-padding-left: 24px;
+      padding: 24px;
+      margin-left: -24px;
     }
   }
 
@@ -24,15 +32,22 @@
     display: none;
     cursor: pointer;
     border-radius: 50px;
-    border: 1px solid var(--secondary-color-skeleton);
+    border: 1px solid var(--secondary-skeleton-color);
     transition: background-color 0.3s ease-out;
+    z-index: 1;
 
     @include mixins.breakpoint(laptop) {
       display: block;
+      @include mixins.position(absolute, 50%, 0);
+      transform: translateY(-50%);
+
+      &:first-child {
+        @include mixins.position(absolute, 50%, auto, auto, 0);
+      }
     }
 
     &:hover {
-      background-color: var(--secondary-color-skeleton);
+      background-color: var(--secondary-skeleton-color);
     }
 
     &__icon {
@@ -40,8 +55,12 @@
       padding: 5px;
     }
 
-    &.hidden {
-      visibility: hidden;
+    &:disabled {
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
     }
   }
 
@@ -55,6 +74,14 @@
 
     .CarouselContainer__btn {
       display: block;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
     }
   }
 }

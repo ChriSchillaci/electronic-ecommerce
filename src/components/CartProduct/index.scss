@@ -24,6 +24,7 @@
     border-radius: 15px;
     background-color: white;
     object-fit: contain;
+    box-shadow: var(--box-shadow-primary);
 
     @include mixins.breakpoint(laptop) {
       grid-area: auto;
@@ -45,7 +46,7 @@
     place-self: end start;
 
     @include mixins.breakpoint(laptop) {
-      place-self: auto;
+      place-self: center start;
       grid-area: auto;
       font-size: 16px;
     }

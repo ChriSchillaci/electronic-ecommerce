@@ -62,61 +62,56 @@ const CarouselContainer = ({ products }: resProductsType) => {
   }, [isBtnClicked]);
 
   return (
-    <>
-      <div className="CarouselContainer">
-        <button
-          className={`CarouselContainer__btn ${
-            isFirstCardVisible ? "hidden" : ""
-          }`}
-          onClick={() => handleCarousel("prev", carouselRef, setIsBtnClicked)}
-          aria-label="previous"
-        >
-          <MdChevronLeft className="CarouselContainer__btn__icon" />
-        </button>
-        <div className="CarouselContainer__carousel" ref={carouselRef}>
-          {products.map((product, idx) => {
-            const cardRef =
-              idx === products.length - 1
-                ? lastCardRef
-                : idx === 0
-                ? firstCardRef
-                : null;
+    <div className="CarouselContainer">
+      <button
+        className={`CarouselContainer__btn`}
+        onClick={() => handleCarousel("prev", carouselRef, setIsBtnClicked)}
+        disabled={isFirstCardVisible}
+        aria-label="previous"
+      >
+        <MdChevronLeft className="CarouselContainer__btn__icon" />
+      </button>
+      <button
+        className={`CarouselContainer__btn`}
+        onClick={() => handleCarousel("next", carouselRef, setIsBtnClicked)}
+        disabled={isLastCardVisible}
+        aria-label="next"
+      >
+        <MdChevronRight className="CarouselContainer__btn__icon" />
+      </button>
 
-            return <Card key={idx} product={product} cardRef={cardRef} />;
-          })}
-        </div>
-        <button
-          className={`CarouselContainer__btn ${
-            isLastCardVisible ? "hidden" : ""
-          }`}
-          onClick={() => handleCarousel("next", carouselRef, setIsBtnClicked)}
-          aria-label="next"
-        >
-          <MdChevronRight className="CarouselContainer__btn__icon" />
-        </button>
+      <div className="CarouselContainer__carousel" ref={carouselRef}>
+        {products.map((product, idx) => {
+          const cardRef =
+            idx === products.length - 1
+              ? lastCardRef
+              : idx === 0
+              ? firstCardRef
+              : null;
+
+          return <Card key={idx} product={product} cardRef={cardRef} />;
+        })}
       </div>
 
       <div className="CarouselContainer__mobile-btns">
         <button
-          className={`CarouselContainer__btn ${
-            isFirstCardVisible ? "hidden" : ""
-          }`}
+          className={`CarouselContainer__btn`}
           onClick={() => handleCarousel("prev", carouselRef, setIsBtnClicked)}
+          disabled={isFirstCardVisible}
           aria-label="previous"
         >
           <MdChevronLeft className="CarouselContainer__btn__icon" />
         </button>
         <button
-          className={`CarouselContainer__btn ${
-            isLastCardVisible ? "hidden" : ""
-          }`}
+          className={`CarouselContainer__btn`}
           onClick={() => handleCarousel("next", carouselRef, setIsBtnClicked)}
+          disabled={isLastCardVisible}
           aria-label="next"
         >
           <MdChevronRight className="CarouselContainer__btn__icon" />
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

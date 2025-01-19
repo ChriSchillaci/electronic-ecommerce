@@ -13,7 +13,7 @@ export default function NotFound() {
           </span>
           4
         </h1>
-        <h2>Page not found</h2>
+        <h2 className="NotFound__container__title">Page not found</h2>
         <p>The page you{"'"}re looking for was not found</p>
         <Link href={"/"} className="NotFound__container__btn">
           Back to Home

@@ -15,8 +15,11 @@
 }
 
 .main-layout.Home {
-  margin-top: 40px;
+  position: relative;
+  z-index: 1;
   padding-top: 0;
+  padding-inline: 0;
+  background-color: white;
 }
 
 .main-layout.CartPage {

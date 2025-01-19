@@ -17,7 +17,7 @@ const CarouselList = async () => {
     data as resProductsType[];
 
   return (
-    <section className="CarouselList">
+    <>
       <CarouselCards
         title={"Featured Products"}
         products={featuredProducts.products}
@@ -26,7 +26,7 @@ const CarouselList = async () => {
         title={"Popular Products"}
         products={popularProducts.products}
       />
-      <div className="category-container">
+      <section className="category-container">
         {categoryImages.map((item, idx) => (
           <div key={idx} className="category-box">
             <div className="category-info">
@@ -47,9 +47,9 @@ const CarouselList = async () => {
             />
           </div>
         ))}
-      </div>
+      </section>
       <CarouselCards title={"On Sale"} products={saleProducts.products} />
-    </section>
+    </>
   );
 };
 

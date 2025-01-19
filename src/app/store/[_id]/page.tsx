@@ -25,8 +25,6 @@ export async function generateStaticParams() {
   );
   const { products } = data as resProductsType;
 
-  console.log(products[0]);
-
   return products.map((product) => ({
     _id: product._id,
   }));
@@ -76,23 +74,24 @@ export default async function Product({ params }: ParamsPromise) {
               style={{ "--rating": rating } as CSSProperties}
             ></div>
             <p className="Product__container__info__rating-container__reviews">
-              {reviews.length} Reviews
+              {reviews.length}
             </p>
           </div>
 
           <div className="Product__container__info__price-container">
-            <h2
+            {isDiscount && (
+              <span className="Product__container__info__price-container__price">
+                €{discountPrice}
+              </span>
+            )}
+
+            <span
               className={`Product__container__info__price-container__price ${
                 isDiscount ? "cut" : ""
               }`}
             >
               €{price}
-            </h2>
-            {isDiscount && (
-              <h2 className="Product__container__info__price-container__price">
-                €{discountPrice}
-              </h2>
-            )}
+            </span>
           </div>
 
           <p>{description}</p>

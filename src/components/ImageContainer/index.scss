@@ -13,14 +13,20 @@
     object-fit: contain;
     background-color: white;
     border-radius: 15px;
+    box-shadow: var(--box-shadow-primary);
   }
 
   &__images {
     @include mixins.flex(row, flex-start, flex-start, 16px);
     overflow-x: scroll;
+    padding: 16px;
+    margin-left: -16px;
+    width: 100%;
 
     @include mixins.breakpoint(laptop) {
       overflow-x: hidden;
+      padding: 24px;
+      margin-left: -24px;
     }
 
     &__img {
@@ -30,6 +36,8 @@
       border-radius: 15px;
       object-fit: contain;
       opacity: 0.85;
+      box-shadow: var(--box-shadow-primary);
+      min-width: 100px;
 
       &.active {
         opacity: 1;

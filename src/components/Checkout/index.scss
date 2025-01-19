@@ -12,8 +12,9 @@
   @include mixins.breakpoint(laptop) {
     bottom: auto;
     top: calc(80px + 40px); //Navbar's height + main-layout's padding top
-    background-color: var(--main-color-hover);
+    background-color: rgb(239, 239, 239);
     border-top: 0;
+    border-radius: 10px;
     padding: 20px;
     min-width: 200px;
     grid-area: checkout;
@@ -57,7 +58,7 @@
     width: 100%;
     background-color: black;
     color: white;
-    border-radius: 20px;
+    border-radius: 4px;
     padding-block: 10px;
     transition: background-color 0.3s ease-out;
 

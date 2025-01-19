@@ -36,9 +36,9 @@ const Slider = () => {
         />
       ))}
       <div className="Slider__info">
-        <h1 className="Slider__info__title">
-          Huge discounts on top products. Shop now!
-        </h1>
+        <h1 className="Slider__info__title">SALES</h1>
+        <h2 className="Slider__info__title bottom">UP TO 50%</h2>
+        <p className="Slider__info__text">ON SELECTED PRODUCTS</p>
         <Link className="Slider__info__btn" href={"/store"}>
           Shop Now
         </Link>

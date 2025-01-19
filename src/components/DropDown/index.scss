@@ -5,12 +5,12 @@
   @include mixins.flex(column, flex-start, flex-start);
   background-color: var(--main-color);
   transition: transform 0.2s ease-out;
-  transform: translateY(-310px);
+  transform: translateY(-100%);
   width: 100%;
   z-index: 3;
 
   &.active {
-    transform: translateY(0px);
+    transform: translateY(80px);
   }
 
   @include mixins.breakpoint(laptop) {

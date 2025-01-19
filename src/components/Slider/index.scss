@@ -1,9 +1,10 @@
 @use "../../assets/mixins.scss";
 
 .Slider {
-  position: relative;
+  position: sticky;
   height: calc(100vh - 80px);
-  margin-top: 80px;
+  top: 80px;
+  z-index: 0;
 
   &__img {
     @include mixins.position(absolute);
@@ -19,33 +20,36 @@
   }
 
   &__info {
-    @include mixins.flex(column, flex-start, center, 20px);
+    @include mixins.flex(column, flex-start, center);
     @include mixins.position(absolute, 50%, 50%);
     transform: translate(50%, -50%);
-    width: 300px;
     z-index: 2;
 
-    @include mixins.breakpoint(laptop) {
-      width: 450px;
-    }
-
     &__title {
-      font-size: 34px;
+      font-size: 118px;
       text-align: center;
       color: rgb(228, 30, 19);
+      line-height: 0.8;
 
-      @include mixins.breakpoint(laptop) {
-        font-size: 42px;
+      &.bottom {
+        font-size: 66px;
+        line-height: normal;
       }
+    }
+
+    &__text {
+      font-size: 22px;
+      color: white;
     }
 
     &__btn {
       color: white;
       background-color: black;
       padding: 20px;
-      border-radius: 50px;
+      border-radius: 4px;
       transition: background-color 0.3s ease-out;
       font-size: 22px;
+      margin-top: 20px;
 
       &:hover {
         background-color: var(--primary-btn-color-hover);

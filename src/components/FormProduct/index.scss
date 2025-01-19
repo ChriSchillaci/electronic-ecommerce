@@ -30,7 +30,11 @@
       color: white;
       background-color: black;
       padding-block: 10px;
-      border-radius: 20px;
+      border-radius: 4px;
+    }
+
+    #buy-btn {
+      background-color: var(--yellow);
     }
   }
 }

@@ -33,7 +33,7 @@ const httpGET = async <T>(
       url.searchParams.append("search", search);
     }
 
-    const res = await fetch(url);
+    const res = await fetch(url.toString());
 
     if (!res.ok) {
       statusNum = res.status;
@@ -47,7 +47,7 @@ const httpGET = async <T>(
     if (error instanceof Error) {
       return {
         status: statusNum,
-        message: `${error.message} httpGET`,
+        message: `${error} httpGET`,
       };
     }
 
