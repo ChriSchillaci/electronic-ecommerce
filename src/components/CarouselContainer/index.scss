@@ -6,7 +6,7 @@
   width: 100%;
 
   @include mixins.breakpoint(laptop) {
-    display: block;
+    @include mixins.flex(row, flex-start, center, 6px);
   }
 
   &__carousel {
@@ -17,20 +17,19 @@
     scroll-padding-left: 16px;
     overflow-x: scroll;
     width: 100%;
-    margin-left: -16px;
     padding: 16px;
 
     @include mixins.breakpoint(laptop) {
       @include mixins.flex(row, flex-start, flex-start, 24px);
-      scroll-padding-left: 24px;
       padding: 24px;
-      margin-left: -24px;
+      scroll-padding-left: 24px;
     }
   }
 
   &__btn {
     display: none;
     cursor: pointer;
+    min-width: 42px;
     border-radius: 50px;
     border: 1px solid var(--secondary-skeleton-color);
     transition: background-color 0.3s ease-out;
@@ -38,12 +37,6 @@
 
     @include mixins.breakpoint(laptop) {
       display: block;
-      @include mixins.position(absolute, 50%, 0);
-      transform: translateY(-50%);
-
-      &:first-child {
-        @include mixins.position(absolute, 50%, auto, auto, 0);
-      }
     }
 
     &:hover {
@@ -66,6 +59,7 @@
 
   &__mobile-btns {
     @include mixins.flex(row, normal, normal, 10px);
+    padding-right: 16px;
     place-self: end;
 
     @include mixins.breakpoint(laptop) {

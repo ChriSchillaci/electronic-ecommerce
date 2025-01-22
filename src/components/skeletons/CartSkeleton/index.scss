@@ -1,7 +1,7 @@
 @use "../../../assets/mixins.scss";
 
 .CartProduct {
-  &__img.skeleton {
+  &__img-container.skeleton {
     width: 120px;
     height: 120px;
     animation: skeleton-color 2s infinite;

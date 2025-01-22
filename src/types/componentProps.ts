@@ -22,6 +22,12 @@ interface DropDownProps extends NavBarProps {
   router: AppRouterInstance;
 }
 
+interface AuthBtnsProps {
+  classType?: string;
+  setIsDropDown?: Dispatch<SetStateAction<boolean>>;
+  setIsCategoryList?: Dispatch<SetStateAction<boolean>>;
+}
+
 interface CarouselCardsProps {
   products: SchemaProduct[];
   title: string;
@@ -82,6 +88,7 @@ interface CheckoutProps {
 export type {
   LayoutClientProps,
   NavBarProps,
+  AuthBtnsProps,
   CarouselCardsProps,
   CardProps,
   PaginationProps,

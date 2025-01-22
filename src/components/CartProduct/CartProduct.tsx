@@ -2,6 +2,7 @@ import type { CartProductProps } from "@/types/componentProps";
 import handleDeleteProduct from "@/utils/handleDeleteProduct";
 import InputQuantity from "../InputQuantity";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { RxCross1 } from "react-icons/rx";
 import { useAppDispatch, useAppSelector } from "@/utils/redux-store/hooks";
@@ -19,14 +20,22 @@ const CartProduct = ({ clientCartProd }: CartProductProps) => {
 
   return (
     <li id={id} className={`CartProduct ${isPending ? "active" : ""}`}>
-      <Image
-        className="CartProduct__img"
-        src={image}
-        alt="img"
-        width={120}
-        height={120}
-      />
-      <h3 className="CartProduct__title">{title}</h3>
+      <Link className="CartProduct__img-container" href={`/store/${id}`}>
+        <Image
+          className="CartProduct__img-container__img"
+          src={image}
+          alt="img"
+          width={120}
+          height={120}
+        />
+      </Link>
+      <Link
+        className="CartProduct__title-container__title"
+        href={`/store/${id}`}
+      >
+        <h3 className="CartProduct__title">{title}</h3>
+      </Link>
+
       <InputQuantity classType="Cart" id={id} quantity={quantity} />
       <h3 className="CartProduct__price">${price}</h3>
       <button

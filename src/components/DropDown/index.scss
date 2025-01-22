@@ -3,6 +3,7 @@
 .DropDown {
   @include mixins.position(fixed);
   @include mixins.flex(column, flex-start, flex-start);
+  min-height: calc(100vh - 80px);
   background-color: var(--main-color);
   transition: transform 0.2s ease-out;
   transform: translateY(-100%);
@@ -10,50 +11,46 @@
   z-index: 3;
 
   &.active {
-    transform: translateY(80px);
+    transform: translateY(0);
+
+    &.Home {
+      transform: translateY(80px);
+    }
   }
 
   @include mixins.breakpoint(laptop) {
     display: none;
   }
 
-  &__bg-opacity {
-    @include mixins.position(fixed, 0, auto, auto, 0);
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-    visibility: hidden;
-    background-color: rgba(0, 0, 0, 0);
-    transition: all 0.3s ease-out;
-
-    @include mixins.breakpoint(laptop) {
-      display: none;
-    }
-
-    &.active {
-      background-color: rgba(0, 0, 0, 0.4);
-      visibility: visible;
-    }
-  }
-
-  .link-container {
+  &__link-container {
     @include mixins.flex(row, normal, center, 10px);
     cursor: pointer;
     width: 100%;
     padding: 20px;
-    border-top: 1px solid var(--main-color-hover);
+
+    &:nth-child(3) {
+      @include mixins.flex(row, space-between, center);
+    }
 
     &:hover {
       background-color: var(--main-color-hover);
     }
+
+    &__icon {
+      font-size: 20px;
+      transition: transform 0.3s ease-out;
+
+      &.active {
+        transform: rotate(180deg);
+      }
+    }
   }
 
-  .categories-dropdown {
+  &__categories-dropdown {
     max-height: 0;
     overflow: hidden;
     width: 100%;
     background-color: var(--main-color);
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
     transition: max-height 0.3s ease-out;
 
     &__link {
@@ -62,8 +59,7 @@
       padding-block: 10px;
       padding-left: 20px;
       text-align: left;
-      background-color: black;
-      color: white;
+      background-color: var(--gray);
 
       &:hover {
         background-color: var(--main-color-hover);

@@ -31,10 +31,20 @@
       background-color: black;
       padding-block: 10px;
       border-radius: 4px;
+      transition: background-color 0.3s ease-out;
+
+      &:hover {
+        background-color: var(--primary-btn-color-hover);
+      }
     }
 
     #buy-btn {
       background-color: var(--yellow);
+      transition: background-color 0.3s ease-out;
+
+      &:hover {
+        background-color: var(--tertiary-btn-color-hover);
+      }
     }
   }
 }

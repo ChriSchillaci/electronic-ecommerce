@@ -40,7 +40,7 @@ const CarouselContainer = ({ products }: resProductsType) => {
       },
       {
         root: carouselElement,
-        threshold: 0.9,
+        threshold: 1,
       }
     );
 
@@ -71,14 +71,6 @@ const CarouselContainer = ({ products }: resProductsType) => {
       >
         <MdChevronLeft className="CarouselContainer__btn__icon" />
       </button>
-      <button
-        className={`CarouselContainer__btn`}
-        onClick={() => handleCarousel("next", carouselRef, setIsBtnClicked)}
-        disabled={isLastCardVisible}
-        aria-label="next"
-      >
-        <MdChevronRight className="CarouselContainer__btn__icon" />
-      </button>
 
       <div className="CarouselContainer__carousel" ref={carouselRef}>
         {products.map((product, idx) => {
@@ -92,6 +84,15 @@ const CarouselContainer = ({ products }: resProductsType) => {
           return <Card key={idx} product={product} cardRef={cardRef} />;
         })}
       </div>
+
+      <button
+        className={`CarouselContainer__btn`}
+        onClick={() => handleCarousel("next", carouselRef, setIsBtnClicked)}
+        disabled={isLastCardVisible}
+        aria-label="next"
+      >
+        <MdChevronRight className="CarouselContainer__btn__icon" />
+      </button>
 
       <div className="CarouselContainer__mobile-btns">
         <button

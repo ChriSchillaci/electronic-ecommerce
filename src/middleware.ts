@@ -1,9 +1,15 @@
 import { auth } from "@/app/auth";
-import { DEFAULT_REDIRECT, publicRoutes, credRoutes } from "./routes";
+import {
+  DEFAULT_REDIRECT,
+  publicRoutes,
+  credRoutes,
+  existingRoutes,
+} from "./routes";
 
 export default auth((req) => {
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
+  const isRouteValid = existingRoutes.includes(nextUrl.pathname);
   const isCredRoutes = credRoutes.includes(nextUrl.pathname);
   const isPublicRoute =
     publicRoutes.includes(nextUrl.pathname) ||
@@ -11,7 +17,7 @@ export default auth((req) => {
   if (isCredRoutes && isLoggedIn) {
     return Response.redirect(new URL(DEFAULT_REDIRECT, nextUrl));
   }
-  if (!isPublicRoute && !isLoggedIn && !isCredRoutes) {
+  if (!isPublicRoute && !isLoggedIn && !isCredRoutes && isRouteValid) {
     return Response.redirect(new URL("/login", nextUrl));
   }
 });

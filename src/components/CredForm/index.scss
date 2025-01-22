@@ -22,6 +22,7 @@
     padding-left: 10px;
     border-radius: 10px;
     background-color: var(--main-color);
+    box-shadow: var(--box-shadow-secondary);
   }
 
   &__submit {
@@ -46,5 +47,6 @@
 
   &__link {
     text-decoration: underline;
+    color: rgb(33, 98, 161);
   }
 }

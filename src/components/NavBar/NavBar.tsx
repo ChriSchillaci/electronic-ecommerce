@@ -13,7 +13,7 @@ import categoryMocks from "@/mocks/categoryMocks";
 import handleCategoryBtn from "@/utils/handleCategoryBtn";
 import handleSearchForm from "@/utils/handleSearchForm";
 import handleDropDown from "@/utils/handleDropDown";
-import { IoIosSearch } from "react-icons/io";
+import { IoIosSearch, IoIosArrowDown } from "react-icons/io";
 import "./index.scss";
 
 const NavBar = ({ session }: NavBarProps) => {
@@ -50,19 +50,21 @@ const NavBar = ({ session }: NavBarProps) => {
               <button className="categories-container__text__btn">
                 Categories
               </button>
-              <span className="arrow"></span>
+              <IoIosArrowDown className="arrow" />
             </div>
             <div className="categories-dropdown-laptop">
-              {categoryMocks.map((item, idx) => (
-                <button
-                  key={idx}
-                  className="categories-dropdown-laptop__link"
-                  value={item.value}
-                  onClick={(e) => handleCategoryBtn(e, router)}
-                >
-                  {item.text}
-                </button>
-              ))}
+              <div className="categories-dropdown-laptop__container">
+                {categoryMocks.map((item, idx) => (
+                  <button
+                    key={idx}
+                    className="categories-dropdown-laptop__container__link"
+                    value={item.value}
+                    onClick={(e) => handleCategoryBtn(e, router)}
+                  >
+                    {item.text}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>

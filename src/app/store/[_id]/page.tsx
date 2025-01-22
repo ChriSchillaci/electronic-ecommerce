@@ -3,6 +3,7 @@ import type { ParamsPromise } from "@/types/pagesProps";
 import type { CSSProperties } from "react";
 import { auth } from "@/app/auth";
 import { httpGET } from "@/utils/http";
+import Link from "next/link";
 import discountedPrice from "@/utils/discounted-price";
 import modifiedDate from "@/utils/modifiedDate";
 import ImageContainer from "@/components/ImageContainer";
@@ -69,13 +70,17 @@ export default async function Product({ params }: ParamsPromise) {
           <h1 className="Product__container__info__title">{title}</h1>
 
           <div className="Product__container__info__rating-container">
+            <span>{rating}</span>
             <div
               className="Product__container__info__rating-container__rating"
               style={{ "--rating": rating } as CSSProperties}
             ></div>
-            <p className="Product__container__info__rating-container__reviews">
-              {reviews.length}
-            </p>
+            <Link
+              href={"#reviews"}
+              className="Product__container__info__rating-container__reviews"
+            >
+              {`(${reviews.length})`}
+            </Link>
           </div>
 
           <div className="Product__container__info__price-container">
@@ -124,7 +129,7 @@ export default async function Product({ params }: ParamsPromise) {
         </div>
       </section>
 
-      <section className="Product__reviews">
+      <section id="reviews" className="Product__reviews">
         <h2 className="Product__reviews__title">Reviews</h2>
         <div className="Product__reviews__reviews-container">
           {reviews.map((review, idx) => (

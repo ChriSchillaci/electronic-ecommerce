@@ -73,12 +73,19 @@ const CredForm = ({ btnText }: CredFormProps) => {
           {isPending ? "Loading..." : btnText}
         </button>
       </form>
-      {isLoginPage && (
+      {isLoginPage ? (
         <p>
           Don{"'"}t have an account? Sign up{" "}
-          <span className="CredForm__link">
-            <Link href={"/register"}>here</Link>
-          </span>
+          <Link className="CredForm__link" href={"/register"}>
+            here
+          </Link>
+        </p>
+      ) : (
+        <p>
+          Already have an account? Sign in{" "}
+          <Link className="CredForm__link" href={"/login"}>
+            here
+          </Link>
         </p>
       )}
     </>

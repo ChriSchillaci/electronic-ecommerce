@@ -18,26 +18,31 @@
     place-items: center;
   }
 
-  &__img {
-    padding: 5px;
+  &__img-container {
     grid-area: image;
     border-radius: 15px;
-    background-color: white;
-    object-fit: contain;
     box-shadow: var(--box-shadow-primary);
 
     @include mixins.breakpoint(laptop) {
       grid-area: auto;
     }
+
+    &__img {
+      object-fit: contain;
+      padding: 5px;
+    }
   }
 
-  &__title {
+  &__title-container {
     grid-area: title;
-    font-size: 14px;
 
     @include mixins.breakpoint(laptop) {
       grid-area: auto;
       place-self: center start;
+    }
+
+    &__title {
+      font-size: 14px;
     }
   }
 

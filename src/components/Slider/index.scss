@@ -26,20 +26,29 @@
     z-index: 2;
 
     &__title {
-      font-size: 118px;
+      font-size: 88px;
       text-align: center;
       color: rgb(228, 30, 19);
       line-height: 0.8;
 
+      @include mixins.breakpoint(laptop) {
+        font-size: 118px;
+      }
+
       &.bottom {
-        font-size: 66px;
+        font-size: 50px;
         line-height: normal;
+
+        @include mixins.breakpoint(laptop) {
+          font-size: 66px;
+        }
       }
     }
 
     &__text {
-      font-size: 22px;
+      font-size: 14px;
       color: white;
+      font-weight: 600;
     }
 
     &__btn {

@@ -5,13 +5,13 @@
   @include mixins.flex(row, space-between, center, 16px);
   height: 80px;
   width: 100%;
-  padding-inline: 20px;
+  padding-inline: 16px;
   background-color: var(--main-color);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   z-index: 4;
 
   @include mixins.breakpoint(laptop) {
-    padding-inline: 40px;
+    padding-inline: 24px;
   }
 
   &__link-logo {
@@ -43,7 +43,6 @@
 
     .categories-container {
       position: relative;
-      cursor: pointer;
 
       &__text {
         @include mixins.flex(row, flex-start, center, 5px);
@@ -53,9 +52,6 @@
         }
 
         .arrow {
-          border-left: 4px solid transparent;
-          border-right: 4px solid transparent;
-          border-bottom: 8px solid black;
           transition: transform 0.3s ease-out;
         }
       }
@@ -64,39 +60,24 @@
         @include mixins.position(absolute, auto, 50%);
         opacity: 0;
         visibility: hidden;
-        background-color: var(--main-color);
-        border-radius: 4px;
-        box-shadow: var(--box-shadow-secondary);
         transform: translate(50%, 70px);
         transition: all 0.3s ease-out;
+        width: 200px;
+        padding-top: 20px;
         z-index: 1;
 
-        // &::before {
-        //   content: "";
-        //   position: absolute;
-        //   top: -10px;
-        //   left: 50%;
-        //   transform: translateX(-50%) rotate(45deg);
-        //   border-top: 20px solid var(--main-color-hover);
-        //   border-right: 20px solid transparent;
-        // }
-
-        // &::after {
-        //   content: "";
-        //   position: absolute;
-        //   top: -10px;
-        //   left: 50%;
-        //   transform: translateX(-50%) rotate(45deg);
-        //   border-top: 20px solid var(--main-color);
-        //   border-right: 20px solid transparent;
-        //   z-index: 1;
-        // }
-
-        &__link {
-          cursor: pointer;
+        &__container {
+          background-color: var(--main-color);
+          border-radius: 4px;
+          box-shadow: var(--box-shadow-secondary);
           width: 100%;
-          text-align: left;
-          padding: 10px 16px;
+
+          &__link {
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            padding: 10px 16px;
+          }
         }
       }
 
@@ -111,7 +92,7 @@
         .categories-dropdown-laptop {
           opacity: 1;
           visibility: visible;
-          transform: translate(50%, 10px); // 15px with arrow
+          transform: translate(50%, 0);
         }
       }
     }

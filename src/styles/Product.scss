@@ -41,6 +41,10 @@
             -webkit-text-fill-color: transparent;
           }
         }
+
+        &__reviews {
+          color: rgb(33, 98, 161);
+        }
       }
 
       &__price-container {
@@ -96,7 +100,8 @@
   }
 
   &__reviews {
-    margin-top: 20px;
+    padding-top: 100px; // Trick to scroll with an extra offset
+    margin-top: -80px; //
 
     &__title {
       margin-bottom: 20px;

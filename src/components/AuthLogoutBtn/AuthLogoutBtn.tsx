@@ -19,7 +19,7 @@ const AuthLogoutBtn = ({
       }
     >
       <button className={`AuthLogoutBtn__btn ${classType}`} type="submit">
-        Logout
+        Sign out
       </button>
     </form>
   );

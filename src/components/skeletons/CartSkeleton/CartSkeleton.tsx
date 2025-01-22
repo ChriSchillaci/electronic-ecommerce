@@ -8,7 +8,7 @@ const CartSkeleton = () => {
       {blankCartCards.map((_, idx) => {
         return (
           <div key={idx} className="CartProduct">
-            <div className="CartProduct__img skeleton" />
+            <div className="CartProduct__img-container skeleton" />
             <h3 className="CartProduct__title skeleton"></h3>
             <div className="InputQuantity Cart skeleton"></div>
             <h3 className="CartProduct__price skeleton"></h3>
