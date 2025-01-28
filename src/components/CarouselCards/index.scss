@@ -1,13 +1,15 @@
 @use "../../assets/mixins.scss";
 
 .CarouselCards {
+  max-width: 1440px;
+  margin-inline: auto;
   @include mixins.flex(column, flex-start, flex-start, 40px);
   width: 100%;
   padding-block: 60px;
   background-color: white;
 
   @include mixins.breakpoint(laptop) {
-    padding-inline: 24px;
+    padding-inline: 40px;
     padding-block: 80px;
   }
 

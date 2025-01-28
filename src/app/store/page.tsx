@@ -29,7 +29,7 @@ export default async function Store({ searchParams }: StoreProps) {
       <div className="Store__main-container">
         <div className="sort-container--category-title">
           <h1 className="category-title">
-            {!category ? "all products" : category}
+            {!category ? "all products" : category.replace("-", " ")}
           </h1>
           <div className="sort-container">
             <label htmlFor="filter">Sort by:</label>

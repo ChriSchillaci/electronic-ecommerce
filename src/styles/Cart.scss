@@ -13,7 +13,7 @@
   &__products-details {
     grid-area: details;
     display: none;
-    grid-template-columns: 120px repeat(3, 1fr) 20px;
+    grid-template-columns: 120px repeat(3, 1fr) 40px;
     column-gap: 15px;
     border-bottom: 2px solid rgb(147, 147, 147);
     padding-bottom: 10px;

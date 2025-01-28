@@ -7,6 +7,22 @@ import "./index.scss";
 const Footer = () => {
   return (
     <footer className="Footer">
+      <div className="Footer__news-container">
+        <label className="Footer__news-container__label" htmlFor="subscribe">
+          Subscribe to our news
+        </label>
+        <div className="Footer__news-container__input-btn">
+          <input
+            name="subscribe"
+            id="subscribe"
+            className="Footer__news-container__input-btn__input"
+            placeholder="Enter your email"
+          />
+          <Link className="Footer__news-container__input-btn__btn" href={"/"}>
+            Subscribe
+          </Link>
+        </div>
+      </div>
       <div className="Footer__logo-socials">
         <Link href={"/"}>
           <Image
@@ -33,24 +49,13 @@ const Footer = () => {
               <Link
                 key={idxLink}
                 className="Footer__info__links__link"
-                href={"/"}
+                href={link.link}
               >
                 {link.text}
               </Link>
             ))}
           </div>
         ))}
-        <div className="Footer__info__links">
-          <h2 className="Footer__info__links__title">Subscribe</h2>
-          <input
-            className="Footer__info__links__input"
-            placeholder="Enter your email"
-            aria-label="Enter your email"
-          />
-          <Link href={"/"} className="Footer__info__links__btn">
-            Subscribe
-          </Link>
-        </div>
       </div>
       <p className="Footer__signature">Made by Christian Schillaci</p>
     </footer>

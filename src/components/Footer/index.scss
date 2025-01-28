@@ -5,13 +5,66 @@
   background-color: black;
   color: white;
 
+  &__news-container {
+    @include mixins.flex(column, flex-start, flex-start, 10px);
+    background-color: var(--yellow);
+    border-radius: 0;
+    width: 100%;
+
+    margin-inline: auto;
+    padding: 16px;
+    z-index: 1;
+
+    @include mixins.breakpoint(laptop) {
+      @include mixins.position(absolute, 0, 50%);
+      @include mixins.flex(row, space-between, center);
+      transform: translate(50%, -50%);
+      width: calc(100% - 80px); // Footer's padding-inline
+      padding: 40px;
+      border-radius: 10px;
+    }
+
+    &__label {
+      font-size: 24px;
+      color: black;
+    }
+
+    &__input-btn {
+      @include mixins.flex(column, flex-start, flex-start, 16px);
+
+      @include mixins.breakpoint(laptop) {
+        @include mixins.flex(row, flex-start, center, 16px);
+      }
+
+      &__input {
+        padding-block: 6px;
+        padding-left: 6px;
+        border-radius: 4px;
+        background-color: white;
+        color: black;
+      }
+
+      &__btn {
+        padding: 10px;
+        background-color: black;
+        color: white;
+        border-radius: 4px;
+        transition: background-color 0.3s ease-out;
+
+        &:hover {
+          background-color: var(--primary-btn-color-hover);
+        }
+      }
+    }
+  }
+
   &__logo-socials {
     @include mixins.flex(row, space-between, center);
-    padding: 20px;
-    border-bottom: 1px solid var(--main-color);
+    padding: 16px;
 
     @include mixins.breakpoint(laptop) {
       padding-inline: 40px;
+      padding-top: 76px;
     }
 
     &__logo {
@@ -39,7 +92,8 @@
 
   &__info {
     @include mixins.flex(column, flex-start, flex-start, 20px);
-    padding: 20px;
+    padding-inline: 16px;
+    padding-bottom: 16px;
 
     @include mixins.breakpoint(laptop) {
       @include mixins.flex(row, space-between, flex-start);
@@ -51,7 +105,6 @@
 
       &__title {
         padding-bottom: 5px;
-        border-bottom: 2px solid var(--main-color);
       }
 
       &__link {
@@ -62,27 +115,6 @@
         &:hover {
           border-bottom: 2px solid var(--main-color);
         }
-      }
-
-      &__input {
-        padding-block: 6px;
-        padding-left: 6px;
-        border: 2px solid var(--main-color);
-        border-radius: 5px;
-        color: white;
-
-        &:focus {
-          outline: none;
-        }
-      }
-
-      &__btn {
-        text-align: center;
-        color: inherit;
-        border: 1px solid var(--main-color);
-        width: 100%;
-        padding-block: 10px;
-        border-radius: 4px;
       }
     }
   }

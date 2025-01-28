@@ -19,6 +19,11 @@
     }
 
     &__link {
+      &:hover {
+        .Card__link__img.skeleton {
+          transform: none;
+        }
+      }
       &__img.skeleton {
         margin-inline: auto;
         object-fit: none;
@@ -26,10 +31,6 @@
         height: 200px;
         border-radius: 10px;
         animation: skeleton-color 2s infinite;
-
-        &:hover {
-          transform: none;
-        }
 
         @include mixins.breakpoint(desktop) {
           width: 172px;

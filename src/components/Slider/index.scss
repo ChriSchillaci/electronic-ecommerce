@@ -1,10 +1,14 @@
 @use "../../assets/mixins.scss";
 
 .Slider {
-  position: sticky;
+  position: relative;
   height: calc(100vh - 80px);
   top: 80px;
   z-index: 0;
+
+  @include mixins.breakpoint(laptop) {
+    position: sticky;
+  }
 
   &__img {
     @include mixins.position(absolute);

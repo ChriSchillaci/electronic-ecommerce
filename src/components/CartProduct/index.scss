@@ -13,7 +13,7 @@
   }
 
   @include mixins.breakpoint(laptop) {
-    grid-template-columns: 120px repeat(3, 1fr) 20px;
+    grid-template-columns: 120px repeat(3, 1fr) 40px;
     grid-template-areas: none;
     place-items: center;
   }
@@ -58,9 +58,10 @@
   }
 
   &__icon {
+    cursor: pointer;
     grid-area: cross;
     place-self: start end;
-    cursor: pointer;
+    font-size: 40px;
 
     @include mixins.breakpoint(laptop) {
       place-self: auto;

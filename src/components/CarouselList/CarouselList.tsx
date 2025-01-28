@@ -26,27 +26,31 @@ const CarouselList = async () => {
         title={"Popular Products"}
         products={popularProducts.products}
       />
-      <section className="category-container">
-        {categoryImages.map((item, idx) => (
-          <div key={idx} className="category-box">
-            <div className="category-info">
-              <h1 className="category-title">{item.text}</h1>
-              <Link
-                href={`/store?category=${item.query}`}
-                className="category-btn"
-              >
-                Browse
-              </Link>
+      <section className="categories-section">
+        <div className="categories-section__container">
+          {categoryImages.map((item, idx) => (
+            <div key={idx} className="categories-section__container__box">
+              <div className="categories-section__container__box__info">
+                <h1 className="categories-section__container__box__info__title">
+                  {item.text}
+                </h1>
+                <Link
+                  href={`/store?category=${item.query}`}
+                  className="categories-section__container__box__info__btn"
+                >
+                  Browse
+                </Link>
+              </div>
+              <Image
+                className="categories-section__container__box__img"
+                src={item.img}
+                alt="img"
+                width={200}
+                height={200}
+              />
             </div>
-            <Image
-              className="category-img"
-              src={item.img}
-              alt="img"
-              width={200}
-              height={200}
-            />
-          </div>
-        ))}
+          ))}
+        </div>
       </section>
       <CarouselCards title={"On Sale"} products={saleProducts.products} />
     </>

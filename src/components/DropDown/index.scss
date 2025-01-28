@@ -3,7 +3,7 @@
 .DropDown {
   @include mixins.position(fixed);
   @include mixins.flex(column, flex-start, flex-start);
-  min-height: calc(100vh - 80px);
+  min-height: calc(100dvh - 80px);
   background-color: var(--main-color);
   transition: transform 0.2s ease-out;
   transform: translateY(-100%);
@@ -25,19 +25,40 @@
   &__link-container {
     @include mixins.flex(row, normal, center, 10px);
     cursor: pointer;
-    width: 100%;
+    color: var(--blue);
     padding: 20px;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 2.5px;
+    transition: text-decoration-color 0.3s ease-out;
+    text-decoration-skip-ink: none;
 
     &:nth-child(3) {
-      @include mixins.flex(row, space-between, center);
+      @include mixins.flex(row, flex-start, center, 10px);
+    }
+
+    &:nth-child(5) {
+      text-decoration: none;
+
+      p:first-child {
+        text-decoration: underline;
+        text-decoration-color: transparent;
+        text-decoration-thickness: 2.5px;
+        transition: text-decoration-color 0.3s ease-out;
+
+        &:hover {
+          text-decoration-color: var(--blue);
+        }
+      }
     }
 
     &:hover {
-      background-color: var(--main-color-hover);
+      text-decoration-color: var(--blue);
     }
 
     &__icon {
       font-size: 20px;
+      color: black;
       transition: transform 0.3s ease-out;
 
       &.active {
@@ -59,11 +80,11 @@
       padding-block: 10px;
       padding-left: 20px;
       text-align: left;
+      color: var(--blue);
       background-color: var(--gray);
 
       &:hover {
         background-color: var(--main-color-hover);
-        color: black;
       }
     }
 

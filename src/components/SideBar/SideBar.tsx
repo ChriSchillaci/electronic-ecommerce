@@ -22,7 +22,7 @@ const SideBar = () => {
       <div
         className={`side-menu-opacity ${isSideBar ? "active" : ""}`}
         onClick={() => handleDropDown(setIsSideBar)}
-      ></div>
+      />
       <div className={`SideBar ${isSideBar ? "active" : ""}`}>
         <RxCross1
           className="SideBar__close-icon"

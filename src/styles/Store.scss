@@ -11,7 +11,7 @@
     width: 100%;
 
     @include mixins.breakpoint(laptop) {
-      @include mixins.flex(column, normal, normal, 20px);
+      @include mixins.flex(column, normal, normal, 40px);
       min-height: calc(
         100vh - 80px - 40px - 40px
       ); // navbar - main layout's padding top - main layout's padding bottom

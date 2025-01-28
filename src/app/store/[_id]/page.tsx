@@ -4,6 +4,7 @@ import type { CSSProperties } from "react";
 import { auth } from "@/app/auth";
 import { httpGET } from "@/utils/http";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import discountedPrice from "@/utils/discounted-price";
 import modifiedDate from "@/utils/modifiedDate";
 import ImageContainer from "@/components/ImageContainer";
@@ -46,6 +47,11 @@ export default async function Product({ params }: ParamsPromise) {
   );
 
   const { product } = data as resProductType;
+
+  if (!product) {
+    notFound();
+  }
+
   const {
     title,
     price,

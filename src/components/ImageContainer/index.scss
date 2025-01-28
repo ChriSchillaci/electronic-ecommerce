@@ -21,7 +21,8 @@
     overflow-x: scroll;
     padding: 16px;
     margin-left: -16px;
-    width: 100%;
+    scrollbar-width: none;
+    width: fill-available;
 
     @include mixins.breakpoint(laptop) {
       overflow-x: hidden;

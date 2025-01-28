@@ -17,7 +17,7 @@ const socialLinks = [
       <FaSquareXTwitter className="Footer__logo-socials__socials__social" />
     ),
     link: "/",
-    label: "Twitter",
+    label: "X",
   },
   {
     icon: <FaGithubSquare className="Footer__logo-socials__socials__social" />,

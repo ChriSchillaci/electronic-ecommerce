@@ -4,7 +4,8 @@
   @include mixins.position(fixed, 0, auto, auto, -40vh);
   width: 40vh;
   height: 100vh;
-  padding-top: 10px;
+  padding-top: 16px;
+  padding-left: 16px;
   z-index: 4;
   background-color: var(--main-color);
   transition: all 0.3s ease-out;
@@ -16,12 +17,12 @@
     z-index: 0;
     transition: none;
     padding-top: 0;
+    padding-left: 0;
   }
 
   &__close-icon {
     cursor: pointer;
-    font-size: 24px;
-    margin-left: 5px;
+    font-size: 40px;
 
     @include mixins.breakpoint(laptop) {
       display: none;
@@ -29,7 +30,6 @@
   }
 
   &__category-title {
-    padding-left: 16px;
     margin-block: 20px;
 
     @include mixins.breakpoint(laptop) {
@@ -39,15 +39,19 @@
   }
 
   &__categories {
-    padding-left: 16px;
     @include mixins.flex(column, flex-start, flex-start, 10px);
-
-    @include mixins.breakpoint(laptop) {
-      padding-left: 0;
-    }
 
     &__category {
       cursor: pointer;
+      color: var(--blue);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-decoration-color: transparent;
+      transition: text-decoration-color 0.3s ease-out;
+
+      &:hover {
+        text-decoration-color: var(--blue);
+      }
     }
   }
 

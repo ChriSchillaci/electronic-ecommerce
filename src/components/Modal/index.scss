@@ -19,7 +19,7 @@
     @include mixins.flex(column, center, center, 15px);
     background-color: white;
     max-width: 350px;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 20px;
     transform: translateY(-20px);
     transition: transform 0.3s ease-out;

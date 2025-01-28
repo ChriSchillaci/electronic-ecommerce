@@ -11,7 +11,7 @@
   z-index: 4;
 
   @include mixins.breakpoint(laptop) {
-    padding-inline: 24px;
+    padding-inline: 40px;
   }
 
   &__link-logo {
@@ -76,6 +76,7 @@
             cursor: pointer;
             width: 100%;
             text-align: left;
+            color: var(--blue);
             padding: 10px 16px;
           }
         }

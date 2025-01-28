@@ -13,7 +13,9 @@ const Slider = () => {
 
   useEffect(() => {
     timerId.current = window.setInterval(() => {
-      index === 3 ? setIndex(0) : setIndex((prev) => prev + 1);
+      index === sliderImages.length - 1
+        ? setIndex(0)
+        : setIndex((prev) => prev + 1);
     }, 5000);
 
     return () => {

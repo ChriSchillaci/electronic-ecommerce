@@ -1,25 +1,24 @@
 @use "../../assets/mixins.scss";
 
 .AuthLogoutBtn {
-  &.dropdown {
-    display: block;
-    width: 100%;
-  }
-
   &__btn {
     cursor: pointer;
     color: rgb(226, 35, 35);
 
     &.dropdown {
       text-align: left;
-      width: 100%;
       color: rgb(226, 35, 35);
       background-color: unset;
       border-radius: unset;
       padding: 20px;
+      text-decoration: underline;
+      text-decoration-thickness: 2.5px;
+      text-decoration-color: transparent;
+      transition: text-decoration-color 0.3s ease-out;
+      text-decoration-skip-ink: none;
 
       &:hover {
-        background-color: var(--main-color-hover);
+        text-decoration-color: rgb(226, 35, 35);
       }
     }
   }
