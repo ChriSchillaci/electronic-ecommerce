@@ -11,7 +11,7 @@
   box-shadow: var(--box-shadow-primary);
   overflow: hidden;
   transition: all 0.3s ease-out;
-  transform: translateY(150%);
+  transform: translateY(90px);
   z-index: 4;
 
   @include mixins.breakpoint(laptop) {

@@ -11,9 +11,11 @@
   .Card {
     &.skeleton {
       height: 336px;
+      padding-top: 16px;
       @include mixins.flex(column, space-between, center);
 
       @include mixins.breakpoint(desktop) {
+        padding-top: 24px;
         height: 375px;
       }
     }
