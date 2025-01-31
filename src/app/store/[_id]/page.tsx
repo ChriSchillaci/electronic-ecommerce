@@ -1,6 +1,7 @@
 import type { resProductsType, resProductType } from "@/types/resTypes";
 import type { ParamsPromise } from "@/types/pagesProps";
 import type { CSSProperties } from "react";
+import type { Metadata } from "next";
 import { auth } from "@/app/auth";
 import { httpGET } from "@/utils/http";
 import Link from "next/link";
@@ -12,6 +13,34 @@ import FormProduct from "@/components/FormProduct";
 import { MdLocalShipping, MdKeyboardReturn } from "react-icons/md";
 import { HiBadgeCheck } from "react-icons/hi";
 import "../../../styles/Product.scss";
+
+export async function generateMetadata({
+  params,
+}: ParamsPromise): Promise<Metadata> {
+  const { _id } = await params;
+
+  const data = await httpGET<resProductType>(
+    null,
+    null,
+    null,
+    null,
+    "1",
+    "1",
+    _id
+  );
+
+  const { product } = data as resProductType;
+
+  if (!product) {
+    return {
+      title: "Product",
+    };
+  }
+
+  return {
+    title: product.title,
+  };
+}
 
 // The dynamic param not included in generateStaticParams will return a 404 page
 export const dynamicParams = false;

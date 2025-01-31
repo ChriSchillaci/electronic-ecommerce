@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import CartProducts from "@/components/CartProducts";
 import Checkout from "@/components/Checkout";
 import Modal from "@/components/Modal";
 import "../../styles/Cart.scss";
+
+export const metadata: Metadata = {
+  title: "Cart",
+  description: "...",
+};
 
 export default async function Cart() {
   return (

@@ -1,11 +1,17 @@
 import type { resProductsType } from "@/types/resTypes";
 import type { StoreProps } from "@/types/pagesProps";
+import type { Metadata } from "next";
 import { httpGET } from "@/utils/http";
 import Card from "@/components/Card";
 import SelectFilter from "@/components/SelectFilter";
 import Pagination from "@/components/Pagination";
 import SideBar from "@/components/SideBar";
 import "../../styles/Store.scss";
+
+export const metadata: Metadata = {
+  title: "Store",
+  description: "...",
+};
 
 export default async function Store({ searchParams }: StoreProps) {
   const sort = searchParams?.sort ?? null;

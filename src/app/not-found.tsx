@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { MdError } from "react-icons/md";
 import "@/styles/NotFound.scss";
+
+export const metadata: Metadata = {
+  title: "Not Found",
+  description: "...",
+};
 
 export default function NotFound() {
   return (

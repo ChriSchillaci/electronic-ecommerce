@@ -10,7 +10,7 @@
   box-shadow: var(--box-shadow-primary);
 
   &__link {
-    @include mixins.flex(column, space-between, center, 16px);
+    @include mixins.flex(column, space-between, center);
     height: 100%;
 
     &:hover {
@@ -20,7 +20,7 @@
     }
 
     @include mixins.breakpoint(laptop) {
-      @include mixins.flex(column, space-between, center, 24px);
+      @include mixins.flex(column, space-between, center);
     }
 
     &__sale {
@@ -40,10 +40,12 @@
       width: 100%;
       object-fit: contain;
       transition: transform 0.3s ease-out;
-      padding: 16px;
+      padding-inline: 16px;
+      padding-top: 16px;
 
       @include mixins.breakpoint(laptop) {
-        padding: 24px;
+        padding-inline: 24px;
+        padding-top: 24px;
       }
     }
 
@@ -51,6 +53,7 @@
       @include mixins.flex(column, flex-start, flex-start, 5px);
       position: relative;
       padding: 16px;
+      background-color: white;
       z-index: 1;
 
       @include mixins.breakpoint(laptop) {
