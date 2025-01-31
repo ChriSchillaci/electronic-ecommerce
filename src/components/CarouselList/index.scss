@@ -8,13 +8,13 @@
 
   @include mixins.breakpoint(laptop) {
     padding-block: 80px;
-    padding-inline: 24px;
+    padding-inline: 40px;
   }
 
   &__container {
     display: grid;
     gap: 16px;
-    max-width: 1440px;
+    max-width: 1360px;
     margin-inline: auto;
 
     @include mixins.breakpoint(laptop) {
@@ -42,6 +42,7 @@
         }
 
         &__title {
+          font-weight: 600;
           font-size: 40px;
           text-align: center;
 

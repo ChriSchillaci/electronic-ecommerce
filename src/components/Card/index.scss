@@ -5,14 +5,9 @@
   min-width: 220px;
   border-radius: 10px;
   background-color: white;
-  padding: 16px;
   scroll-snap-align: start;
   overflow: hidden;
   box-shadow: var(--box-shadow-primary);
-
-  @include mixins.breakpoint(laptop) {
-    padding: 24px;
-  }
 
   &__link {
     @include mixins.flex(column, space-between, center, 16px);
@@ -29,7 +24,7 @@
     }
 
     &__sale {
-      @include mixins.position(absolute, auto, auto, auto, 16px);
+      @include mixins.position(absolute, 16px, auto, auto, 16px);
       padding: 3px 5px;
       border-radius: 20px;
       background-color: rgb(228, 30, 19);
@@ -37,22 +32,33 @@
       z-index: 1;
 
       @include mixins.breakpoint(laptop) {
-        @include mixins.position(absolute, auto, auto, auto, 24px);
+        @include mixins.position(absolute, 24px, auto, auto, 24px);
       }
     }
 
     &__img {
-      width: auto;
+      width: 100%;
       object-fit: contain;
       transition: transform 0.3s ease-out;
+      padding: 16px;
+
+      @include mixins.breakpoint(laptop) {
+        padding: 24px;
+      }
     }
 
     &__container {
       @include mixins.flex(column, flex-start, flex-start, 5px);
       position: relative;
+      padding: 16px;
       z-index: 1;
 
+      @include mixins.breakpoint(laptop) {
+        padding: 24px;
+      }
+
       &__title {
+        font-weight: 600;
         font-size: 14px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
@@ -82,7 +88,7 @@
         @include mixins.flex(row, flex-start, baseline, 6px);
 
         &__price {
-          font-weight: bold;
+          font-weight: 600;
           font-size: 13px;
 
           @include mixins.breakpoint(laptop) {
@@ -101,7 +107,7 @@
         }
 
         &__discounted-price {
-          font-weight: bold;
+          font-weight: 600;
           font-size: 13px;
 
           @include mixins.breakpoint(laptop) {

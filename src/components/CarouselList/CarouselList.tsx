@@ -31,9 +31,9 @@ const CarouselList = async () => {
           {categoryImages.map((item, idx) => (
             <div key={idx} className="categories-section__container__box">
               <div className="categories-section__container__box__info">
-                <h1 className="categories-section__container__box__info__title">
+                <h2 className="categories-section__container__box__info__title">
                   {item.text}
-                </h1>
+                </h2>
                 <Link
                   href={`/store?category=${item.query}`}
                   className="categories-section__container__box__info__btn"

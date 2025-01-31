@@ -15,6 +15,7 @@
 
       &__title {
         font-size: 24px;
+        font-weight: 600;
 
         @include mixins.breakpoint(laptop) {
           font-size: 34px;
@@ -86,6 +87,7 @@
 
         &__title {
           font-size: 22px;
+          font-weight: 600;
         }
 
         &__policy-container {
@@ -105,6 +107,7 @@
 
     &__title {
       margin-bottom: 20px;
+      font-weight: 600;
     }
 
     &__reviews-container {
@@ -112,11 +115,15 @@
 
       &__review {
         width: 100%;
-        border-bottom: 1px solid rgb(176, 176, 176);
+        border-bottom: 1px solid var(--gray);
         padding-bottom: 15px;
 
         &__name-date {
           @include mixins.flex(row, flex-start, center, 10px);
+
+          &__name {
+            font-weight: 600;
+          }
         }
 
         &__rating {

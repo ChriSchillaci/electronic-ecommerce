@@ -22,7 +22,7 @@
 
   &__close-icon {
     cursor: pointer;
-    font-size: 40px;
+    font-size: 24px;
 
     @include mixins.breakpoint(laptop) {
       display: none;
@@ -43,14 +43,14 @@
 
     &__category {
       cursor: pointer;
-      color: var(--blue);
+      color: black;
       text-decoration: underline;
       text-decoration-thickness: 2px;
       text-decoration-color: transparent;
       transition: text-decoration-color 0.3s ease-out;
 
       &:hover {
-        text-decoration-color: var(--blue);
+        text-decoration-color: black;
       }
     }
   }

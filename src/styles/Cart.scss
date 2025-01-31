@@ -7,15 +7,14 @@
     display: grid;
     grid-template-areas: "details details" "products checkout";
     grid-template-columns: 1fr;
-    column-gap: 20px;
   }
 
   &__products-details {
     grid-area: details;
     display: none;
-    grid-template-columns: 120px repeat(3, 1fr) 40px;
+    grid-template-columns: 120px repeat(3, 1fr) 24px;
     column-gap: 15px;
-    border-bottom: 2px solid rgb(147, 147, 147);
+    border-bottom: 2px solid var(--gray);
     padding-bottom: 10px;
 
     @include mixins.breakpoint(laptop) {
@@ -28,11 +27,13 @@
     }
 
     &__product {
+      font-weight: 600;
       grid-column: span 2;
     }
 
     &__quantity,
     &__price {
+      font-weight: 600;
       place-self: start;
     }
   }

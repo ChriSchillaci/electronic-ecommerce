@@ -31,6 +31,10 @@ const footerSections = [
         text: "Our Suppliers",
         link: "/",
       },
+      {
+        text: "Channel Partners",
+        link: "/",
+      },
     ],
   },
   {
@@ -58,11 +62,19 @@ const footerSections = [
         link: "https://www.linkedin.com/in/christian-schillaci-61ba2b26a/",
       },
       {
+        text: "X",
+        link: "/",
+      },
+      {
         text: "GitHub",
         link: "https://github.com/ChriSchillaci",
       },
       {
         text: "Instagram",
+        link: "/",
+      },
+      {
+        text: "Facebook",
         link: "/",
       },
     ],

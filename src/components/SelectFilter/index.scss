@@ -1,8 +1,9 @@
 .SelectFilter {
+  cursor: pointer;
   width: 100px;
   border: 1px solid black;
+  border-radius: 4px;
   padding: 5px;
-  cursor: pointer;
 
   &:focus {
     outline: none;

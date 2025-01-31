@@ -10,7 +10,7 @@
     background-color: var(--yellow);
     border-radius: 0;
     width: 100%;
-
+    max-width: 1360px; // 1440px - main layout's padding inline
     margin-inline: auto;
     padding: 16px;
     z-index: 1;
@@ -26,30 +26,45 @@
 
     &__label {
       font-size: 24px;
+      font-weight: 600;
       color: black;
     }
 
     &__input-btn {
+      width: 100%;
       @include mixins.flex(column, flex-start, flex-start, 16px);
 
       @include mixins.breakpoint(laptop) {
+        width: auto;
         @include mixins.flex(row, flex-start, center, 16px);
       }
 
       &__input {
-        padding-block: 6px;
+        width: 100%;
+        height: 35px;
         padding-left: 6px;
         border-radius: 4px;
         background-color: white;
         color: black;
+        box-shadow: var(--box-shadow-secondary);
+
+        @include mixins.breakpoint(laptop) {
+          width: auto;
+        }
       }
 
       &__btn {
+        width: 100%;
+        text-align: center;
         padding: 10px;
         background-color: black;
         color: white;
         border-radius: 4px;
         transition: background-color 0.3s ease-out;
+
+        @include mixins.breakpoint(laptop) {
+          width: auto;
+        }
 
         &:hover {
           background-color: var(--primary-btn-color-hover);
@@ -60,6 +75,8 @@
 
   &__logo-socials {
     @include mixins.flex(row, space-between, center);
+    max-width: 1440px;
+    margin-inline: auto;
     padding: 16px;
 
     @include mixins.breakpoint(laptop) {
@@ -80,7 +97,7 @@
         transition: color 0.3s ease-out;
 
         &:hover {
-          color: var(--secondary-btn-color-hover);
+          color: var(--quaternary-btn-color-hover);
         }
 
         @include mixins.breakpoint(laptop) {
@@ -91,17 +108,25 @@
   }
 
   &__info {
-    @include mixins.flex(column, flex-start, flex-start, 20px);
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 24px;
+    max-width: 1440px;
+    margin-inline: auto;
     padding-inline: 16px;
     padding-bottom: 16px;
 
+    @include mixins.breakpoint(tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     @include mixins.breakpoint(laptop) {
-      @include mixins.flex(row, space-between, flex-start);
+      grid-template-columns: repeat(4, 1fr);
       padding-inline: 40px;
     }
 
     &__links {
-      @include mixins.flex(column, flex-start, flex-start, 20px);
+      @include mixins.flex(column, flex-start, flex-start, 8px);
 
       &__title {
         padding-bottom: 5px;
@@ -121,7 +146,8 @@
 
   &__signature {
     text-align: center;
-    background-color: var(--main-color);
+    font-weight: 600;
+    background-color: var(--yellow);
     color: black;
     padding-block: 4px;
   }

@@ -15,20 +15,26 @@ const CartProducts = () => {
   }, []);
 
   return (
-    <ul className="CartProducts">
+    <>
       {clientCart.length ? (
-        clientCart.map((clientCartProd) => (
-          <CartProduct
-            key={clientCartProd.id}
-            clientCartProd={clientCartProd}
-          />
-        ))
+        <ul className="CartProducts">
+          {clientCart.map((clientCartProd) => (
+            <CartProduct
+              key={clientCartProd.id}
+              clientCartProd={clientCartProd}
+            />
+          ))}
+        </ul>
       ) : isLoading ? (
-        <CartSkeleton />
+        <ul className="CartProducts">
+          <CartSkeleton />
+        </ul>
       ) : (
-        <li className="CartProducts__empty-cart">The cart is empty</li>
+        <div className="CartProducts">
+          <p className="CartProducts__empty-cart">The cart is empty</p>
+        </div>
       )}
-    </ul>
+    </>
   );
 };
 

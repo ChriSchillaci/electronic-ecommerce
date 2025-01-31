@@ -26,76 +26,84 @@ const NavBar = ({ session }: NavBarProps) => {
   return (
     <>
       <nav className="NavBar">
-        <Link className="NavBar__link-logo" href={"/"}>
-          <Image
-            className="NavBar__link-logo__logo"
-            src="/images/logo.png"
-            alt="logo"
-            width={50}
-            height={50}
-          />
-        </Link>
-        <div className="NavBar__links">
-          <Link href={"/"}>
-            <Image src="/images/logo.png" alt="logo" width={50} height={50} />
+        <div className="NavBar__container">
+          <Link className="NavBar__container__link-logo" href={"/"}>
+            <Image
+              className="NavBar__container__link-logo__logo"
+              src="/images/logo.png"
+              alt="logo"
+              width={50}
+              height={50}
+            />
           </Link>
-          <Link className="NavBar__links__link" href={"/"}>
-            Home
-          </Link>
-          <Link className="NavBar__links__link" href={"/store"}>
-            Store
-          </Link>
-          <div className="categories-container">
-            <div className="categories-container__text">
-              <button className="categories-container__text__btn">
-                Categories
-              </button>
-              <IoIosArrowDown className="arrow" />
-            </div>
-            <div className="categories-dropdown-laptop">
-              <div className="categories-dropdown-laptop__container">
-                {categoryMocks.map((item, idx) => (
-                  <button
-                    key={idx}
-                    className="categories-dropdown-laptop__container__link"
-                    value={item.value}
-                    onClick={(e) => handleCategoryBtn(e, router)}
-                  >
-                    {item.text}
-                  </button>
-                ))}
+          <div className="NavBar__container__links">
+            <Link href={"/"}>
+              <Image src="/images/logo.png" alt="logo" width={50} height={50} />
+            </Link>
+            <Link className="NavBar__container__links__link" href={"/"}>
+              Home
+            </Link>
+            <Link className="NavBar__container__links__link" href={"/store"}>
+              Store
+            </Link>
+            <div className="categories-container">
+              <div className="categories-container__text">
+                <button className="categories-container__text__btn">
+                  Categories
+                </button>
+                <IoIosArrowDown className="arrow" />
+              </div>
+              <div className="categories-dropdown-laptop">
+                <div className="categories-dropdown-laptop__container">
+                  {categoryMocks.map((item, idx) => (
+                    <button
+                      key={idx}
+                      className="categories-dropdown-laptop__container__link"
+                      value={item.value}
+                      onClick={(e) => handleCategoryBtn(e, router)}
+                    >
+                      {item.text}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <form
-          onSubmit={(e) => handleSearchForm(e, search, router)}
-          className="search-container"
-        >
-          <button className="search-btn" type="submit" aria-label="Search">
-            <IoIosSearch className="search-icon" />
+          <form
+            onSubmit={(e) => handleSearchForm(e, search, router)}
+            className="search-container"
+          >
+            <button className="search-btn" type="submit" aria-label="Search">
+              <IoIosSearch className="search-icon" />
+            </button>
+            <input
+              className="search-input"
+              type="text"
+              placeholder="Search..."
+              aria-label="Search"
+              value={search}
+              onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                setSearch(e.target.value)
+              }
+            />
+          </form>
+          {!session ? <AuthBtns /> : <CartAndLogout />}
+          <button
+            className="burger-btn"
+            onClick={() => handleDropDown(setIsDropDown, setIsCategoryList)}
+            aria-label="Menu burger"
+          >
+            <span
+              className={`burger-line ${isDropDown ? "active" : ""}`}
+            ></span>
+            <span
+              className={`burger-line ${isDropDown ? "active" : ""}`}
+            ></span>
+            <span
+              className={`burger-line ${isDropDown ? "active" : ""}`}
+            ></span>
           </button>
-          <input
-            className="search-input"
-            type="text"
-            placeholder="Search..."
-            aria-label="Search"
-            value={search}
-            onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              setSearch(e.target.value)
-            }
-          />
-        </form>
-        {!session ? <AuthBtns /> : <CartAndLogout />}
-        <button
-          className="burger-btn"
-          onClick={() => handleDropDown(setIsDropDown, setIsCategoryList)}
-          aria-label="Menu burger"
-        >
-          <span className={`burger-line ${isDropDown ? "active" : ""}`}></span>
-          <span className={`burger-line ${isDropDown ? "active" : ""}`}></span>
-          <span className={`burger-line ${isDropDown ? "active" : ""}`}></span>
-        </button>
+        </div>
       </nav>
       <DropDown
         isDropDown={isDropDown}

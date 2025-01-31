@@ -40,12 +40,12 @@
     }
 
     &:hover {
-      background-color: var(--secondary-skeleton-color);
+      background-color: var(--quaternary-btn-color-hover);
     }
 
     &__icon {
       font-size: 40px;
-      color: var(--blue);
+      color: black;
       padding: 5px;
     }
 

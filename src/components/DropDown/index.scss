@@ -25,7 +25,7 @@
   &__link-container {
     @include mixins.flex(row, normal, center, 10px);
     cursor: pointer;
-    color: var(--blue);
+    color: black;
     padding: 20px;
     text-decoration: underline;
     text-decoration-color: transparent;
@@ -47,13 +47,13 @@
         transition: text-decoration-color 0.3s ease-out;
 
         &:hover {
-          text-decoration-color: var(--blue);
+          text-decoration-color: black;
         }
       }
     }
 
     &:hover {
-      text-decoration-color: var(--blue);
+      text-decoration-color: black;
     }
 
     &__icon {
@@ -80,7 +80,7 @@
       padding-block: 10px;
       padding-left: 20px;
       text-align: left;
-      color: var(--blue);
+      color: black;
       background-color: var(--gray);
 
       &:hover {

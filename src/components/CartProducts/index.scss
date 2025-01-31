@@ -16,12 +16,16 @@
     ); // Navbar - main-layout's padding top - __product's details' height - CartProducts' padding block
     padding-top: 20px;
     padding-bottom: 0;
+    width: calc(
+      100% - 20px
+    ); //this works as gap between CartProducts and Checkout
   }
 
   &__empty-cart {
     @include mixins.position(absolute, 50%, auto, auto, 50%);
+    width: 100%;
     list-style-type: none;
-    font-weight: bold;
+    font-weight: 600;
     font-size: 22px;
     opacity: 0.5;
     text-align: center;
