@@ -65,13 +65,14 @@
 }
 
 .side-menu-btn {
-  @include mixins.position(fixed, 30%, auto, auto, 0px);
-  z-index: 1;
+  @include mixins.position(sticky, 30%);
+  z-index: 2;
   background-color: black;
   height: 35px;
   font-size: 24px;
   color: white;
   cursor: pointer;
+  transform: translateX(-16px);
 
   @include mixins.breakpoint(laptop) {
     display: none;
